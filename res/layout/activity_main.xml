@@ -1,0 +1,249 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+
+    <RelativeLayout
+        android:id="@+id/relative"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:padding="10dp" >
+
+        <Button
+            android:id="@+id/qful_button1"
+            android:layout_width="90dp"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/logo"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/commentary_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/qful_button1"
+            android:layout_alignBottom="@+id/qful_button1"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:gravity="center"
+            android:text=""
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/black" />
+    </RelativeLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/hscroll"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relative"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:id="@+id/croll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/feed_bg"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:layout_width="270dp"
+                android:layout_height="150dp"
+                android:padding="3dp" >
+
+                <ImageView
+                    android:id="@+id/photo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/offer13"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/photo"
+                    android:layout_alignRight="@+id/photo"
+                    android:layout_below="@+id/photo"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="-28dp"
+                    android:background="@android:color/white"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingStart="5dp"
+                    android:paddingTop="5dp"
+                    android:text="OFFER 35%"
+                    android:textColor="@color/orange"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignRight="@+id/photo"
+                    android:layout_alignEnd="@+id/photo"
+                    android:layout_alignTop="@+id/photo"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/wish"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="270dp"
+                android:layout_height="150dp"
+                android:padding="5dp" >
+
+                <ImageView
+                    android:id="@+id/photo1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/offer2"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:id="@+id/name1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignRight="@+id/photo1"
+                    android:layout_alignEnd="@+id/photo1"
+                    android:layout_below="@+id/photo1"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="-28dp"
+                    android:background="@android:color/white"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingStart="5dp" 
+                    android:paddingTop="5dp"
+                    android:text="OFFER 45%"
+                    android:textColor="@color/orange"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/imageView11"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignRight="@+id/photo1"
+                     android:layout_alignEnd="@+id/photo1" 
+                    android:layout_alignTop="@+id/photo1"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/wish" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="270dp"
+                android:layout_height="150dp"
+                android:padding="5dp" >
+
+                <ImageView
+                    android:id="@+id/photo2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/offer3"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:id="@+id/name2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignRight="@+id/photo2"
+                    android:layout_below="@+id/photo2"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="-28dp"
+                    android:background="@android:color/white"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="5dp"
+                    android:text="OFFER 15%"
+                    android:textColor="@color/orange"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/imageView12"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignRight="@+id/photo2"
+                    android:layout_alignTop="@+id/photo2"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/wish" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="270dp"
+                android:layout_height="150dp"
+                android:padding="5dp" >
+
+                <ImageView
+                    android:id="@+id/photo3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/offer4"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:id="@+id/name3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignRight="@+id/photo3"
+                    android:layout_below="@+id/photo3"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="-28dp"
+                    android:background="@android:color/white"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="5dp"
+                    android:text="OFFER 65%"
+                    android:textColor="@color/orange"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/imageView13"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignRight="@+id/photo3"
+                    android:layout_alignTop="@+id/photo3"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/wish" />
+            </RelativeLayout>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <GridView
+        android:id="@+id/gridView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+         android:layout_alignParentStart="true"
+        android:layout_below="@+id/hscroll"
+        android:background="@android:color/white"
+        android:numColumns="1" >
+    </GridView>
+
+</RelativeLayout>
