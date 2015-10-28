@@ -1,4 +1,4 @@
-package com.client.vote.common;
+package com.eStore.app.common;
 
 import android.os.StrictMode;
 import android.util.Log;
