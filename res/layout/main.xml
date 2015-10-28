@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              
+        >
+          <Space
+                    android:layout_width="fill_parent"
+                    android:layout_height="10px"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="56dp"/>
+        <LinearLayout 
+            android:id="@+id/home_layout"
+             android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:orientation="vertical"
+            android:gravity="center"
+           >
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/logo" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="85dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/home_layout"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center" >
+
+        <EditText
+            android:id="@+id/signin_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/signin_name"
+            android:layout_alignParentBottom="true"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="Password" />
+
+        <EditText
+            android:id="@+id/signin_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="Name or Email" >
+
+            <requestFocus />
+        </EditText>
+        
+			 </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" 
+            android:layout_gravity="center">
+
+            <Button
+                android:id="@+id/home_signin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:onClick="signin"
+                android:layout_marginTop="35dp"
+                android:text="SignIn" />
+
+            <Button
+                android:id="@+id/home_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/home_signin"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="23dp"
+                android:onClick="EstoreRegister"
+                android:text="Register" />
+
+            <TextView
+                android:id="@+id/home_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/home_register"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="36dp"
+                android:text="Forget Password"
+                  android:clickable="true"
+                 
+                android:onClick="EstoreForgotPassword" />
+
+        </RelativeLayout>
+
+</LinearLayout>
+

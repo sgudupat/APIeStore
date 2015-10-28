@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/modify_address1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="53dp"
+        android:layout_marginTop="46dp"
+        android:hint="Address1" />
+
+    <EditText
+        android:id="@+id/modify_address2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/modify_address1"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/modify_address1"
+        android:hint="Address2" />
+
+    <EditText
+        android:id="@+id/modify_city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/modify_address2"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/modify_address2"
+        android:hint="City" />
+
+    <EditText
+        android:id="@+id/modify_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/modify_city"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/modify_city"
+        android:hint="State" />
+
+    <EditText
+        android:id="@+id/modify_country"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/modify_state"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/modify_state"
+        android:hint="Country" />
+
+    <EditText
+        android:id="@+id/modify_pincode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/modify_country"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/modify_country"
+        android:hint="Pincode" />
+
+    <TextView
+        android:id="@+id/add_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="Add Address"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/modify_addressid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/modify_pincode"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/modify_pincode"
+        android:hint="AddressId"
+        android:visibility="invisible" />
+
+</RelativeLayout>

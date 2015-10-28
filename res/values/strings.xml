@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">eStore</string>
+    <string name="sign_in">Sign In</string>
+    <string name="store">Store</string>
+    <string name="register">Register</string>
+    <string name="forgot">Forgot Password</string>
+    <string name="profile">Profile</string>
+    <string name="product">ProductDetail</string>
+    <string name="payment">Payment</string>
+    <string name="order">Order Summary</string>
+ 
+</resources>

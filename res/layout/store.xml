@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:id="@+id/store_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/store_companyname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint="Company Name" />
+
+        <ImageButton
+            android:id="@+id/store_profileimage"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="3dp"
+            android:clickable="true"
+            
+            android:onClick="EstoreProfile"
+            android:src="@drawable/profile" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/store_layout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/store_layout"
+        android:orientation="horizontal"
+        android:weightSum="1" >
+
+        <EditText
+            android:id="@+id/store_inputsearch"
+            android:layout_width="259dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.87"
+            android:hint="Search products.."
+            android:inputType="textVisiblePassword" >
+
+            <requestFocus />
+        </EditText>
+
+        <Button
+            android:id="@+id/store_gobutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Go" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/star_layout2"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/store_layout1"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/store_offer1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Offer1"
+            android:text="Offer1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/star_layout4"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="300dp"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/store_offer2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Offer2" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/star_layout2"
+        android:orientation="vertical" >
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fillViewport="true"
+            android:scrollbars="horizontal|vertical" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/viewImage0"
+                    android:layout_width="125dp"
+                    android:layout_height="125dp"
+                    android:onClick="ProductDetails"
+                    android:padding="15dp"
+                    android:tag="bg"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/viewImage1"
+                    android:layout_width="125dp"
+                    android:layout_height="125dp"
+                    android:onClick="ProductDetails"
+                    android:padding="15dp"
+                    android:tag="bg"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/viewImage2"
+                    android:layout_width="125dp"
+                    android:layout_height="125dp"
+                    android:onClick="ProductDetails"
+                    android:padding="15dp"
+                    android:tag="bg"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/viewImage3"
+                    android:layout_width="125dp"
+                    android:layout_height="125dp"
+                    android:onClick="ProductDetails"
+                    android:padding="15dp"
+                    android:tag="bg"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/viewImage4"
+                    android:layout_width="125dp"
+                    android:layout_height="125dp"
+                    android:onClick="ProductDetails"
+                    android:tag="bg"
+                    android:padding="15dp"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/viewImag5"
+                    android:layout_width="125dp"
+                    android:layout_height="125dp"
+                    android:tag="bg"
+                    android:onClick="ProductDetails"
+                    android:padding="15dp"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/viewImage6"
+                    android:layout_width="125dp"
+                    android:layout_height="125dp"
+                    android:tag="bg"
+                    android:onClick="ProductDetails"
+                    android:padding="15dp"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/viewImage7"
+                    android:layout_width="125dp"
+                    android:layout_height="125dp"
+                    android:tag="bg"
+                    android:onClick="ProductDetails"
+                    android:padding="15dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <Space
+  android:layout_width="1dp"
+  android:layout_height="60dp"/>
+        
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fillViewport="true"
+            android:scrollbars="horizontal|vertical" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/viewImager0"
+                    android:layout_width="125dp"
+                    android:layout_height="125dp"
+                    android:onClick="ProductDetails"
+                    android:padding="15dp"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/viewImager1"
+                    android:layout_width="125dp"
+                    android:layout_height="125dp"
+                    android:onClick="ProductDetails"
+                    android:padding="15dp"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/viewImager2"
+                    android:layout_width="125dp"
+                    android:layout_height="125dp"
+                    android:onClick="ProductDetails"
+                    android:padding="15dp"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/viewImager3"
+                    android:layout_width="125dp"
+                    android:layout_height="125dp"
+                    android:onClick="ProductDetails"
+                    android:padding="15dp"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/viewImager4"
+                    android:layout_width="125dp"
+                    android:layout_height="125dp"
+                    android:onClick="ProductDetails"
+                    android:padding="15dp"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/viewImager5"
+                    android:layout_width="125dp"
+                    android:layout_height="125dp"
+                    android:onClick="ProductDetails"
+                    android:padding="15dp"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/viewImager6"
+                    android:layout_width="125dp"
+                    android:layout_height="125dp"
+                    android:onClick="ProductDetails"
+                    android:padding="15dp"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/viewImager7"
+                    android:layout_width="125dp"
+                    android:layout_height="125dp"
+                    android:onClick="ProductDetails"
+                    android:padding="15dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </HorizontalScrollView>
+    </LinearLayout>
+
+</RelativeLayout>

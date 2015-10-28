@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:id="@+id/payment_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/payment_companyname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:hint="Company Name" />
+
+        <ImageButton
+            android:id="@+id/payment_profileimage"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="3dp"
+            android:clickable="true"
+            android:src="@drawable/profile"
+            android:onClick="PestoreProfile" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/payment_layout1"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/payment_layout"
+        android:layout_marginTop="26dp" >
+
+        <TextView
+            android:id="@+id/payment_methodtag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:text="Select A Payment Method" />
+
+        <Button
+            android:id="@+id/payment_button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/payment_radioGroup"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="17dp"
+            android:text="Proceed To Payment"
+            android:onClick="OrderSummary" />
+
+        <RadioGroup
+            android:id="@+id/payment_radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/payment_methodtag"
+            android:layout_below="@+id/payment_methodtag"
+            android:layout_marginTop="25dp" >
+
+            <RadioButton
+                android:id="@+id/payment_radio0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:hint="Cash On Delivery" />
+
+            <RadioButton
+                android:id="@+id/payment_radio1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Mobile Wallet" />
+        </RadioGroup>
+
+    </RelativeLayout>
+
+</RelativeLayout>
