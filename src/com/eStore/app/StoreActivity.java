@@ -40,8 +40,8 @@ public class StoreActivity extends Activity implements Runnable {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.store);
-        buildImageView();
+        setContentView(R.layout.activity_main);
+        //buildImageView();
 
     }
 
