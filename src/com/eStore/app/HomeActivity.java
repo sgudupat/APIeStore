@@ -27,12 +27,13 @@ public class HomeActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        
     }
 
-    public void signin(View view) {
-        final EditText userName = (EditText) findViewById(R.id.signin_name);
+    public void signInEstore(View view) {
+        final EditText userName = (EditText) findViewById(R.id.editText1);
 
-        final EditText password = (EditText) findViewById(R.id.signin_password);
+        final EditText password = (EditText) findViewById(R.id.editText2);
         try {
             final ArrayList<NameValuePair> postParameters = new ArrayList<NameValuePair>();
             postParameters.add(new BasicNameValuePair("username", userName.getText().toString()));
