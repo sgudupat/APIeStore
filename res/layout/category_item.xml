@@ -20,6 +20,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/categoryName"
         android:layout_marginTop="16dp"
-        android:text="Category Url" />
+        android:text="Category Url"
+        android:visibility="gone" />
 
 </RelativeLayout>
