@@ -26,5 +26,6 @@
        <activity android:name=".PaymentActivity" android:label="@string/payment"></activity>
        <activity android:name=".OrderSummaryActivity" android:label="@string/order"></activity>
        <activity android:name=".ProfileAddressActivity" android:label="@string/profile"></activity>
+        <activity android:name=".CategoryActivity" ></activity>
     </application>
 </manifest>

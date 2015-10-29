@@ -18,7 +18,7 @@ public class CategoryAdapter extends BaseAdapter implements ListAdapter {
 
 	private List<Category> list = new ArrayList<Category>();
 	private Context context;
-	 CategoryAdapter (List<Category> list, Context context){
+	 CategoryAdapter ( Context context,List<Category> list){
 		this.list=list;
 		this.context=context;
 	}
@@ -31,7 +31,7 @@ public class CategoryAdapter extends BaseAdapter implements ListAdapter {
 	}
 
 	@Override
-	public Object getItem(int position) {
+	public Category getItem(int position) {
 		// TODO Auto-generated method stub
 		return list.get(position);
 	}

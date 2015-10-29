@@ -27,30 +27,18 @@ public class HomeActivity extends Activity {
        final Context context= this;
 	   // private Context context;
 		ArrayList<Category> items = new ArrayList<Category>();
-		int clientId=2;
+		
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-    	/*ListView listView = (ListView) findViewById(R.id.categoryListview);
-			// Adding items to list view
-			// 1. pass context and data to the custom adapter        
-			final CategoryAdapter adapter = new CategoryAdapter(generateData(clientId), this);
-			Log.i("After adapter excecution", "excecution");
-			listView.setAdapter(adapter);*/
+    	
         
     }
    
 
  
-private List<Category> generateData(int clientId2) {
-		// TODO Auto-generated method stub
-		String cName= "Sachin";
-		String cUrl="http://www.androidhive.info/2011/08/android-tab-layout-tutorial/";
-		items.add(new Category(cName,cUrl));
-		return items;
-	}
 
 
 
@@ -74,7 +62,7 @@ private List<Category> generateData(int clientId2) {
              editor.putString("email", (String) jsonobject.get("email"));
              editor.putString("mobile", (String) jsonobject.get("mobile"));
              editor.commit();
-             Intent intent= new Intent(this, StoreActivity.class);
+             Intent intent= new Intent(this, CategoryActivity.class);
     	startActivity(intent);
          } catch (Exception e) {
              Log.e("register", e.getMessage() + "");

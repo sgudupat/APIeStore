@@ -4,88 +4,101 @@ import android.graphics.Bitmap;
 
 public class Product {
 
-    private String category;
-    private String price;
-    private String name;
-    private String specification;
-    private String image;
-    private Bitmap transformedImage;
+	private String category;
+	private String price;
+	private String name;
+	private String specification;
+	private String image;
+	private Bitmap transformedImage;
+	private String link;
 
-    public Product(String category, String price, String name,
-                   String specification, String image, String code) {
-        super();
-        this.category = category;
-        this.price = price;
-        this.name = name;
-        this.specification = specification;
-        this.image = image;
-        this.code = code;
-    }
+	public Product(String category, String price, String name,
+			String specification, String image, String code) {
+		super();
+		this.category = category;
+		this.price = price;
+		this.name = name;
+		this.specification = specification;
+		this.image = image;
+		this.code = code;
+	}
 
-    public String getCategory() {
-        return category;
-    }
+	public Product(String image, String link) {
+		this.image = image;
+		this.link = link;
+	}
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
+	public String getLink() {
+		return link;
+	}
 
-    public String getPrice() {
-        return price;
-    }
+	public void setLink(String link) {
+		this.link = link;
+	}
 
-    public void setPrice(String price) {
-        this.price = price;
-    }
+	public String getCategory() {
+		return category;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setCategory(String category) {
+		this.category = category;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public String getPrice() {
+		return price;
+	}
 
-    public String getSpecification() {
-        return specification;
-    }
+	public void setPrice(String price) {
+		this.price = price;
+	}
 
-    public void setSpecification(String specification) {
-        this.specification = specification;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public String getImage() {
-        return image;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setImage(String image) {
-        this.image = image;
-    }
+	public String getSpecification() {
+		return specification;
+	}
 
-    public String getCode() {
-        return code;
-    }
+	public void setSpecification(String specification) {
+		this.specification = specification;
+	}
 
-    public void setCode(String code) {
-        this.code = code;
-    }
+	public String getImage() {
+		return image;
+	}
 
-    private String code;
+	public void setImage(String image) {
+		this.image = image;
+	}
 
-    public Bitmap getTransformedImage() {
-        return transformedImage;
-    }
+	public String getCode() {
+		return code;
+	}
 
-    public void setTransformedImage(Bitmap transformedImage) {
-        this.transformedImage = transformedImage;
-    }
+	public void setCode(String code) {
+		this.code = code;
+	}
 
-    @Override
-    public String toString() {
-        return "Product [category=" + category + ", price=" + price + ", name="
-                + name + ", specification=" + specification + ", image="
-                + image + ", code=" + code + "]";
-    }
+	private String code;
 
+	public Bitmap getTransformedImage() {
+		return transformedImage;
+	}
+
+	public void setTransformedImage(Bitmap transformedImage) {
+		this.transformedImage = transformedImage;
+	}
+
+	@Override
+	public String toString() {
+		return "Product [category=" + category + ", price=" + price + ", name="
+				+ name + ", specification=" + specification + ", image="
+				+ image + ", code=" + code + "]";
+	}
 
 }

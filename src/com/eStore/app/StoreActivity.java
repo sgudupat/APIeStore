@@ -6,14 +6,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.eStore.app.CategoryActivity.AsyncTaskParseJson;
 import com.eStore.app.common.SimpleHttpClient;
 import com.eStore.domain.Product;
+import com.eStore.app.common.JsonParser;
+
 import org.apache.http.NameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,10 +27,14 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class StoreActivity extends Activity implements Runnable {
+	//private static String url = "http://affiliate-feeds.snapdeal.com/feed/api/category/v1:580:1894930153?expiresAt=1445970600062&signature=okezkuforalepqwhupxi";
+	
     ArrayList<Product> product = new ArrayList<Product>();
     final Context context = this;
     private Handler handler = new Handler();
@@ -36,16 +46,23 @@ public class StoreActivity extends Activity implements Runnable {
     //a variable to store the downloaded Bitmap
     public Bitmap downloadedBitmap;
     ArrayList<Product> productList;
-
+    String url="";
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        //buildImageView();
+        setContentView(R.layout.store);
+        Intent intent = getIntent();
+		url = intent.getStringExtra("producturl");
+        try {
+			buildImageView();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
     }
 
-    private void buildImageView() {
+    private void buildImageView() throws JSONException {
         // TODO Auto-generated method stub
         /*  ListView listView = (ListView) findViewById(R.id.image_view);
           ProductAdapter adapter = new ProductAdapter(StoreActivity.this, generateData());
@@ -94,12 +111,14 @@ public class StoreActivity extends Activity implements Runnable {
     //this method must be overridden, as we are implementing the Runnable interface
     public void run() {
         //Download the image
+    	
+    	
         try {
             for (int i = 0; i < productList.size(); i++) {
-                String imageName = productList.get(i).getImage();
-                Log.i("image name", imageName);
-                //downloadedBitmap = DownloadBMP("http://52.74.246.67:8080/images/"+imageName);
-                URL location = new URL("http://52.74.246.67:8080/images/" + imageName);
+                String imageLink = productList.get(i).getImage();
+                Log.i("image name", imageLink);
+               // downloadedBitmap = DownloadBMP("http://52.74.246.67:8080/images/"+imageName);
+                URL location = new URL(imageLink);
                 InputStream input_s = location.openStream();
                 downloadedBitmap = BitmapFactory.decodeStream(input_s);
                 input_s.close();
@@ -119,13 +138,21 @@ public class StoreActivity extends Activity implements Runnable {
 
     public void ProductDetails(View view) {
         String img = (String) view.getTag();
-        Log.i("onclick image name", img);
-        Log.i("size", "" + productList.size());
+      //  Log.i("onclick image name", img);
+       // Log.i("size", "" + productList.size());
         for (int i = 0; i < productList.size(); i++) {
-            if (productList.get(i).getImage().contains(img)) {
+        	String purl=productList.get(i).getLink();
+        	Log.i("product detail link",purl);
+        	 Intent intent = new Intent();
+             intent.setAction(Intent.ACTION_VIEW);
+             intent.addCategory(Intent.CATEGORY_BROWSABLE);
+             intent.setData(Uri.parse(purl));
+             startActivity(intent);
+        	
+           /* if (productList.get(i).getImage().contains(img)) {
                 Log.i("code", productList.get(i).getCode());
                 Log.i("price", productList.get(i).getPrice());
-                Log.i("image", productList.get(i).getImage());
+               // Log.i("image", productList.get(i).getImage());
                 Intent intent = new Intent(this, ProductDetailActivity.class);
                 Bitmap img1 = scaleDownBitmap(productList.get(i).getTransformedImage(), 150, context);
                 intent.putExtra("bitmapImage", img1);
@@ -134,8 +161,8 @@ public class StoreActivity extends Activity implements Runnable {
                 intent.putExtra("category", productList.get(i).getCategory());
                 intent.putExtra("name", productList.get(i).getName());
                 intent.putExtra("specification", productList.get(i).getSpecification());
-                startActivity(intent);
-            }
+                startActivity(intent);*/
+            
         }
 		/*Intent intent = new Intent(this,ProductDetailActivity.class);
 		startActivity(intent);*/
@@ -156,8 +183,39 @@ public class StoreActivity extends Activity implements Runnable {
         return photo;
     }
 
-    private ArrayList<Product> generateData() {
-        String response = productDetail();
+    private ArrayList<Product> generateData() throws JSONException {
+    	try {
+		String result =	new AsyncTaskParseJson().execute().get();
+		JSONObject json=new JSONObject(result);
+		JSONArray dataJsonArr = json.getJSONArray("products");
+		 
+        // loop through all users
+        for (int i = 0; i < 5; i++) {
+
+            JSONObject c = dataJsonArr.getJSONObject(i);
+
+            // Storing each json item in variable
+            String imageLink = c.getString("imageLink");
+            String imagedetail = c.getString("link");
+           Log.i("imagelink",imageLink);
+           Log.i("imagedeatail ",imagedetail);
+           product.add(new Product(imageLink,imagedetail));
+
+        
+        }
+		
+		
+		
+		
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (ExecutionException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+    	
+      /*  String response = productDetail();
         try {
             JSONArray jsonArray = new JSONArray(response);
 
@@ -176,10 +234,52 @@ public class StoreActivity extends Activity implements Runnable {
             }
         } catch (JSONException e) {
             e.printStackTrace();
-        }
+        }*/
 
         return product;
 
+    }
+    // you can make this class as another java file so it will be separated from your main activity.
+    public class AsyncTaskParseJson extends AsyncTask<String, String, String> {
+ 
+       // final String TAG = "AsyncTaskParseJson.java";
+ 
+        // set your json string url here
+        //String response = "http://demo.codeofaninja.com/tutorials/json-example-with-php/index.php";
+        
+       
+        // contacts JSONArray
+        JSONArray dataJsonArr = null;
+ 
+        @Override
+        protected void onPreExecute() {}
+ 
+        @Override
+        protected String doInBackground(String... arg0) {
+        	  // make HTTP request
+        
+     
+                 JsonParser jParser = new JsonParser();
+             
+                // Getting JSON from URL
+                JSONObject json = null;
+        		try {
+        			json = jParser.getJSONFromUrl(url);
+        			
+     
+        		} catch (URISyntaxException e) {
+        			// TODO Auto-generated catch block
+        			e.printStackTrace();
+        		} 
+                Log.i("snapdeal response",json.toString());
+			return json.toString();
+            
+        	
+        }
+ 
+       
+ 
+        protected void onPostExecute(String strFromDoInBg) {}
     }
 
 
