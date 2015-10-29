@@ -80,8 +80,8 @@ ConnectionCallbacks, OnConnectionFailedListener {
 	    private ImageView imgProfilePic;
 	    private TextView txtName, txtEmail;
 	    private LinearLayout llProfileLayout;
-	 //final Context context = this;
-	    private Context context;
+	final Context context = this;
+	   // private Context context;
 		ArrayList<Category> items = new ArrayList<Category>();
 		int clientId=2;
 	 int images[];
@@ -118,8 +118,8 @@ ConnectionCallbacks, OnConnectionFailedListener {
              }
 
            }
-       }, 0);
-     btnSignIn = (SignInButton) findViewById(R.id.btn_sign_in);
+       }, 0);}
+    /* btnSignIn = (SignInButton) findViewById(R.id.btn_sign_in);
      btnSignOut = (Button) findViewById(R.id.btn_sign_out);
      btnRevokeAccess = (Button) findViewById(R.id.btn_revoke_access);
      imgProfilePic = (ImageView) findViewById(R.id.imgProfilePic);
@@ -150,9 +150,9 @@ ConnectionCallbacks, OnConnectionFailedListener {
      }
  }
 
- /**
+ *//**
   * Method to resolve any signin errors
-  * */
+  * *//*
  private void resolveSignInError() {
      if (mConnectionResult.hasResolution()) {
          try {
@@ -217,9 +217,9 @@ ConnectionCallbacks, OnConnectionFailedListener {
  }
  
 
- /**
+ *//**
   * Updating the UI, showing/hiding buttons and profile layout
-  * */
+  * *//*
  private void updateUI(boolean isSignedIn) {
      if (isSignedIn) {
          btnSignIn.setVisibility(View.GONE);
@@ -234,9 +234,9 @@ ConnectionCallbacks, OnConnectionFailedListener {
      }
  }
 
- /**
+ *//**
   * Fetching user's information name, email, profile pic
-  * */
+  * *//*
  private void getProfileInformation() {
      try {
          if (Plus.PeopleApi.getCurrentPerson(mGoogleApiClient) != null) {
@@ -280,9 +280,9 @@ ConnectionCallbacks, OnConnectionFailedListener {
 
 
 
- /**
+ *//**
   * Button on click listener
-  * */
+  * *//*
  @Override
  public void onClick(View v) {
      switch (v.getId()) {
@@ -301,9 +301,9 @@ ConnectionCallbacks, OnConnectionFailedListener {
      }
  }
 
- /**
+ *//**
   * Sign-in into google
-  * */
+  * *//*
  private void signInWithGplus() {
      if (!mGoogleApiClient.isConnecting()) {
          mSignInClicked = true;
@@ -311,9 +311,9 @@ ConnectionCallbacks, OnConnectionFailedListener {
      }
  }
 
- /**
+ *//**
   * Sign-out from google
-  * */
+  * *//*
  private void signOutFromGplus() {
      if (mGoogleApiClient.isConnected()) {
          Plus.AccountApi.clearDefaultAccount(mGoogleApiClient);
@@ -323,9 +323,9 @@ ConnectionCallbacks, OnConnectionFailedListener {
      }
  }
 
- /**
+ *//**
   * Revoking access from google
-  * */
+  * *//*
  private void revokeGplusAccess() {
      if (mGoogleApiClient.isConnected()) {
          Plus.AccountApi.clearDefaultAccount(mGoogleApiClient);
@@ -342,9 +342,9 @@ ConnectionCallbacks, OnConnectionFailedListener {
      }
  }
 
- /**
+ *//**
   * Background Async task to load user profile picture from url
-  * */
+  * *//*
  private class LoadProfileImage extends AsyncTask<String, Void, Bitmap> {
      ImageView bmImage;
 
@@ -369,7 +369,7 @@ ConnectionCallbacks, OnConnectionFailedListener {
          bmImage.setImageBitmap(result);
      }
  }
-     
+    */ 
 
  
 private List<Category> generateData(int clientId2) {
@@ -424,6 +424,26 @@ private List<Category> generateData(int clientId2) {
     	Intent intent =new Intent(this, ForgotPasswordActivity.class);
     	startActivity(intent);
     }
+	@Override
+	public void onConnectionFailed(ConnectionResult arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void onConnected(Bundle arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void onConnectionSuspended(int arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		
+	}
 
 
 
