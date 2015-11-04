@@ -1,4 +1,4 @@
-package com.eStore.app.common;
+package com.eStore.domain;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,13 +16,11 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.util.Log;
-
-public class JsonParser {
+public class JsonParserF {
 
 	final String TAG = "JsonParser.java";
-	final String affiliateId = "57185";
-	final String affiliateToken = "3a268fc7a003b88900c676b9ba4199";
+	final String affiliateId = "getshared";
+	final String affiliateToken = "bc2074608a214d07ab7ba9e37669f501";
 	static InputStream is = null;
 	static JSONObject jObj = null;
 	static String json = "";
@@ -36,12 +34,11 @@ public class JsonParser {
 			HttpGet httpGet = new HttpGet();
 			httpGet.setURI(uri);
 			httpGet.addHeader("Content-Type", "application/json");
-			httpGet.addHeader("Snapdeal-Affiliate-Id", affiliateId);
-			httpGet.addHeader("Snapdeal-Token-Id", affiliateToken);
+			httpGet.addHeader("Fk-Affiliate-Id", affiliateId);
+			httpGet.addHeader("Fk-Affiliate-Token", affiliateToken);
 
 
-			HttpResponse httpResponse = httpClient.execute(httpGet);
-
+			HttpResponse httpResponse = httpClient.execute(httpGet);          
 			HttpEntity httpEntity = httpResponse.getEntity();
 			is = httpEntity.getContent();           
 
