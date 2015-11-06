@@ -238,12 +238,12 @@
     <GridView
         android:id="@+id/gridView1"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+         android:layout_height="600dp"
         android:layout_alignParentLeft="true"
          android:layout_alignParentStart="true"
         android:layout_below="@+id/hscroll"
-        android:background="@android:color/white"
-        android:numColumns="1" >
+       android:background="#526A96"        
+         android:numColumns="1">
     </GridView>
 
 </RelativeLayout>

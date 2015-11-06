@@ -1,13 +1,10 @@
 package com.eStore.app;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
-
-import com.eStore.app.common.SimpleHttpClient;
 
 import android.app.Activity;
 import android.content.Context;
@@ -15,35 +12,26 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.eStore.app.common.SimpleHttpClient;
 
 public class HomeActivity extends Activity {
     /**
      * Called when the activity is first created.
      */
        final Context context= this;
-	   // private Context context;
+	 
 		ArrayList<Category> items = new ArrayList<Category>();
 		
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
-
-    	
+        setContentView(R.layout.main);    	
         
     }
-   
-
- 
-
-
-
-
-
     public void signinEstore(View view){
     	final EditText userName = (EditText) findViewById(R.id.editText1);
 	
@@ -53,11 +41,10 @@ public class HomeActivity extends Activity {
              postParameters.add(new BasicNameValuePair("username", userName.getText().toString()));
              postParameters.add(new BasicNameValuePair("password", password.getText().toString()));
              String response = SimpleHttpClient.executeHttpPost("/loginUser", postParameters);
-             Log.i("Response:", response);
+             
             JSONObject jsonobject = new JSONObject(response);
              SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-             SharedPreferences.Editor editor = prefs.edit();
-             Log.i("username", (String) jsonobject.get("user_name"));
+             SharedPreferences.Editor editor = prefs.edit();            
              editor.putString("username", (String) jsonobject.get("user_name"));
              editor.putString("email", (String) jsonobject.get("email"));
              editor.putString("mobile", (String) jsonobject.get("mobile"));
@@ -65,7 +52,7 @@ public class HomeActivity extends Activity {
              Intent intent= new Intent(this, CategoryActivity.class);
     	startActivity(intent);
          } catch (Exception e) {
-             Log.e("register", e.getMessage() + "");
+            
              Toast.makeText(getApplicationContext(), "Login Failed, Please Retry !!!", Toast.LENGTH_LONG).show();
          }
     	

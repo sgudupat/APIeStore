@@ -1,5 +1,11 @@
 package com.eStore.app;
 
+import java.util.ArrayList;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -11,12 +17,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.eStore.app.common.SimpleHttpClient;
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONObject;
 
-import java.util.ArrayList;
+import com.eStore.app.common.SimpleHttpClient;
 
 public class ProfileActivity extends Activity {
     String username;
@@ -33,9 +35,7 @@ public class ProfileActivity extends Activity {
         username = preferences.getString("username", "");
         name = preferences.getString("username", "");
         mobile = preferences.getString("mobile", "");
-        email = preferences.getString("email", "");
-        /*mobile=preferences.getString("mobile", "");
-        email=preferences.getString("email", "");*/
+        email = preferences.getString("email", "");      
 
 
         String address1 = preferences.getString("address1", "");
