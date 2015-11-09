@@ -39,7 +39,7 @@ public class ForgotPasswordActivity extends Activity {
             postParameters.add(new BasicNameValuePair("username", userName.getText().toString()));
 
             String response = SimpleHttpClient.executeHttpPost("/getUser", postParameters);
-            Log.i("Response:", response);
+           
             JSONObject jsonobject = new JSONObject(response);
             String uname = (String) jsonobject.getString("user_name");
             String umobile = (String) jsonobject.getString("mobile");
@@ -75,7 +75,7 @@ public class ForgotPasswordActivity extends Activity {
                             public void onClick(DialogInterface dialog, int id) {
                                 // get user input and set it to result edit text
                                 String aotp = userInput.getText().toString();
-                                Log.i("alert dialog otp", aotp);
+                                
                                 if (aotp.equals(otp)) {
                                     try {
                                         String chars = "abcdefghijklmnopqrstuvwxyz" + "0123456789"
@@ -95,9 +95,9 @@ public class ForgotPasswordActivity extends Activity {
                                             postParameters.add(new BasicNameValuePair("keyValue", value));
 
                                             String response = SimpleHttpClient.executeHttpPost("/updatePasswordKeyValue", postParameters);
-                                            Log.i("Response:", response);
+                                            
                                             if (response.contains("success")) {
-                                                Log.i("email sending", "email sending");
+                                               
                                                 String link = "http://52.76.83.72:8080/eStore"
                                                         + "/password.jsp?key="
                                                         + value;
