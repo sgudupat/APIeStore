@@ -22,52 +22,52 @@ public class HomeActivity extends Activity {
     /**
      * Called when the activity is first created.
      */
-       final Context context= this;
-	 
-		ArrayList<Category> items = new ArrayList<Category>();
-		
+    final Context context = this;
+
+    ArrayList<Category> items = new ArrayList<Category>();
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);    	
-        
+        setContentView(R.layout.main);
+
     }
-    public void signinEstore(View view){
-    	final EditText userName = (EditText) findViewById(R.id.editText1);
-	
-	 	final EditText password = (EditText) findViewById(R.id.editText2);
-	 	 try {
-             final ArrayList<NameValuePair> postParameters = new ArrayList<NameValuePair>();
-             postParameters.add(new BasicNameValuePair("username", userName.getText().toString()));
-             postParameters.add(new BasicNameValuePair("password", password.getText().toString()));
-             String response = SimpleHttpClient.executeHttpPost("/loginUser", postParameters);
-             
+
+    public void signinEstore(View view) {
+        final EditText userName = (EditText) findViewById(R.id.editText1);
+
+        final EditText password = (EditText) findViewById(R.id.editText2);
+        try {
+            final ArrayList<NameValuePair> postParameters = new ArrayList<NameValuePair>();
+            postParameters.add(new BasicNameValuePair("username", userName.getText().toString()));
+            postParameters.add(new BasicNameValuePair("password", password.getText().toString()));
+            String response = SimpleHttpClient.executeHttpPost("/loginUser", postParameters);
+
             JSONObject jsonobject = new JSONObject(response);
-             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-             SharedPreferences.Editor editor = prefs.edit();            
-             editor.putString("username", (String) jsonobject.get("user_name"));
-             editor.putString("email", (String) jsonobject.get("email"));
-             editor.putString("mobile", (String) jsonobject.get("mobile"));
-             editor.commit();
-             Intent intent= new Intent(this, CategoryActivity.class);
-    	startActivity(intent);
-         } catch (Exception e) {
-            
-             Toast.makeText(getApplicationContext(), "Login Failed, Please Retry !!!", Toast.LENGTH_LONG).show();
-         }
-    	
-    }
-    public void EstoreRegister(View view){
-    	Intent intent = new Intent(this, RegisterActivity.class);
-    	startActivity(intent);
-    }
-    public void EstoreForgotPassword(View view){
-    	Intent intent =new Intent(this, ForgotPasswordActivity.class);
-    	startActivity(intent);
-    }
-	
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putString("username", (String) jsonobject.get("user_name"));
+            editor.putString("email", (String) jsonobject.get("email"));
+            editor.putString("mobile", (String) jsonobject.get("mobile"));
+            editor.commit();
+            Intent intent = new Intent(this, CategoryActivity.class);
+            startActivity(intent);
+        } catch (Exception e) {
 
+            Toast.makeText(getApplicationContext(), "Login Failed, Please Retry !!!", Toast.LENGTH_LONG).show();
+        }
 
-	
+    }
+
+    public void EstoreRegister(View view) {
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
+    }
+
+    public void EstoreForgotPassword(View view) {
+        Intent intent = new Intent(this, ForgotPasswordActivity.class);
+        startActivity(intent);
+    }
+
 
 }
