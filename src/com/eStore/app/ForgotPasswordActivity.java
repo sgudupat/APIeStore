@@ -98,7 +98,7 @@ public class ForgotPasswordActivity extends Activity {
                                             
                                             if (response.contains("success")) {
                                                
-                                                String link = "http://52.76.83.72:8080/eStore"
+                                                String link = "http://52.76.83.72:8090/eStore"
                                                         + "/password.jsp?key="
                                                         + value;
                                                 Log.i("password link", link);
