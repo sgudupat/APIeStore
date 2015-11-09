@@ -20,196 +20,198 @@ import android.widget.GridView;
 import com.eStore.app.common.JsonParser;
 
 public class CategoryActivity extends Activity implements Runnable {
-	ArrayList<Category> items = new ArrayList<Category>();
-	private static String url = "http://affiliate-feeds.snapdeal.com/feed/57185.json";
-	private static String url1 = "https://affiliate-api.flipkart.net/affiliate/api/getshared.json";
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-		buildListView();
-	}
+    ArrayList<Category> items = new ArrayList<Category>();
+    private static String url = "http://affiliate-feeds.snapdeal.com/feed/57185.json";
+    private static String url1 = "https://affiliate-api.flipkart.net/affiliate/api/getshared.json";
 
-	private void buildListView() {
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        buildListView();
+    }
 
-
-		GridView listView = (GridView) findViewById(R.id.gridView1);
-
-		final CategoryAdapter adapter = new CategoryAdapter(
-				CategoryActivity.this, generateData());
-
-		listView.setAdapter(adapter);
-		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				Intent intent = new Intent(CategoryActivity.this,
-						StoreActivity.class);
-				intent.putExtra("producturl",  adapter.getItem(position).getCategoryUrl());
-
-				startActivity(intent);
-			}
-		});
-
-	}
+    private void buildListView() {
 
 
-	private ArrayList<Category> generateData() {
+        GridView listView = (GridView) findViewById(R.id.gridView1);
 
-		Thread t = new Thread(this);
-		t.start();
-		try {
-			t.join();
+        final CategoryAdapter adapter = new CategoryAdapter(
+                CategoryActivity.this, generateData());
 
-		} catch (InterruptedException e) {
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Intent intent = new Intent(CategoryActivity.this,
+                        StoreActivity.class);
+                intent.putExtra("producturl", adapter.getItem(position).getCategoryUrl());
 
-			e.printStackTrace();
-		}
+                startActivity(intent);
+            }
+        });
 
-		return items;
-
-
-	}
-
-
-	public class AsyncTaskParseJson extends AsyncTask<String, String, String> {
-
-		final String TAG = "AsyncTaskParseJson.java";
+    }
 
 
-		JSONArray dataJsonArr = null;
+    private ArrayList<Category> generateData() {
 
-		@Override
-		protected void onPreExecute() {
-		}
+        Thread t = new Thread(this);
+        t.start();
+        try {
+            t.join();
 
-		@Override
-		protected String doInBackground(String... arg0) {
+        } catch (InterruptedException e) {
 
-			JsonParser jParser = new JsonParser();
+            e.printStackTrace();
+        }
 
-			JSONObject json = null;
-			try {
-				json = jParser.getJSONFromUrl(url);
-				JSONObject api = json.getJSONObject("apiGroups");
-				JSONObject affiliate = api.getJSONObject("Affiliate");
-				JSONObject list = affiliate.getJSONObject("listingsAvailable");
-				int i = list.length();
-
-				Iterator<String> keysIterator = list.keys();
-				String key;
-				int count=1;
-				while (keysIterator.hasNext()) {
-					if(count>10){
-						break;
-					}
-					count++;
-					key = keysIterator.next();
-					String url = list.getString(key);
-
-					JSONObject jObj = new JSONObject(url);
-					JSONObject listing = jObj.getJSONObject("listingVersions");
-					JSONObject version = listing.getJSONObject("v1");
-					String get = version.getString("get");
-
-					items.add(new Category(key, get));
-
-				}
+        return items;
 
 
-			} catch (URISyntaxException e) {
-
-				e.printStackTrace();
-			} catch (JSONException e) {
-
-				e.printStackTrace();
-			}
+    }
 
 
-			return json.toString();
+    public class AsyncTaskParseJson extends AsyncTask<String, String, String> {
 
-		}
-
-		protected void onPostExecute(String json) {
-
-		}
-	}
-	public class flipkartTaskParseJson extends AsyncTask<String, String, String> {
-
-		final String TAG = "AsyncTaskParseJson.java";
-
-		JSONArray dataJsonArr = null;
-
-		@Override
-		protected void onPreExecute() {
-		}
-
-		@Override
-		protected String doInBackground(String... arg0) {
+        final String TAG = "AsyncTaskParseJson.java";
 
 
-			JsonParser jParser = new JsonParser();
+        JSONArray dataJsonArr = null;
 
-			JSONObject json = null;
-			try {
-				json = jParser.getJSONFromUrl(url1);
-				JSONObject api = json.getJSONObject("apiGroups");
-				JSONObject affiliate = api.getJSONObject("affiliate");
-				JSONObject list = affiliate.getJSONObject("apiListings");
-				int i = list.length();
+        @Override
+        protected void onPreExecute() {
+        }
 
-				Iterator<String> keysIterator = list.keys();
-				String key;
-				int count=1;
-				while (keysIterator.hasNext()) {
-					if(count>10){
-						break;
-					}
-					count++;
-					key = keysIterator.next();
-					String url = list.getString(key);
+        @Override
+        protected String doInBackground(String... arg0) {
 
-					JSONObject jObj = new JSONObject(url);
-					JSONObject listing = jObj.getJSONObject("availableVariants");
-					JSONObject version = listing.getJSONObject("v0.1.0");
-					String fGet = version.getString("get");
+            JsonParser jParser = new JsonParser();
 
-					items.add(new Category(key, fGet));
+            JSONObject json = null;
+            try {
+                json = jParser.getJSONFromUrl(url);
+                JSONObject api = json.getJSONObject("apiGroups");
+                JSONObject affiliate = api.getJSONObject("Affiliate");
+                JSONObject list = affiliate.getJSONObject("listingsAvailable");
+                int i = list.length();
+
+                Iterator<String> keysIterator = list.keys();
+                String key;
+                int count = 1;
+                while (keysIterator.hasNext()) {
+                    if (count > 10) {
+                        break;
+                    }
+                    count++;
+                    key = keysIterator.next();
+                    String url = list.getString(key);
+
+                    JSONObject jObj = new JSONObject(url);
+                    JSONObject listing = jObj.getJSONObject("listingVersions");
+                    JSONObject version = listing.getJSONObject("v1");
+                    String get = version.getString("get");
+
+                    items.add(new Category(key, get));
+
+                }
 
 
-				}
+            } catch (URISyntaxException e) {
 
-			} catch (URISyntaxException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
 
-				e.printStackTrace();
-			} catch (JSONException e) {
-
-				e.printStackTrace();
-			}
+                e.printStackTrace();
+            }
 
 
-			return json.toString();
+            return json.toString();
 
-		}
+        }
 
-		protected void onPostExecute(String json) {
+        protected void onPostExecute(String json) {
 
-		}
-	}
+        }
+    }
 
-	@Override
-	public void run() {
+    public class flipkartTaskParseJson extends AsyncTask<String, String, String> {
 
-		try {
-			String result= new AsyncTaskParseJson().execute().get();
-			String result1=new flipkartTaskParseJson().execute().get();
+        final String TAG = "AsyncTaskParseJson.java";
 
-		} catch (InterruptedException e) {
+        JSONArray dataJsonArr = null;
 
-			e.printStackTrace();
-		} catch (ExecutionException e) {
+        @Override
+        protected void onPreExecute() {
+        }
 
-			e.printStackTrace();
-		}
+        @Override
+        protected String doInBackground(String... arg0) {
 
-	}
+
+            JsonParser jParser = new JsonParser();
+
+            JSONObject json = null;
+            try {
+                json = jParser.getJSONFromUrl(url1);
+                JSONObject api = json.getJSONObject("apiGroups");
+                JSONObject affiliate = api.getJSONObject("affiliate");
+                JSONObject list = affiliate.getJSONObject("apiListings");
+                int i = list.length();
+
+                Iterator<String> keysIterator = list.keys();
+                String key;
+                int count = 1;
+                while (keysIterator.hasNext()) {
+                    if (count > 10) {
+                        break;
+                    }
+                    count++;
+                    key = keysIterator.next();
+                    String url = list.getString(key);
+
+                    JSONObject jObj = new JSONObject(url);
+                    JSONObject listing = jObj.getJSONObject("availableVariants");
+                    JSONObject version = listing.getJSONObject("v0.1.0");
+                    String fGet = version.getString("get");
+
+                    items.add(new Category(key, fGet));
+
+
+                }
+
+            } catch (URISyntaxException e) {
+
+                e.printStackTrace();
+            } catch (JSONException e) {
+
+                e.printStackTrace();
+            }
+
+
+            return json.toString();
+
+        }
+
+        protected void onPostExecute(String json) {
+
+        }
+    }
+
+    @Override
+    public void run() {
+
+        try {
+            String result = new AsyncTaskParseJson().execute().get();
+            String result1 = new flipkartTaskParseJson().execute().get();
+
+        } catch (InterruptedException e) {
+
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+
+            e.printStackTrace();
+        }
+
+    }
 }

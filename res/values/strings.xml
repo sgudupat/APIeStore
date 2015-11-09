@@ -6,10 +6,10 @@
     <string name="register">Register</string>
     <string name="forgot">Forgot Password</string>
     <string name="profile">Profile</string>
-    <string name="product">ProductDetail</string>
+    <string name="product">Product Detail</string>
     <string name="payment">Payment</string>
     <string name="order">Order Summary</string>
-      <string name="btn_logout_from_google">Logout from Google</string>
+    <string name="btn_logout_from_google">Logout from Google</string>
     <string name="btn_revoke_access">Revoke Access</string>
- 
+    <integer name="google_play_services_version">1</integer>
 </resources>

@@ -48,7 +48,7 @@ public class RegisterActivity extends Activity {
         for (int i = 0; i < PW_LENGTH; i++) {
             pass.append(chars.charAt(rnd.nextInt(chars.length())));
         }
-       
+
         final String otp = pass.toString();
         try {
             String phoneNo = mobile.getText().toString();
@@ -70,7 +70,7 @@ public class RegisterActivity extends Activity {
                     public void onClick(DialogInterface dialog, int id) {
                         // get user input and set it to result edit text
                         String aotp = userInput.getText().toString();
-                       
+
                         if (aotp.equals(otp) && (password.getText().toString().equals(rpassword.getText().toString()))) {
                             try {
                                 final ArrayList<NameValuePair> postParameters = new ArrayList<NameValuePair>();
@@ -80,11 +80,11 @@ public class RegisterActivity extends Activity {
                                 postParameters.add(new BasicNameValuePair("email", email.getText().toString()));
                                 postParameters.add(new BasicNameValuePair("deviceId", deviceId));
                                 String response = SimpleHttpClient.executeHttpPost("/registerUser", postParameters);
-                                
+
                                 JSONObject jsonobject = new JSONObject(response);
                                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
                                 SharedPreferences.Editor editor = prefs.edit();
-                                
+
                                 editor.putString("username", (String) jsonobject.get("user_name"));
                                 editor.putString("email", (String) jsonobject.get("email"));
                                 editor.putString("mobile", (String) jsonobject.get("mobile"));
@@ -92,7 +92,7 @@ public class RegisterActivity extends Activity {
                                 Intent intent = new Intent(context, StoreActivity.class);
                                 startActivity(intent);
                             } catch (Exception e) {
-                               
+
                                 Toast.makeText(getApplicationContext(), "Login Failed, Please Retry !!!", Toast.LENGTH_LONG).show();
                             }
                         }
@@ -115,14 +115,14 @@ public class RegisterActivity extends Activity {
             postParameters.add(new BasicNameValuePair("username", userName.getText().toString()));
 
             String response = SimpleHttpClient.executeHttpPost("/isAvailable", postParameters);
-            
+
 
             if (response.contains("success")) {
                 Toast.makeText(getApplicationContext(), "User name available !!!", Toast.LENGTH_LONG).show();
             } else
                 Toast.makeText(getApplicationContext(), "Username not available !!!", Toast.LENGTH_LONG).show();
         } catch (Exception e) {
-           
+
             Toast.makeText(getApplicationContext(), "Username not available !!!", Toast.LENGTH_LONG).show();
         }
 

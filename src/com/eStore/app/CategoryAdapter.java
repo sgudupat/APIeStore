@@ -13,44 +13,47 @@ import android.widget.TextView;
 
 public class CategoryAdapter extends BaseAdapter implements ListAdapter {
 
-	private List<Category> list = new ArrayList<Category>();
-	private Context context;
-	CategoryAdapter ( Context context,List<Category> list){
-		this.list=list;
-		this.context=context;
-	}
-	@Override
-	public int getCount() {
+    private List<Category> list = new ArrayList<Category>();
+    private Context context;
 
-		return list.size();
+    CategoryAdapter(Context context, List<Category> list) {
+        this.list = list;
+        this.context = context;
+    }
 
-	}
+    @Override
+    public int getCount() {
 
-	@Override
-	public Category getItem(int position) {
-		// TODO Auto-generated method stub
-		return list.get(position);
-	}
-	@Override
-	public long getItemId(int position) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+        return list.size();
+
+    }
+
+    @Override
+    public Category getItem(int position) {
+        // TODO Auto-generated method stub
+        return list.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        // TODO Auto-generated method stub
+        return 0;
+    }
 
 
-	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-		View view = convertView;
-		if(view == null){
-			LayoutInflater inflater= (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-			view= inflater.inflate(R.layout.category_item, null);
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        View view = convertView;
+        if (view == null) {
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
+            view = inflater.inflate(R.layout.category_item, null);
 
-		}
-		TextView catName = (TextView) view.findViewById(R.id.categoryName);
-		TextView catUrl = (TextView) view.findViewById(R.id.category_url);
-		catName.setText(list.get(position).getCategoryName());
-		catUrl.setText(list.get(position).getCategoryUrl());
-		return view;
-	}
+        }
+        TextView catName = (TextView) view.findViewById(R.id.categoryName);
+        TextView catUrl = (TextView) view.findViewById(R.id.category_url);
+        catName.setText(list.get(position).getCategoryName());
+        catUrl.setText(list.get(position).getCategoryUrl());
+        return view;
+    }
 
 }
