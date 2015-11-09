@@ -13,6 +13,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -44,9 +45,9 @@ public class CategoryActivity extends Activity implements Runnable {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 Intent intent = new Intent(CategoryActivity.this,
-                        StoreActivity.class);
+                		StoreActivity.class);
                 intent.putExtra("producturl", adapter.getItem(position).getCategoryUrl());
-
+                           
                 startActivity(intent);
             }
         });

@@ -88,15 +88,6 @@
                        android:background="@color/orange"
                         android:layout_marginRight="12dp"
                         android:padding="1dp">
-
-                        <ImageView
-                            android:id="@+id/photo1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:adjustViewBounds="true"
-                            android:background="@drawable/image2"
-                            android:contentDescription="@string/app_name"
-                            android:scaleType="centerCrop" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -105,15 +96,6 @@
                         android:background="@color/orange"
                          android:layout_marginRight="12dp"
                         android:padding="1dp" >
-
-                        <ImageView
-                            android:id="@+id/photo2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:adjustViewBounds="true"
-                            android:background="@drawable/image3"
-                            android:contentDescription="@string/app_name"
-                            android:scaleType="centerCrop" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -122,15 +104,6 @@
                         android:background="@color/orange"
                          android:layout_marginRight="10dp"
                         android:padding="1dp" >
-
-                        <ImageView
-                            android:id="@+id/photo3"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:adjustViewBounds="true"
-                            android:background="@drawable/image3"
-                            android:contentDescription="@string/app_name"
-                            android:scaleType="centerCrop" />
                     </RelativeLayout>
                 </LinearLayout>
             </HorizontalScrollView>
@@ -168,6 +141,7 @@
                     android:gravity="center"
                     android:padding="10dp"
                     android:text="BUY NOW"
+                    android:onClick=""
                     android:textColor="@color/orange"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -196,32 +170,6 @@
                     android:textColor="@android:color/black"
                     android:textSize="12sp"
                     android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/_cinfo"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:background="@android:color/white"
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:text="REVIEW"
-                    android:textColor="@android:color/black"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/_binfo"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:background="@android:color/white"
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:text="SPECIFICATION"
-                    android:textColor="@android:color/black"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
             </LinearLayout>
 
             <!-- cheat code: negative margin -->
@@ -238,6 +186,8 @@
                 android:padding="2dp"
                 android:visibility="visible" >
 
+               
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -245,33 +195,17 @@
                     android:orientation="vertical" >
 
                     <TextView
-                        android:id="@+id/textView1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="1dp"
-                        android:background="@android:color/white"
-                        android:padding="5dp"
-                        android:text="Key Features of Ng Stunners Artistic Eye Vinyl Laptop Decal "
-                        android:textColor="@android:color/black"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/textView2"
+                        android:id="@+id/product_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="0dp"
                         android:background="@android:color/white"
                         android:padding="0dp"
-                        android:text="
-    Easy to Stick
-    Glue Free Removal
-    Matte Lamination
-    Customize from 14 inch upto 17 Inch Laptops
-"
-                        android:textColor="@android:color/black" />
+                        android:textColor="@android:color/black"
+                        android:visibility="visible" />
 
                     <TextView
-                        android:id="@+id/textView3"
+                        android:id="@+id/product_price"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="1dp"
@@ -282,7 +216,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/textView4"
+                        android:id="@+id/product_description"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="0dp"
@@ -299,7 +233,8 @@
                         android:background="@android:color/white"
                         android:padding="5dp"
                         android:text="Specifications of Ng Stunners Artistic Eye Vinyl Laptop Decal (Laptop)"
-                        android:textColor="@android:color/black" />
+                        android:textColor="@android:color/black"
+                        android:visibility="gone" />
 
                     <TextView
                         android:id="@+id/textView6"
@@ -322,7 +257,8 @@ Suitable For 	Laptop
 Theme 	Automobiles, Comics and Cartoons, Ethnic, Famous Personalities, Festivals  Occasions, Graffiti, Illustrations, Movies, Music, NA, Nature, Patterns, Signs  Symbols, Solids, Spiritual, Sports, Superheroes, TV Series, Tattoo, Typography, Vintage
 Model Name 	Artistic Eye
 Reusable 	Yes "
-                        android:textColor="@android:color/black" />
+                        android:textColor="@android:color/black" 
+                        android:visibility="gone"/>
                 </LinearLayout>
 
                 <LinearLayout

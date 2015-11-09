@@ -53,6 +53,7 @@ public class CategoryAdapter extends BaseAdapter implements ListAdapter {
         TextView catUrl = (TextView) view.findViewById(R.id.category_url);
         catName.setText(list.get(position).getCategoryName());
         catUrl.setText(list.get(position).getCategoryUrl());
+        
         return view;
     }
 
