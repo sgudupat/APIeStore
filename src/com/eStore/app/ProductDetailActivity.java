@@ -29,9 +29,9 @@ public class ProductDetailActivity extends Activity {
 		 
 		
 		 
-		ImageView view = (ImageView)findViewById(R.id.photo);
+		ImageView view = (ImageView)findViewById(R.id.product_image);
 		view.setImageBitmap(bitmap);
-		ImageView newPage1 = (ImageView)view.findViewById(R.id.photo);
+		TextView newPage1 = (TextView)findViewById(R.id.buy_business);
         newPage1.setOnClickListener(new View.OnClickListener() {
 
             @Override

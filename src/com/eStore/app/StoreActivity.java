@@ -17,7 +17,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,7 +24,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.eStore.app.DescriptionActivity.flipkartTaskParseJson;
 import com.eStore.app.common.JsonParser;
 import com.eStore.app.common.SimpleHttpClient;
 import com.eStore.domain.JsonParserF;
