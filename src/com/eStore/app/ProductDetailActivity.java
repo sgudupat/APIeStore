@@ -45,15 +45,7 @@ public class ProductDetailActivity extends Activity {
             }
         });
 	}
-	/*public void buyNow(View view){
-		 String purl = productList.get(i).getLink();
-         Log.i("product detail link", purl);
-         Intent intent = new Intent();
-         intent.setAction(Intent.ACTION_VIEW);
-         intent.addCategory(Intent.CATEGORY_BROWSABLE);
-         intent.setData(Uri.parse(purl));
-         startActivity(intent);
-	}*/
+	
 	
 	public void DestoreProfile(View view){
 		Intent intent = new Intent(this,ProfileActivity.class);
