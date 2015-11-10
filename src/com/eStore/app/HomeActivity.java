@@ -193,6 +193,8 @@ ConnectionCallbacks, OnConnectionFailedListener {
 
      // Get user's information
      getProfileInformation();
+     Intent intent=new Intent(this,CategoryActivity.class);
+     startActivity(intent);
 
      // Update the UI after signin
      updateUI(true);
