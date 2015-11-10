@@ -1,6 +1,5 @@
 package com.eStore.app;
 
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,15 +10,10 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentSender.SendIntentException;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -31,15 +25,10 @@ import android.widget.Toast;
 
 import com.eStore.app.common.SimpleHttpClient;
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
-import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.common.api.Status;
-import com.google.android.gms.plus.Plus;
-import com.google.android.gms.plus.model.people.Person;
 
 
 public class HomeActivity extends Activity implements OnClickListener,
@@ -101,8 +90,8 @@ ConnectionCallbacks, OnConnectionFailedListener {
              }
 
            }
-       }, 0);
-     btnSignIn = (SignInButton) findViewById(R.id.btn_sign_in);
+       }, 0);}
+   /*  btnSignIn = (SignInButton) findViewById(R.id.btn_sign_in);
      btnSignOut = (Button) findViewById(R.id.btn_sign_out);
      btnRevokeAccess = (Button) findViewById(R.id.btn_revoke_access);
      imgProfilePic = (ImageView) findViewById(R.id.imgProfilePic);
@@ -133,9 +122,9 @@ ConnectionCallbacks, OnConnectionFailedListener {
      }
  }
 
- /**
+ *//**
   * Method to resolve any signin errors
-  * */
+  * *//*
  private void resolveSignInError() {
      if (mConnectionResult.hasResolution()) {
          try {
@@ -202,9 +191,9 @@ ConnectionCallbacks, OnConnectionFailedListener {
  }
  
 
- /**
+ *//**
   * Updating the UI, showing/hiding buttons and profile layout
-  * */
+  * *//*
  private void updateUI(boolean isSignedIn) {
      if (isSignedIn) {
          btnSignIn.setVisibility(View.GONE);
@@ -219,9 +208,9 @@ ConnectionCallbacks, OnConnectionFailedListener {
      }
  }
 
- /**
+ *//**
   * Fetching user's information name, email, profile pic
-  * */
+  * *//*
  private void getProfileInformation() {
      try {
          if (Plus.PeopleApi.getCurrentPerson(mGoogleApiClient) != null) {
@@ -265,9 +254,9 @@ ConnectionCallbacks, OnConnectionFailedListener {
 
 
 
- /**
+ *//**
   * Button on click listener
-  * */
+  * *//*
  @Override
  public void onClick(View v) {
      switch (v.getId()) {
@@ -286,9 +275,9 @@ ConnectionCallbacks, OnConnectionFailedListener {
      }
  }
 
- /**
+ *//**
   * Sign-in into google
-  * */
+  * *//*
  private void signInWithGplus() {
      if (!mGoogleApiClient.isConnecting()) {
          mSignInClicked = true;
@@ -296,9 +285,9 @@ ConnectionCallbacks, OnConnectionFailedListener {
      }
  }
 
- /**
+ *//**
   * Sign-out from google
-  * */
+  * *//*
  private void signOutFromGplus() {
      if (mGoogleApiClient.isConnected()) {
          Plus.AccountApi.clearDefaultAccount(mGoogleApiClient);
@@ -308,9 +297,9 @@ ConnectionCallbacks, OnConnectionFailedListener {
      }
  }
 
- /**
+ *//**
   * Revoking access from google
-  * */
+  * *//*
  private void revokeGplusAccess() {
      if (mGoogleApiClient.isConnected()) {
          Plus.AccountApi.clearDefaultAccount(mGoogleApiClient);
@@ -327,9 +316,9 @@ ConnectionCallbacks, OnConnectionFailedListener {
      }
  }
 
- /**
+ *//**
   * Background Async task to load user profile picture from url
-  * */
+  * *//*
  private class LoadProfileImage extends AsyncTask<String, Void, Bitmap> {
      ImageView bmImage;
 
@@ -354,7 +343,7 @@ ConnectionCallbacks, OnConnectionFailedListener {
          bmImage.setImageBitmap(result);
      }
  }
-     
+     */
 
  
 private List<Category> generateData(int clientId2) {
@@ -403,6 +392,26 @@ public void EstoreRegister(View view) {
 public void EstoreForgotPassword(View view) {
     Intent intent = new Intent(this, ForgotPasswordActivity.class);
     startActivity(intent);
+}
+@Override
+public void onConnectionFailed(ConnectionResult arg0) {
+	// TODO Auto-generated method stub
+	
+}
+@Override
+public void onConnected(Bundle arg0) {
+	// TODO Auto-generated method stub
+	
+}
+@Override
+public void onConnectionSuspended(int arg0) {
+	// TODO Auto-generated method stub
+	
+}
+@Override
+public void onClick(View v) {
+	// TODO Auto-generated method stub
+	
 }
 
 }

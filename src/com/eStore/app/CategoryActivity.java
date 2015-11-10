@@ -214,4 +214,8 @@ public class CategoryActivity extends Activity implements Runnable {
         }
 
     }
+    public void profileLoad(View view){
+    	Intent intent = new Intent(this, ProfileActivity.class);
+    	startActivity(intent);
+    }
 }

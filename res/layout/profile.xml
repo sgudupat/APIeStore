@@ -25,7 +25,9 @@
             android:layout_alignParentTop="true"
             android:layout_margin="3dp"
             android:clickable="true"
-            android:src="@drawable/profile" />
+            android:onClick="profileLoad"
+            android:src="@drawable/userpro" />
+
     </LinearLayout>
 
     <RelativeLayout

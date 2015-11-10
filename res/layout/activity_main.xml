@@ -36,6 +36,18 @@
             android:text=""
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@android:color/black" />
+
+        <ImageButton
+            android:id="@+id/profile_estoreimage"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="3dp"
+            android:clickable="true"
+            android:onClick="profileLoad"
+            android:src="@drawable/userpro" />
+
     </RelativeLayout>
 
     <HorizontalScrollView

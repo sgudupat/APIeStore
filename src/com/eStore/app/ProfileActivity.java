@@ -122,7 +122,7 @@ public class ProfileActivity extends Activity {
                 editor.putString("pinCode", profilePincode.getText().toString());
 
                 editor.commit();
-                Intent intent = new Intent(this, StoreActivity.class);
+                Intent intent = new Intent(this, CategoryActivity.class);
                 startActivity(intent);
             } else {
                 Toast.makeText(getApplicationContext(), "Update Failed, Please Retry !!!",
