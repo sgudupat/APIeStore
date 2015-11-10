@@ -1,13 +1,5 @@
 package com.eStore.app;
 
-import java.security.SecureRandom;
-import java.util.ArrayList;
-import java.util.Random;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONObject;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -20,9 +12,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.eStore.app.common.LongRunningGetIO;
 import com.eStore.app.common.SimpleHttpClient;
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONObject;
+
+import java.security.SecureRandom;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class ForgotPasswordActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
@@ -39,7 +37,7 @@ public class ForgotPasswordActivity extends Activity {
             postParameters.add(new BasicNameValuePair("username", userName.getText().toString()));
 
             String response = SimpleHttpClient.executeHttpPost("/getUser", postParameters);
-           
+
             JSONObject jsonobject = new JSONObject(response);
             String uname = (String) jsonobject.getString("user_name");
             String umobile = (String) jsonobject.getString("mobile");
@@ -75,7 +73,7 @@ public class ForgotPasswordActivity extends Activity {
                             public void onClick(DialogInterface dialog, int id) {
                                 // get user input and set it to result edit text
                                 String aotp = userInput.getText().toString();
-                                
+
                                 if (aotp.equals(otp)) {
                                     try {
                                         String chars = "abcdefghijklmnopqrstuvwxyz" + "0123456789"
@@ -95,9 +93,9 @@ public class ForgotPasswordActivity extends Activity {
                                             postParameters.add(new BasicNameValuePair("keyValue", value));
 
                                             String response = SimpleHttpClient.executeHttpPost("/updatePasswordKeyValue", postParameters);
-                                            
+
                                             if (response.contains("success")) {
-                                               
+
                                                 String link = "http://52.76.83.72:8090/eStore"
                                                         + "/password.jsp?key="
                                                         + value;

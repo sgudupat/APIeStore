@@ -1,13 +1,5 @@
 package com.eStore.app;
 
-import java.security.SecureRandom;
-import java.util.ArrayList;
-import java.util.Random;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONObject;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -22,8 +14,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.eStore.app.common.SimpleHttpClient;
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONObject;
+
+import java.security.SecureRandom;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class RegisterActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {

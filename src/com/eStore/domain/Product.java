@@ -14,7 +14,7 @@ public class Product {
     private String productInfo;
 
     public Product(String category, String price, String name,
-                   String specification, String image, String code,String productInfo) {
+                   String specification, String image, String code, String productInfo) {
         super();
         this.category = category;
         this.price = price;
@@ -28,13 +28,14 @@ public class Product {
         this.image = image;
         this.link = link;
     }
-    public Product(String image,String link,String productInfo, String price,String name){
-    
-    	this.image=image;
-    	this.link=link;
-    	this.productInfo=productInfo;
-    	 this.price = price;
-    	 this.name = name;
+
+    public Product(String image, String link, String productInfo, String price, String name) {
+
+        this.image = image;
+        this.link = link;
+        this.productInfo = productInfo;
+        this.price = price;
+        this.name = name;
     }
 
     public String getLink() {
@@ -103,23 +104,22 @@ public class Product {
         this.transformedImage = transformedImage;
     }
 
-	public String getProductInfo() {
-		return productInfo;
-	}
+    public String getProductInfo() {
+        return productInfo;
+    }
 
-	public void setProductInfo(String productInfo) {
-		this.productInfo = productInfo;
-	}
+    public void setProductInfo(String productInfo) {
+        this.productInfo = productInfo;
+    }
 
-	@Override
-	public String toString() {
-		return "Product [category=" + category + ", price=" + price + ", name="
-				+ name + ", specification=" + specification + ", image="
-				+ image + ", transformedImage=" + transformedImage + ", link="
-				+ link + ", productInfo=" + productInfo + ", code=" + code
-				+ "]";
-	}
+    @Override
+    public String toString() {
+        return "Product [category=" + category + ", price=" + price + ", name="
+                + name + ", specification=" + specification + ", image="
+                + image + ", transformedImage=" + transformedImage + ", link="
+                + link + ", productInfo=" + productInfo + ", code=" + code
+                + "]";
+    }
 
-    
 
 }

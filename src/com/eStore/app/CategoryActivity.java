@@ -1,14 +1,5 @@
 package com.eStore.app;
 
-import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.ExecutionException;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -16,8 +7,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
-
 import com.eStore.app.common.JsonParser;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.ExecutionException;
 
 public class CategoryActivity extends Activity implements Runnable {
     ArrayList<Category> items = new ArrayList<Category>();
@@ -44,9 +42,9 @@ public class CategoryActivity extends Activity implements Runnable {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 Intent intent = new Intent(CategoryActivity.this,
-                		StoreActivity.class);
+                        StoreActivity.class);
                 intent.putExtra("producturl", adapter.getItem(position).getCategoryUrl());
-                           
+
                 startActivity(intent);
             }
         });
@@ -214,8 +212,9 @@ public class CategoryActivity extends Activity implements Runnable {
         }
 
     }
-    public void profileLoad(View view){
-    	Intent intent = new Intent(this, ProfileActivity.class);
-    	startActivity(intent);
+
+    public void profileLoad(View view) {
+        Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
     }
 }

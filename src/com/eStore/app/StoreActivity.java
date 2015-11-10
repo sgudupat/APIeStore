@@ -1,17 +1,5 @@
 package com.eStore.app;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
-
-import org.apache.http.NameValuePair;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -23,11 +11,21 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 import com.eStore.app.common.JsonParser;
 import com.eStore.app.common.SimpleHttpClient;
 import com.eStore.domain.JsonParserF;
 import com.eStore.domain.Product;
+import org.apache.http.NameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class StoreActivity extends Activity implements Runnable {
 
@@ -42,6 +40,7 @@ public class StoreActivity extends Activity implements Runnable {
     String productInfo;
     String image;
     String imageLink;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,8 +48,8 @@ public class StoreActivity extends Activity implements Runnable {
         Intent intent = getIntent();
         url = intent.getStringExtra("producturl");
         Log.i("productUrl", url);
-       // description= intent.getStringExtra("productDescription");
-     //   Log.i("productDescription", description);
+        // description= intent.getStringExtra("productDescription");
+        //   Log.i("productDescription", description);
         try {
             buildImageView();
         } catch (JSONException e) {
@@ -100,7 +99,7 @@ public class StoreActivity extends Activity implements Runnable {
             for (int i = 0; i < productList.size(); i++) {
                 String image = productList.get(i).getImage();
                 Log.i("image name", image);
-               
+
                 URL location = new URL(image);
                 InputStream input_s = location.openStream();
                 downloadedBitmap = BitmapFactory.decodeStream(input_s);
@@ -115,28 +114,28 @@ public class StoreActivity extends Activity implements Runnable {
 
 
     public void ProductDetails(View view) {
-    	String img=(String) view.getTag();
-    	
-    	  Log.i("onclick image name", img);
-    	  Log.i("size",""+productList.size());
-    	  for(int i=0;i<productList.size();i++) {
-    		  
-    	  
-    	    Log.i("Name",productList.get(i).getName()); 
-    	    Log.i("price",productList.get(i).getPrice());   
-    	    Log.i("image",productList.get(i).getImage());
-    	    Log.i("productInfo", productList.get(i).getProductInfo());
-    	    Log.i("productLink", productList.get(i).getLink());
-    	    Intent intent = new Intent(this,ProductDetailActivity.class);
-    	    Bitmap img1 =scaleDownBitmap(productList.get(i).getTransformedImage(), 150, context);
-    	    intent.putExtra("bitmapImage", img1);
-    	    intent.putExtra("productInfo", productList.get(i).getProductInfo());
-    	    intent.putExtra("Link", productList.get(i).getLink());
-    	    intent.putExtra("code",productList.get(i).getCode());
-    	    intent.putExtra("price",productList.get(i).getPrice());    	   
-    	    intent.putExtra("name",productList.get(i).getName());
-    	 
-    	    startActivity(intent);
+        String img = (String) view.getTag();
+
+        Log.i("onclick image name", img);
+        Log.i("size", "" + productList.size());
+        for (int i = 0; i < productList.size(); i++) {
+
+
+            Log.i("Name", productList.get(i).getName());
+            Log.i("price", productList.get(i).getPrice());
+            Log.i("image", productList.get(i).getImage());
+            Log.i("productInfo", productList.get(i).getProductInfo());
+            Log.i("productLink", productList.get(i).getLink());
+            Intent intent = new Intent(this, ProductDetailActivity.class);
+            Bitmap img1 = scaleDownBitmap(productList.get(i).getTransformedImage(), 150, context);
+            intent.putExtra("bitmapImage", img1);
+            intent.putExtra("productInfo", productList.get(i).getProductInfo());
+            intent.putExtra("Link", productList.get(i).getLink());
+            intent.putExtra("code", productList.get(i).getCode());
+            intent.putExtra("price", productList.get(i).getPrice());
+            intent.putExtra("name", productList.get(i).getName());
+
+            startActivity(intent);
 
 
         }
@@ -178,8 +177,8 @@ public class StoreActivity extends Activity implements Runnable {
                 Log.i("mrp", mrp);
                 Log.i("title", title);
                 Log.i("description", description);
-                product.add(new Product(imageLink, imagedetail,title,mrp,description));
-            	
+                product.add(new Product(imageLink, imagedetail, title, mrp, description));
+
 
             }
 
@@ -199,26 +198,26 @@ public class StoreActivity extends Activity implements Runnable {
 
     private ArrayList<Product> generateData1() throws JSONException {
         try {
-        	 String result = new flipkartTaskParseJson().execute().get();
-	            JSONObject json = new JSONObject(result);
-	            JSONArray dataJsonArr = json.getJSONArray("productInfoList");
-	            for (int i = 0; i < 5; i++) {
-	                JSONObject jsonobject = dataJsonArr.getJSONObject(i);
-	                JSONObject productIdentifier = jsonobject.getJSONObject("productBaseInfo");
-	                JSONObject category = productIdentifier.getJSONObject("productAttributes");
-	                //JSONObject productDescript= productIdentifier.getJSONObject("productDescription");
-	                JSONObject imageUrl = category.getJSONObject("imageUrls");
-	                 imageLink = imageUrl.getString("400x400");
-	                 image = category.getString("productUrl");
-	                productInfo=category.getString("productDescription");
-	                JSONObject selling = category.getJSONObject("sellingPrice");
-	                 amount=selling.getString("amount");
-	                name=category.getString("title");
-	                Log.i("name", name);
-	                Log.i("product selling", amount);
-	                Log.i("product Desc", productInfo);
-	                product.add(new Product(imageLink, image,productInfo,amount,name));
-	              
+            String result = new flipkartTaskParseJson().execute().get();
+            JSONObject json = new JSONObject(result);
+            JSONArray dataJsonArr = json.getJSONArray("productInfoList");
+            for (int i = 0; i < 5; i++) {
+                JSONObject jsonobject = dataJsonArr.getJSONObject(i);
+                JSONObject productIdentifier = jsonobject.getJSONObject("productBaseInfo");
+                JSONObject category = productIdentifier.getJSONObject("productAttributes");
+                //JSONObject productDescript= productIdentifier.getJSONObject("productDescription");
+                JSONObject imageUrl = category.getJSONObject("imageUrls");
+                imageLink = imageUrl.getString("400x400");
+                image = category.getString("productUrl");
+                productInfo = category.getString("productDescription");
+                JSONObject selling = category.getJSONObject("sellingPrice");
+                amount = selling.getString("amount");
+                name = category.getString("title");
+                Log.i("name", name);
+                Log.i("product selling", amount);
+                Log.i("product Desc", productInfo);
+                product.add(new Product(imageLink, image, productInfo, amount, name));
+
             }
 
         } catch (InterruptedException e1) {

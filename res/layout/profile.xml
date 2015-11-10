@@ -11,151 +11,55 @@
         android:orientation="horizontal" >
 
         <TextView
-            android:id="@+id/profile_companyname"
+            android:id="@+id/profile_account"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:hint="Company Name" />
-
-        <ImageButton
-            android:id="@+id/profile_profileimage"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:layout_margin="3dp"
-            android:clickable="true"
-            android:onClick="profileLoad"
-            android:src="@drawable/userpro" />
+            android:hint="Update Profile" android:textSize="40px" android:textStyle="bold"/>
 
     </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/profile_layout1"
         android:layout_width="wrap_content"
-        android:layout_height="110dp"
+        android:layout_height="fill_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/profile_layout" >
 
         <TextView
-            android:id="@+id/profile_createtag"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="60dp"
-            android:layout_marginTop="17dp"
-            android:text="User Profile" />
-
-        <TextView
             android:id="@+id/profile_name"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/profile_createtag"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="57dp"
             android:gravity="center"
-            android:hint="Name" />
+            android:hint="Name" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
 
         <TextView
             android:id="@+id/profile_mobile"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/profile_Email"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/profile_Email"
             android:gravity="center"
-            android:hint="Mobile" />
+            android:hint="Mobile"
+            android:layout_marginTop="39dp" android:layout_below="@+id/profile_Email"
+            android:layout_alignParentLeft="true" android:layout_alignParentStart="true"/>
 
         <TextView
             android:id="@+id/profile_Email"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/profile_name"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/profile_name"
             android:gravity="center"
-            android:hint="Email" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/profile_layout2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/profile_layout1"
-        android:layout_marginTop="15dp"
-        android:orientation="vertical" >
-
-        <EditText
-            android:id="@+id/address1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="36dp"
-            android:layout_marginTop="17dp"
-            android:hint="Address1" />
-
-        <EditText
-            android:id="@+id/address2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/address1"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/address1"
-            android:hint="Address2" />
-
-        <EditText
-            android:id="@+id/profile_city"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/address2"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/address2"
-            android:hint="City" />
-
-        <EditText
-            android:id="@+id/state"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/profile_city"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/profile_city"
-            android:hint="State" />
-
-        <EditText
-            android:id="@+id/profile_country"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/state"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/state"
-            android:hint="Country" />
-
-        <EditText
-            android:id="@+id/pincode"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/profile_country"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/profile_country"
-            android:hint="PinCode" />
-
+            android:hint="Email"
+            android:layout_marginTop="37dp" android:layout_below="@+id/profile_name"
+            android:layout_alignParentLeft="true" android:layout_alignParentStart="true"/>
         <Button
             android:id="@+id/profile_updatebutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/pincode"
-            android:layout_centerHorizontal="true"
             android:onClick="profile"
-            android:text="Update" />
+            android:text="Update"
+            android:layout_centerVertical="true" android:layout_centerHorizontal="true"/>
     </RelativeLayout>
 
 </RelativeLayout>

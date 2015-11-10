@@ -11,11 +11,11 @@
         android:orientation="horizontal" >
 
         <TextView
-            android:id="@+id/register_companyname"
+            android:id="@+id/register_account"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:hint="Company Name" />
+            android:hint="Create an Account" android:textStyle="bold" android:textSize="40px"/>
     </LinearLayout>
 
     <RelativeLayout
@@ -26,91 +26,77 @@
         android:layout_below="@+id/register_layout"
         android:layout_marginTop="16dp" >
 
-        <TextView
-            android:id="@+id/register_accounttag"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="34dp"
-            android:layout_marginTop="20dp"
-            android:text="Create An Account" />
-
         <Button
             android:id="@+id/register_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/register_mobile"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="14dp"
             android:text="Register"
-            android:onClick="EstoreHomePage" />
+            android:onClick="EstoreHomePage"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="52dp" android:layout_alignEnd="@+id/checked_newanchor1"
+            android:layout_alignStart="@+id/checked_newanchor1"/>
 
         <EditText
             android:id="@+id/register_name"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_below="@+id/register_accounttag"
             android:layout_marginTop="24dp"
             android:ems="10"
             android:gravity="center"
-            android:hint="Name" >
+            android:hint="Name" android:layout_alignParentEnd="true">
 
             <requestFocus />
         </EditText>
 
         <EditText
             android:id="@+id/register_email"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/register_name"
             android:ems="10"
             android:gravity="center"
-            android:hint="Email" />
+            android:hint="Email" android:layout_below="@+id/register_name" android:layout_alignParentStart="true"
+            android:layout_marginTop="55dp" android:layout_alignParentEnd="true"/>
 
         <EditText
             android:id="@+id/register_password"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/register_email"
             android:ems="10"
             android:gravity="center"
-            android:hint="Password" />
+            android:hint="Password"
+            android:layout_centerVertical="true" android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"/>
 
         <Button
             android:id="@+id/checked_newanchor1"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/register_name"
-            android:layout_alignParentRight="true"
             android:layout_marginRight="14dp"
-            android:layout_toRightOf="@+id/register_button"
             android:onClick="checkAvailability"
-            android:text="CheckAvaliability" />
+            android:text="Check Avaliability"
+            android:layout_below="@+id/register_name" android:layout_centerHorizontal="true"/>
 
         <EditText
             android:id="@+id/register_confirmpassword"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/register_password"
             android:ems="10"
             android:gravity="center"
-            android:hint="Re-Confirm Password" />
+            android:hint="Re-Confirm Password"
+            android:layout_below="@+id/register_password" android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"/>
 
         <EditText
             android:id="@+id/register_mobile"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/register_confirmpassword"
             android:ems="10"
             android:gravity="center"
-            android:hint="Mobile" />
+            android:hint="Mobile"
+            android:layout_below="@+id/register_email" android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"/>
 
     </RelativeLayout>
 
