@@ -23,4 +23,12 @@
         android:text="Category Url"
         android:visibility="gone" />
 
+    <ImageView
+        android:id="@+id/category_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/categoryName"
+         />
+
 </RelativeLayout>
