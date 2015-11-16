@@ -1,17 +1,37 @@
 package com.eStore.app;
 
+import java.util.ArrayList;
+
 public class Category {
     String categoryName;
     String categoryUrl;
     String CategoryDescription;
+    ArrayList<String> urlList;
 
-    Category(String categoryName, String categoryUrl) {
+    public ArrayList<String> getUrlList() {
+		return urlList;
+	}
+
+	public void setUrlList(ArrayList<String> urlList) {
+		this.urlList = urlList;
+	}
+
+	Category(String categoryName, String categoryUrl) {
         this.categoryName = categoryName;
         this.categoryUrl = categoryUrl;
 
     }
+	Category(String categoryName,  ArrayList<String> urlList) {
+        this.categoryName = categoryName;
+        this.urlList = urlList;
 
-    public String getCategoryName() {
+    }
+
+    public Category() {
+		// TODO Auto-generated constructor stubfdaf
+	}
+
+	public String getCategoryName() {
         return categoryName;
     }
 

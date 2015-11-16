@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
@@ -14,6 +15,7 @@ import java.util.List;
 public class CategoryAdapter extends BaseAdapter implements ListAdapter {
 
     private List<Category> list = new ArrayList<Category>();
+   
     private Context context;
 
     CategoryAdapter(Context context, List<Category> list) {
@@ -51,8 +53,16 @@ public class CategoryAdapter extends BaseAdapter implements ListAdapter {
         }
         TextView catName = (TextView) view.findViewById(R.id.categoryName);
         TextView catUrl = (TextView) view.findViewById(R.id.category_url);
+        ImageView imgView = (ImageView) view.findViewById(R.id.category_image);
+        if(list.get(position).getCategoryName().toLowerCase().contains("furniture")){
+        	imgView.setImageResource(R.drawable.furniture);
+        }
         catName.setText(list.get(position).getCategoryName());
-        catUrl.setText(list.get(position).getCategoryUrl());
+        ArrayList<String> urlList=list.get(position).getUrlList();
+        catUrl.setText("");
+        for(String s:urlList){
+        	catUrl.append("url:\n" + s + "\n");
+        }
 
         return view;
     }

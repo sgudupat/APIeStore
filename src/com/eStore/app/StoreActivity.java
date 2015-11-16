@@ -34,31 +34,39 @@ public class StoreActivity extends Activity implements Runnable {
     ImageView view;
     public Bitmap downloadedBitmap;
     ArrayList<Product> productList;
-    String url = "";
+    ArrayList<String> urllist = new ArrayList<String>();
     String name;
     String amount;
     String productInfo;
     String image;
     String imageLink;
+    String url="";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.store);
         Intent intent = getIntent();
-        url = intent.getStringExtra("producturl");
-        Log.i("productUrl", url);
-        // description= intent.getStringExtra("productDescription");
-        //   Log.i("productDescription", description);
-        try {
-            buildImageView();
-        } catch (JSONException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+        urllist = intent.getStringArrayListExtra("producturl");
+        for(String s: urllist){
+        	  Log.i("productUrl of", s);
+        	  url=s;
+        	  try {
+                  buildImageView(url);
+              } catch (JSONException e) {
+                  // TODO Auto-generated catch block
+                  e.printStackTrace();
+              }
+
         }
+              // description= intent.getStringExtra("productDescription");
+        //   Log.i("productDescription", description);
+       
     }
 
-    private void buildImageView() throws JSONException {
+	
+
+   private void buildImageView(String url) throws JSONException {
 
         if (url.contains("flipkart")) {
             productList = generateData1();
@@ -96,7 +104,7 @@ public class StoreActivity extends Activity implements Runnable {
 
 
         try {
-            for (int i = 0; i < productList.size(); i++) {
+            for (int i = 0; i < 1; i++) {
                 String image = productList.get(i).getImage();
                 Log.i("image name", image);
 
@@ -118,7 +126,7 @@ public class StoreActivity extends Activity implements Runnable {
 
         Log.i("onclick image name", img);
         Log.i("size", "" + productList.size());
-        for (int i = 0; i < productList.size(); i++) {
+        for (int i = 0; i < 1; i++) {
 
 
             Log.i("Name", productList.get(i).getName());
@@ -164,7 +172,7 @@ public class StoreActivity extends Activity implements Runnable {
             JSONArray dataJsonArr = json.getJSONArray("products");
 
             // loop through all users
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 2; i++) {
 
                 JSONObject c = dataJsonArr.getJSONObject(i);
 
@@ -201,7 +209,7 @@ public class StoreActivity extends Activity implements Runnable {
             String result = new flipkartTaskParseJson().execute().get();
             JSONObject json = new JSONObject(result);
             JSONArray dataJsonArr = json.getJSONArray("productInfoList");
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 2; i++) {
                 JSONObject jsonobject = dataJsonArr.getJSONObject(i);
                 JSONObject productIdentifier = jsonobject.getJSONObject("productBaseInfo");
                 JSONObject category = productIdentifier.getJSONObject("productAttributes");

@@ -4,10 +4,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+
 import com.eStore.app.common.JsonParser;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,6 +22,13 @@ import java.util.concurrent.ExecutionException;
 
 public class CategoryActivity extends Activity implements Runnable {
     ArrayList<Category> items = new ArrayList<Category>();
+    ArrayList<Category> fitems = new ArrayList<Category>();
+    ArrayList<String> urls = new ArrayList<String>();
+    ArrayList<Category> fList=new ArrayList<Category>();
+    ArrayList<Category> finalList=new ArrayList<Category>();
+    Category category=new Category();
+    String keyName="";
+    String cName="";
     private static String url = "http://affiliate-feeds.snapdeal.com/feed/57185.json";
     private static String url1 = "https://affiliate-api.flipkart.net/affiliate/api/getshared.json";
 
@@ -26,15 +36,29 @@ public class CategoryActivity extends Activity implements Runnable {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         buildListView();
+        
+      /*  for(int i=0;i<items.size();i++){
+        	//Log.i("inside for loop",""+items.size());
+        	keyName=items.get(i).categoryName;
+        	if(keyName.toLowerCase().contains("furniture")){
+        		Log.i("category name",keyName);
+        		Log.i("category url",items.get(i).categoryUrl);
+        		Log.i("category desc",items.get(i).categoryName);
+        	}
+        	
+        }*/
     }
 
     private void buildListView() {
 
 
         GridView listView = (GridView) findViewById(R.id.gridView1);
+        finalList=generateData();
+     
+      
 
         final CategoryAdapter adapter = new CategoryAdapter(
-                CategoryActivity.this, generateData());
+                CategoryActivity.this, finalData());
 
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -43,7 +67,8 @@ public class CategoryActivity extends Activity implements Runnable {
                                     int position, long id) {
                 Intent intent = new Intent(CategoryActivity.this,
                         StoreActivity.class);
-                intent.putExtra("producturl", adapter.getItem(position).getCategoryUrl());
+                Log.i("producturl", ""+adapter.getItem(position).getUrlList());
+                intent.putExtra("producturl", adapter.getItem(position).getUrlList());
 
                 startActivity(intent);
             }
@@ -52,7 +77,31 @@ public class CategoryActivity extends Activity implements Runnable {
     }
 
 
-    private ArrayList<Category> generateData() {
+    private ArrayList<Category> finalData() {
+		// TODO Auto-generated method stub
+    	 for(int i=0;i<finalList.size();i++){
+         	//Log.i("inside for loop",""+items.size());
+         	keyName=finalList.get(i).categoryName;
+         	if(keyName.toLowerCase().contains("furniture")){
+         		Log.i("category name",keyName);
+         		Log.i("category url",finalList.get(i).categoryUrl);
+         		Log.i("category desc",finalList.get(i).categoryName);
+         		cName=finalList.get(i).categoryName;
+         	   urls.add(finalList.get(i).categoryUrl);
+         	   category.setCategoryName(finalList.get(i).categoryName);
+         	   category.setUrlList(urls);
+         	 
+         	 
+         		
+         	}
+         	
+         	  
+    	 }
+    	 fList.add(new Category(cName,urls));
+		return fList;
+	}
+
+	private ArrayList<Category> generateData() {
 
         Thread t = new Thread(this);
         t.start();
