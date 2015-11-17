@@ -1,4 +1,4 @@
-package com.eStore.domain;
+package com.getshared.eStore.domain;
 
 import android.graphics.Bitmap;
 

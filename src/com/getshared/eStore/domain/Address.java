@@ -1,4 +1,4 @@
-package com.eStore.domain;
+package com.getshared.eStore.domain;
 
 public class Address {
     String addressInfo;

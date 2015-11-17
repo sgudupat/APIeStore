@@ -1,4 +1,4 @@
-package com.eStore.app;
+package com.getshared.eStore.app;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,10 +11,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
-import com.eStore.app.common.JsonParser;
-import com.eStore.app.common.SimpleHttpClient;
-import com.eStore.domain.JsonParserF;
-import com.eStore.domain.Product;
+import com.getshared.eStore.app.common.JsonParser;
+import com.getshared.eStore.app.common.SimpleHttpClient;
+import com.getshared.eStore.domain.JsonParserF;
+import com.getshared.eStore.domain.Product;
 import org.apache.http.NameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;

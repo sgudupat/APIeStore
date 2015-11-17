@@ -1,4 +1,4 @@
-package com.eStore.app.common;
+package com.getshared.eStore.app.common;
 
 import android.os.StrictMode;
 import android.util.Log;

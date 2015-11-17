@@ -1,4 +1,4 @@
-package com.eStore.app;
+package com.getshared.eStore.app;
 
 import java.util.ArrayList;
 
@@ -18,7 +18,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.eStore.app.common.SimpleHttpClient;
+import com.getshared.eStore.app.common.SimpleHttpClient;
 
 
 

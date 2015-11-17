@@ -1,4 +1,4 @@
-package com.eStore.domain;
+package com.getshared.eStore.domain;
 
 import android.util.Log;
 import org.apache.http.HttpEntity;

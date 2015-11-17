@@ -1,4 +1,4 @@
-package com.eStore.app;
+package com.getshared.eStore.app;
 
 import java.util.ArrayList;
 

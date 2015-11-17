@@ -1,4 +1,4 @@
-package com.eStore.app;
+package com.getshared.eStore.app;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
-import com.eStore.app.common.JsonParser;
+import com.getshared.eStore.app.common.JsonParser;
 
 import org.json.JSONArray;
 import org.json.JSONException;

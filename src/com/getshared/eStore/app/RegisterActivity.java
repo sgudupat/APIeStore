@@ -1,4 +1,4 @@
-package com.eStore.app;
+package com.getshared.eStore.app;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -14,7 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.eStore.app.common.SimpleHttpClient;
+import com.getshared.eStore.app.common.SimpleHttpClient;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
