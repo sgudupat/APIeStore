@@ -40,7 +40,7 @@ public class StoreActivity extends Activity implements Runnable {
     String productInfo;
     String image;
     String imageLink;
-    String url="";
+    String url = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,26 +48,18 @@ public class StoreActivity extends Activity implements Runnable {
         setContentView(R.layout.store);
         Intent intent = getIntent();
         urllist = intent.getStringArrayListExtra("producturl");
-        for(String s: urllist){
-        	  Log.i("productUrl of", s);
-        	  url=s;
-        	  try {
-                  buildImageView(url);
-              } catch (JSONException e) {
-                  // TODO Auto-generated catch block
-                  e.printStackTrace();
-              }
-
+        for (String s : urllist) {
+            Log.i("productUrl of", s);
+            url = s;
+            try {
+                buildImageView(url);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
-              // description= intent.getStringExtra("productDescription");
-        //   Log.i("productDescription", description);
-       
     }
 
-	
-
-   private void buildImageView(String url) throws JSONException {
-
+    private void buildImageView(String url) throws JSONException {
         if (url.contains("flipkart")) {
             productList = generateData1();
             Log.i("flipkart", " msg");
@@ -75,39 +67,30 @@ public class StoreActivity extends Activity implements Runnable {
             productList = generateData();
         }
         Log.i("finish", "finish");
-
         Log.i("finish flipkart", "finish flipkart");
         Log.i("Imagelist size", "" + productList.size());
-
         Thread t = new Thread(this);
         t.start();
         try {
             t.join();
         } catch (InterruptedException e) {
-
             e.printStackTrace();
         }
         for (int i = 0; i < productList.size(); i++) {
             int resId = getResources().getIdentifier("viewImage" + i, "id", getPackageName());
             view = (ImageView) findViewById(resId);
-
             view.setImageBitmap(productList.get(i).getTransformedImage());
             view.setTag(productList.get(i).getImage());
             view.setVisibility(View.VISIBLE);
-
-
         }
     }
 
 
     public void run() {
-
-
         try {
             for (int i = 0; i < 1; i++) {
                 String image = productList.get(i).getImage();
                 Log.i("image name", image);
-
                 URL location = new URL(image);
                 InputStream input_s = location.openStream();
                 downloadedBitmap = BitmapFactory.decodeStream(input_s);
@@ -120,15 +103,11 @@ public class StoreActivity extends Activity implements Runnable {
         }
     }
 
-
     public void ProductDetails(View view) {
         String img = (String) view.getTag();
-
         Log.i("onclick image name", img);
         Log.i("size", "" + productList.size());
         for (int i = 0; i < 1; i++) {
-
-
             Log.i("Name", productList.get(i).getName());
             Log.i("price", productList.get(i).getPrice());
             Log.i("image", productList.get(i).getImage());
@@ -142,26 +121,15 @@ public class StoreActivity extends Activity implements Runnable {
             intent.putExtra("code", productList.get(i).getCode());
             intent.putExtra("price", productList.get(i).getPrice());
             intent.putExtra("name", productList.get(i).getName());
-
             startActivity(intent);
-
-
         }
-
     }
 
-    private Bitmap scaleDownBitmap(Bitmap photo, int newHeight,
-                                   Context context) {
-        // TODO Auto-generated method stub
-
+    private Bitmap scaleDownBitmap(Bitmap photo, int newHeight, Context context) {
         final float densityMultiplier = context.getResources().getDisplayMetrics().density;
-
         int h = (int) (newHeight * densityMultiplier);
         int w = (int) (h * photo.getWidth() / ((double) photo.getHeight()));
-
         photo = Bitmap.createScaledBitmap(photo, w, h, true);
-
-
         return photo;
     }
 
