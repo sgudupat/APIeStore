@@ -16,12 +16,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.getshared.eStore.app.common.JsonParser;
 import com.getshared.eStore.domain.JsonParserF;
@@ -42,6 +44,7 @@ public class StoreActivity extends Activity implements Runnable {
 	String productInfo;
 	String image;
 	String imageLink;
+	String imageDetail;
 	String url = "";
 
 	@Override
@@ -56,13 +59,13 @@ public class StoreActivity extends Activity implements Runnable {
 			Log.i("productUrl of", s);
 			url=s;
 			if (url.contains("flipkart")) {
-				/*  try {
+				  try {
 					productList = generateData1();
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}*/
-				Log.i("flipkart", " msg");
+				}
+				
 			} else {
 				try {
 					productList = generateData();
@@ -76,7 +79,7 @@ public class StoreActivity extends Activity implements Runnable {
 				}
 			    
 			    
-			
+			Log.i("build Image", "build Image");
 
 			}}
 
@@ -99,6 +102,7 @@ public class StoreActivity extends Activity implements Runnable {
 		ProductListAdapter imageGridAdapter = new  ProductListAdapter(this, productList);
 		Log.i("STORAGE", "adapter");
 		gridView.setAdapter(imageGridAdapter);
+		
 		/*for (int i = 0; i < productList.size(); i++) {			
 			int image = getResources().getIdentifier("photo_image" + i, "id", getPackageName());
 			Log.i("tag", ""+image);
@@ -202,7 +206,7 @@ public class StoreActivity extends Activity implements Runnable {
 			String result = new flipkartTaskParseJson().execute().get();
 			JSONObject json = new JSONObject(result);
 			JSONArray dataJsonArr = json.getJSONArray("productInfoList");
-			for (int i = 0; i < 2; i++) {
+			for (int i = 0; i < 5; i++) {
 				JSONObject jsonobject = dataJsonArr.getJSONObject(i);
 				JSONObject productIdentifier = jsonobject.getJSONObject("productBaseInfo");
 				JSONObject category = productIdentifier.getJSONObject("productAttributes");

@@ -3,6 +3,10 @@ package com.getshared.eStore.app;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.getshared.eStore.domain.Product;
+
 
 public class ProductListAdapter extends BaseAdapter {
 	private Context context;
@@ -40,13 +45,17 @@ Log.i("adapter", "adapter");
 
 	        // set value into textview
 	        TextView textView = (TextView) gridView
-	                .findViewById(R.id.name);
+	                .findViewById(R.id.decline);
 	       // textView.setText(dataList.get(position).getName());
 	        // set image based on selected text
 	        ImageView imageView = (ImageView) gridView
 	                .findViewById(R.id.photo_image);
-
-
+	        textView.setOnClickListener(new LinkProduct(
+	                dataList.get(position).getLink()));
+	        SpannableString content = new SpannableString(dataList.get(position).getLink());
+	        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+	        
+	       
 	       {
 	            imageView.setImageBitmap(dataList.get(position).getTransformedImage());
 	    		
@@ -73,5 +82,24 @@ Log.i("adapter", "adapter");
 	public long getItemId(int position) {
 	    return 0;
 	}
+	public class LinkProduct implements View.OnClickListener {
+        private String link;
+      
+
+        public LinkProduct (String link) {
+            this.link= link;
+            
+        }
+
+        @Override
+        public void onClick(View v) {
+        	Log.i("ProductLink", link);
+          Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse(link));
+                context.startActivity(intent);
+        }
+    }
 
 	}

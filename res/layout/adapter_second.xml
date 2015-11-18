@@ -118,7 +118,8 @@
                 android:text="BUY NOW"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@android:color/black"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                 />
         </LinearLayout>
 
         <ImageView
