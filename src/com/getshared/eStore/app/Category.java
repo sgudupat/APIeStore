@@ -1,14 +1,24 @@
 package com.getshared.eStore.app;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Category {
     String categoryName;
     String categoryUrl;
     String CategoryDescription;
     ArrayList<String> urlList;
+    HashMap<String,ArrayList<String>> categoryList;
 
-    public ArrayList<String> getUrlList() {
+    public HashMap<String, ArrayList<String>> getCategoryList() {
+		return categoryList;
+	}
+
+	public void setCategoryList(HashMap<String, ArrayList<String>> categoryList) {
+		this.categoryList = categoryList;
+	}
+
+	public ArrayList<String> getUrlList() {
 		return urlList;
 	}
 
@@ -24,6 +34,16 @@ public class Category {
 	Category(String categoryName,  ArrayList<String> urlList) {
         this.categoryName = categoryName;
         this.urlList = urlList;
+
+    }
+	Category(String categoryName,  HashMap<String,ArrayList<String>> categoryList) {
+        this.categoryName = categoryName;
+        this.categoryList = categoryList;
+
+    }
+	Category(HashMap<String,ArrayList<String>> categoryList) {
+        
+        this.categoryList = categoryList;
 
     }
 

@@ -17,15 +17,20 @@ import org.json.JSONObject;
 
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 public class CategoryActivity extends Activity implements Runnable {
     ArrayList<Category> items = new ArrayList<Category>();
     ArrayList<Category> fitems = new ArrayList<Category>();
-    ArrayList<String> urls = new ArrayList<String>();
+    ArrayList<String> furls = new ArrayList<String>();
+    ArrayList<String> eurls = new ArrayList<String>();
     ArrayList<Category> fList=new ArrayList<Category>();
+    ArrayList<Category> cList=new ArrayList<Category>();
     ArrayList<Category> finalList=new ArrayList<Category>();
+    HashMap<String,ArrayList<String>> categoryList =new HashMap<String,ArrayList<String>>();
     Category category=new Category();
     String keyName="";
     String cName="";
@@ -59,6 +64,18 @@ public class CategoryActivity extends Activity implements Runnable {
 
         final CategoryAdapter adapter = new CategoryAdapter(
                 CategoryActivity.this, finalData());
+        Log.i("categoryList size",""+categoryList.size());
+        for(Map.Entry<String,ArrayList<String>> entry: categoryList.entrySet()){
+        	
+        	Log.i("category Name",entry.getKey());
+        	Log.i("category url size",""+entry.getValue().size());
+        	for(String s: entry.getValue()){
+        		Log.i("category url ", s);
+        	}
+        	
+        }
+        
+       
 
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -67,8 +84,8 @@ public class CategoryActivity extends Activity implements Runnable {
                                     int position, long id) {
                 Intent intent = new Intent(CategoryActivity.this,
                         StoreActivity.class);
-                Log.i("producturl", ""+adapter.getItem(position).getUrlList());
-                intent.putExtra("producturl", adapter.getItem(position).getUrlList());
+               Log.i("producturl", ""+adapter.getItem(position));
+               intent.putExtra("producturl", adapter.getItem(position));
 
                 startActivity(intent);
             }
@@ -77,28 +94,53 @@ public class CategoryActivity extends Activity implements Runnable {
     }
 
 
-    private ArrayList<Category> finalData() {
+    private HashMap<String, ArrayList<String>> finalData() {
 		// TODO Auto-generated method stub
     	 for(int i=0;i<finalList.size();i++){
          	//Log.i("inside for loop",""+items.size());
          	keyName=finalList.get(i).categoryName;
          	if(keyName.toLowerCase().contains("furniture")){
-         		Log.i("category name",keyName);
+         	//	Log.i("category name",keyName);
+         		
          		Log.i("category url",finalList.get(i).categoryUrl);
          		Log.i("category desc",finalList.get(i).categoryName);
          		cName=finalList.get(i).categoryName;
-         	   urls.add(finalList.get(i).categoryUrl);
+         		cName=cName.toLowerCase();
+         	   furls.add(finalList.get(i).categoryUrl);
          	   category.setCategoryName(finalList.get(i).categoryName);
-         	   category.setUrlList(urls);
+         	   category.setUrlList(furls);
+         	   categoryList.put(cName, furls );
+         		  fList.add(new Category(cName,furls));
+         		
+         		  
+         	   
          	 
+         	 
+         		
+         	}
+        //	keyName=finalList.get(i).categoryName;
+         	if(keyName.toLowerCase().contains("eyewear")){
+         	//	Log.i("category name",keyName);
+         		
+         		Log.i("category url",finalList.get(i).categoryUrl);
+         		Log.i("category desc",finalList.get(i).categoryName);
+         		cName=finalList.get(i).categoryName;
+         		cName=cName.toLowerCase();
+         	  eurls.add(finalList.get(i).categoryUrl);
+         	   category.setCategoryName(finalList.get(i).categoryName);
+         	   category.setUrlList(eurls);
+         	  categoryList.put(cName, eurls );
+         	  fList.add(new Category(cName,eurls));
+          		  //cList.add(new Category(categoryList));
+          	  
          	 
          		
          	}
          	
          	  
     	 }
-    	 fList.add(new Category(cName,urls));
-		return fList;
+    	 //cList.add(new Category(categoryList));
+		return categoryList;
 	}
 
 	private ArrayList<Category> generateData() {
