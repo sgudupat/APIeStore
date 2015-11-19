@@ -43,32 +43,33 @@ Log.i("adapter", "adapter");
 	        // get layout from mobile.xml
 	        gridView = inflater.inflate(R.layout.adapter_second, null);
 
-	        // set value into textview
-	        TextView textcompany = (TextView) gridView
-	                .findViewById(R.id.company);
-	    	        textcompany.setText(dataList.get(position).getpCompany());
-	        TextView textView = (TextView) gridView
-	                .findViewById(R.id.decline);
-	        TextView title=(TextView) gridView.findViewById(R.id.name);
-	        title.setText(dataList.get(position).getName());
-	       // textView.setText(dataList.get(position).getName());
-	        // set image based on selected text
-	        ImageView imageView = (ImageView) gridView
-	                .findViewById(R.id.photo);
-	        textView.setOnClickListener(new LinkProduct(
-	                dataList.get(position).getLink()));
-	        SpannableString content = new SpannableString(dataList.get(position).getLink());
-	        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-	        
-	       
-	       {
-	            imageView.setImageBitmap(dataList.get(position).getTransformedImage());
-	    		
-	        }
+	 
 
 	    } else {
 	        gridView = (View) convertView;
 	    }
+	       // set value into textview
+        TextView textcompany = (TextView) gridView
+                .findViewById(R.id.company);
+    	        textcompany.setText(dataList.get(position).getpCompany());
+        TextView textView = (TextView) gridView
+                .findViewById(R.id.decline);
+        TextView title=(TextView) gridView.findViewById(R.id.name);
+        title.setText(dataList.get(position).getName());
+       // textView.setText(dataList.get(position).getName());
+        // set image based on selected text
+        ImageView imageView = (ImageView) gridView
+                .findViewById(R.id.photo);
+        textView.setOnClickListener(new LinkProduct(
+                dataList.get(position).getLink()));
+        SpannableString content = new SpannableString(dataList.get(position).getLink());
+        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+        
+       
+       {
+            imageView.setImageBitmap(dataList.get(position).getTransformedImage());
+    		
+        }
 
 	    return gridView;
 	}

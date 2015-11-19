@@ -70,26 +70,31 @@ public class StoreActivity extends Activity implements Runnable {
 			} else {
 				try {
 					productList = generateData();
-					Log.i("productList",""+ productList);
+					//Log.i("productList",""+ productList);
 
 				
-					buildImageView(url);
+					
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			    
 			    
-			Log.i("build Image", "build Image");
-
+			
 			}}
+		try {
+			buildImageView(url);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 	private void buildImageView(String url) throws JSONException {
 
 
 
-		Log.i("Imagelist size", "" + productList.size());
+		//Log.i("Imagelist size", "" + productList.size());
 		Thread t = new Thread(this);
 		t.start();
 		try {
@@ -98,10 +103,10 @@ public class StoreActivity extends Activity implements Runnable {
 			e.printStackTrace();
 		}
 		GridView gridView = (GridView) findViewById(R.id.product_gridView1);
-		Log.i("grid","grid");
+		//Log.i("grid","grid");
 		
 		ProductListAdapter imageGridAdapter = new  ProductListAdapter(this, productList);
-		Log.i("STORAGE", "adapter");
+		//Log.i("STORAGE", "adapter");
 		gridView.setAdapter(imageGridAdapter);
 		
 		/*for (int i = 0; i < productList.size(); i++) {			
@@ -189,9 +194,9 @@ public class StoreActivity extends Activity implements Runnable {
 				String description = c.getString("description");
 				String mrp = c.getString("mrp");
 				company="snapdeal";
-				Log.i("mrp", mrp);
+				/*Log.i("mrp", mrp);
 				Log.i("title", title);
-				Log.i("description", description);
+				Log.i("description", description);*/
 				product.add(new Product(imageLink, imagedetail, description, mrp, title,company));
 
 
@@ -229,9 +234,9 @@ public class StoreActivity extends Activity implements Runnable {
 				amount = selling.getString("amount");
 				name = category.getString("title");
 				company="flipkart";
-				Log.i("name", name);
+				/*Log.i("name", name);
 				Log.i("product selling", amount);
-				Log.i("product Desc", productInfo);
+				Log.i("product Desc", productInfo);*/
 				product.add(new Product(imageLink, image, productInfo, amount, name,company));
 
 			}
@@ -274,7 +279,7 @@ public class StoreActivity extends Activity implements Runnable {
 
 				e.printStackTrace();
 			}
-			Log.i("FlipKart response", json.toString());
+			//Log.i("FlipKart response", json.toString());
 			return json.toString();
 
 
