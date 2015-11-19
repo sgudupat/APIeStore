@@ -46,6 +46,7 @@ public class StoreActivity extends Activity implements Runnable {
 	String imageLink;
 	String imageDetail;
 	String url = "";
+	String company="";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -179,10 +180,11 @@ public class StoreActivity extends Activity implements Runnable {
 				String title = c.getString("title");
 				String description = c.getString("description");
 				String mrp = c.getString("mrp");
+				company="snapdeal";
 				Log.i("mrp", mrp);
 				Log.i("title", title);
 				Log.i("description", description);
-				product.add(new Product(imageLink, imagedetail, description, mrp, title));
+				product.add(new Product(imageLink, imagedetail, description, mrp, title,company));
 
 
 			}
@@ -218,10 +220,11 @@ public class StoreActivity extends Activity implements Runnable {
 				JSONObject selling = category.getJSONObject("sellingPrice");
 				amount = selling.getString("amount");
 				name = category.getString("title");
+				company="flipkart";
 				Log.i("name", name);
 				Log.i("product selling", amount);
 				Log.i("product Desc", productInfo);
-				product.add(new Product(imageLink, image, productInfo, amount, name));
+				product.add(new Product(imageLink, image, productInfo, amount, name,company));
 
 			}
 

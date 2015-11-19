@@ -44,6 +44,9 @@ Log.i("adapter", "adapter");
 	        gridView = inflater.inflate(R.layout.adapter_second, null);
 
 	        // set value into textview
+	        TextView textcompany = (TextView) gridView
+	                .findViewById(R.id.company);
+	    	        textcompany.setText(dataList.get(position).getpCompany());
 	        TextView textView = (TextView) gridView
 	                .findViewById(R.id.decline);
 	        TextView title=(TextView) gridView.findViewById(R.id.name);
