@@ -49,9 +49,12 @@ Log.i("adapter", "adapter");
 	        gridView = (View) convertView;
 	    }
 	       // set value into textview
-        TextView textcompany = (TextView) gridView
+        TextView textPrice = (TextView) gridView
                 .findViewById(R.id.company);
-    	        textcompany.setText(dataList.get(position).getpCompany());
+        textPrice.setText(dataList.get(position).getPrice());
+    	        TextView textcompany = (TextView) gridView
+    	                .findViewById(R.id.company_add);
+    	    	        textcompany.setText(dataList.get(position).getpCompany());
         TextView textView = (TextView) gridView
                 .findViewById(R.id.decline);
         TextView title=(TextView) gridView.findViewById(R.id.name);
@@ -60,6 +63,7 @@ Log.i("adapter", "adapter");
         // set image based on selected text
         ImageView imageView = (ImageView) gridView
                 .findViewById(R.id.photo);
+        
         textView.setOnClickListener(new LinkProduct(
                 dataList.get(position).getLink()));
         SpannableString content = new SpannableString(dataList.get(position).getLink());
