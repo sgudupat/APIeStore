@@ -6,19 +6,10 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/categoryName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:text="CategoryName" />
-
-    <TextView
         android:id="@+id/category_url"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/categoryName"
         android:layout_marginTop="16dp"
         android:text="Category Url"
         android:visibility="gone" />
@@ -28,7 +19,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/categoryName"
-         />
+        />
 
 </RelativeLayout>
