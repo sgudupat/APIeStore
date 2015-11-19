@@ -29,48 +29,32 @@ public class ProductListAdapter extends BaseAdapter {
 	}
 
 	public View getView(int position, View convertView, ViewGroup parent) {
-
-	    LayoutInflater inflater = (LayoutInflater) context
-	            .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-	    View gridView;
-	
-
-	    if (convertView == null) {
-Log.i("adapter", "adapter");
-	        gridView = new View(context);
-
-	        // get layout from mobile.xml
-	        gridView = inflater.inflate(R.layout.adapter_second, null);
-
-	        // set value into textview
-	        TextView textcompany = (TextView) gridView
-	                .findViewById(R.id.company);
-	    	        textcompany.setText(dataList.get(position).getpCompany());
-	        TextView textView = (TextView) gridView
-	                .findViewById(R.id.decline);
-	        TextView title=(TextView) gridView.findViewById(R.id.name);
-	        title.setText(dataList.get(position).getName());
-	       // textView.setText(dataList.get(position).getName());
-	        // set image based on selected text
-	        ImageView imageView = (ImageView) gridView
-	                .findViewById(R.id.photo);
-	        textView.setOnClickListener(new LinkProduct(
-	                dataList.get(position).getLink()));
-	        SpannableString content = new SpannableString(dataList.get(position).getLink());
-	        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-	        
-	       
-	       {
-	            imageView.setImageBitmap(dataList.get(position).getTransformedImage());
-	    		
-	        }
-
+	    View v;
+	    
+	    if (convertView == null) {  // if it's not recycled, initialize some attributes
+	    	LayoutInflater inflater = (LayoutInflater) context
+		            .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+	        v = inflater.inflate(R.layout.adapter_second, parent, false);
 	    } else {
-	        gridView = (View) convertView;
+	        v = (View) convertView;
 	    }
-
-	    return gridView;
+	    TextView textcompany = (TextView) 	        v
+                .findViewById(R.id.company);
+    	        textcompany.setText(dataList.get(position).getpCompany());
+        TextView textView = (TextView) 	        v
+                .findViewById(R.id.decline);
+        TextView title=(TextView) 	        v.findViewById(R.id.name);
+        title.setText(dataList.get(position).getName());
+       // textView.setText(dataList.get(position).getName());
+        // set image based on selected text
+        ImageView imageView = (ImageView) 	        v
+                .findViewById(R.id.photo);
+        textView.setOnClickListener(new LinkProduct(
+                dataList.get(position).getLink()));
+        SpannableString content = new SpannableString(dataList.get(position).getLink());
+        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+        imageView.setImageBitmap(dataList.get(position).getTransformedImage());
+	    return v;
 	}
 
 	@Override
