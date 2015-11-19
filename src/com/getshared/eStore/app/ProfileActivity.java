@@ -26,7 +26,7 @@ public class ProfileActivity extends Activity {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.profile);
+        setContentView(R.layout.profile123);
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         username = preferences.getString("username", "");
@@ -34,9 +34,9 @@ public class ProfileActivity extends Activity {
         mobile = preferences.getString("mobile", "");
         email = preferences.getString("email", "");
 
-        TextView profileName = (TextView) findViewById(R.id.profile_name);
-        TextView profileMobile = (TextView) findViewById(R.id.profile_mobile);
-        TextView profileEmail = (TextView) findViewById(R.id.profile_Email);
+        TextView profileName = (TextView) findViewById(R.id.profile123_name);
+        TextView profileMobile = (TextView) findViewById(R.id.profile123_mobileno);
+        TextView profileEmail = (TextView) findViewById(R.id.profile123_email);
         final ArrayList<NameValuePair> postParameters = new ArrayList<NameValuePair>();
         postParameters.add(new BasicNameValuePair("username", username));
 
@@ -68,8 +68,8 @@ public class ProfileActivity extends Activity {
             Log.i("Response:", response);
 
             if (response.contains("success")) {
-                Intent intent = new Intent(this, StoreActivity.class);
-                startActivity(intent);
+               /* Intent intent = new Intent(this, StoreActivity.class);
+                startActivity(intent);*/
             } else {
                 Toast.makeText(getApplicationContext(), "Update Failed, Please Retry !!!", Toast.LENGTH_LONG).show();
             }
