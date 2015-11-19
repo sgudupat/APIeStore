@@ -182,7 +182,7 @@ public class StoreActivity extends Activity implements Runnable {
 				Log.i("mrp", mrp);
 				Log.i("title", title);
 				Log.i("description", description);
-				product.add(new Product(imageLink, imagedetail, title, mrp, description));
+				product.add(new Product(imageLink, imagedetail, description, mrp, title));
 
 
 			}
