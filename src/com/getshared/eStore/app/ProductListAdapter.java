@@ -45,11 +45,10 @@ Log.i("adapter", "adapter");
 
 	        // set value into textview
 	        TextView textView = (TextView) gridView
-	                .findViewById(R.id.decline);
-	       // textView.setText(dataList.get(position).getName());
+	                .findViewById(R.id.name);
+	       textView.setText(dataList.get(position).getName());
 	        // set image based on selected text
-	        ImageView imageView = (ImageView) gridView
-	                .findViewById(R.id.photo_image);
+	       ImageView imageView = (ImageView) gridView.findViewById(R.id.photo);
 	        textView.setOnClickListener(new LinkProduct(
 	                dataList.get(position).getLink()));
 	        SpannableString content = new SpannableString(dataList.get(position).getLink());
@@ -57,7 +56,7 @@ Log.i("adapter", "adapter");
 	        
 	       
 	       {
-	            imageView.setImageBitmap(dataList.get(position).getTransformedImage());
+	           imageView.setImageBitmap(dataList.get(position).getTransformedImage());
 	    		
 	        }
 
