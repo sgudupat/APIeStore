@@ -116,20 +116,28 @@ public class StoreActivity extends Activity implements Runnable {
 
 
 	public void run() {
-		try {
-			for (int i = 0; i < 5; i++) {
-				String image = productList.get(i).getImage();
-				Log.i("image name", image);
-				URL location = new URL(image);
-				InputStream input_s = location.openStream();
-				downloadedBitmap = BitmapFactory.decodeStream(input_s);
-				input_s.close();
-				productList.get(i).setTransformedImage(downloadedBitmap);
-				Log.i("productList22", ""+productList);
-			}
-		} catch (IOException e) {
-			//If the image couldn't be downloaded, use the standard 'image not found' bitmap
-			downloadedBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
+		int i =0;
+		
+		for (i = 0; i < productList.size(); i++) {
+			try {
+			String image = productList.get(i).getImage();
+			Log.i("image name", image);
+			URL location = new URL(image);
+			InputStream input_s = location.openStream();
+			downloadedBitmap = BitmapFactory.decodeStream(input_s);
+			input_s.close();
+			productList.get(i).setTransformedImage(downloadedBitmap);
+			//Log.i("productList22", "" + productList);
+		}
+	 catch (IOException e) {
+		// If the image couldn't be downloaded, use the standard 'image not
+		// found' bitmap
+		Log.i("download error","error in downloading image");
+		downloadedBitmap = BitmapFactory.decodeResource(getResources(),
+				R.drawable.ic_launcher);
+		productList.get(i).setTransformedImage(downloadedBitmap);
+		continue;
+	}
 		}
 	}
 
