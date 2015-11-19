@@ -57,7 +57,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/relative"
-        android:background="#526A96"
+        android:background="#ffffff"
         android:numColumns="1" >
 
     </GridView>

@@ -33,8 +33,7 @@
             android:text="Register"
             android:onClick="EstoreHomePage"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="52dp" android:layout_alignEnd="@+id/checked_newanchor1"
-            android:layout_alignStart="@+id/checked_newanchor1"/>
+            android:layout_marginBottom="52dp" />
 
         <EditText
             android:id="@+id/register_name"
@@ -44,7 +43,7 @@
             android:layout_marginTop="24dp"
             android:ems="10"
             android:gravity="center"
-            android:hint="Name" android:layout_alignParentEnd="true">
+            android:hint="Name" >
 
             <requestFocus />
         </EditText>
@@ -55,8 +54,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:gravity="center"
-            android:hint="Email" android:layout_below="@+id/register_name" android:layout_alignParentStart="true"
-            android:layout_marginTop="55dp" android:layout_alignParentEnd="true"/>
+            android:hint="Email" android:layout_below="@+id/register_name"/>
 
         <EditText
             android:id="@+id/register_password"
@@ -65,18 +63,7 @@
             android:ems="10"
             android:gravity="center"
             android:hint="Password"
-            android:layout_centerVertical="true" android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"/>
-
-        <Button
-            android:id="@+id/checked_newanchor1"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="14dp"
-            android:onClick="checkAvailability"
-            android:text="Check Avaliability"
-            android:layout_below="@+id/register_name" android:layout_centerHorizontal="true"/>
+            android:layout_centerVertical="true" />
 
         <EditText
             android:id="@+id/register_confirmpassword"
@@ -85,8 +72,8 @@
             android:ems="10"
             android:gravity="center"
             android:hint="Re-Confirm Password"
-            android:layout_below="@+id/register_password" android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"/>
+            android:layout_below="@+id/register_password" 
+            />
 
         <EditText
             android:id="@+id/register_mobile"
@@ -95,8 +82,18 @@
             android:ems="10"
             android:gravity="center"
             android:hint="Mobile"
-            android:layout_below="@+id/register_email" android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"/>
+            android:layout_below="@+id/register_email" />
+
+        <Button
+            android:id="@+id/checked_newanchor1"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/register_name"
+            android:layout_alignBottom="@+id/register_name"
+            android:layout_alignParentRight="true"
+            android:onClick="checkAvailability"
+            android:text="Check Avaliability" />
 
     </RelativeLayout>
 
