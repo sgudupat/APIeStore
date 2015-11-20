@@ -24,19 +24,6 @@
             android:background="@drawable/logo"
             android:gravity="center" />
 
-        <TextView
-            android:id="@+id/commentary_textview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/qful_button1"
-            android:layout_alignBottom="@+id/qful_button1"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:gravity="center"
-            android:text=""
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@android:color/black" />
-
         <ImageButton
             android:id="@+id/profile_estoreimage"
             android:layout_width="35dp"
@@ -47,19 +34,17 @@
             android:clickable="true"
             android:onClick="profileLoad"
             android:src="@drawable/userpro" />
-
     </RelativeLayout>
 
-    <GridView
-        android:id="@+id/gridView1"
+    <ListView
+        android:id="@+id/LinearLayout1"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/relative"
         android:background="#ffffff"
-        android:numColumns="1" >
-
-    </GridView>
+        android:orientation="vertical" >
+    </ListView>
 
 </RelativeLayout>

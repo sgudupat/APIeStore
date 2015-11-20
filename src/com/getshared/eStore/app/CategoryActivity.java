@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ListView;
 
 import com.getshared.eStore.app.common.JsonParser;
 
@@ -42,38 +43,20 @@ public class CategoryActivity extends Activity implements Runnable {
         setContentView(R.layout.activity_main);
         buildListView();
         
-      /*  for(int i=0;i<items.size();i++){
-        	//Log.i("inside for loop",""+items.size());
-        	keyName=items.get(i).categoryName;
-        	if(keyName.toLowerCase().contains("furniture")){
-        		Log.i("category name",keyName);
-        		Log.i("category url",items.get(i).categoryUrl);
-        		Log.i("category desc",items.get(i).categoryName);
-        	}
-        	
-        }*/
+   
     }
 
     private void buildListView() {
 
 
-        GridView listView = (GridView) findViewById(R.id.gridView1);
+        ListView listView = (ListView) findViewById(R.id.LinearLayout1);
         finalList=generateData();
      
       
 
         final CategoryAdapter adapter = new CategoryAdapter(
                 CategoryActivity.this, finalData());
-        Log.i("categoryList size",""+categoryList.size());
-        for(Map.Entry<String,ArrayList<String>> entry: categoryList.entrySet()){
-        	
-        	Log.i("category Name",entry.getKey());
-        	Log.i("category url size",""+entry.getValue().size());
-        	for(String s: entry.getValue()){
-        		Log.i("category url ", s);
-        	}
-        	
-        }
+      
         
        
 
@@ -84,7 +67,7 @@ public class CategoryActivity extends Activity implements Runnable {
                                     int position, long id) {
                 Intent intent = new Intent(CategoryActivity.this,
                         StoreActivity.class);
-               Log.i("producturl", ""+adapter.getItem(position));
+           //    Log.i("producturl", ""+adapter.getItem(position));
                intent.putExtra("producturl", adapter.getItem(position));
 
                 startActivity(intent);

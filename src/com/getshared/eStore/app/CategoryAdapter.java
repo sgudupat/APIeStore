@@ -63,7 +63,8 @@ public class CategoryAdapter extends BaseAdapter implements ListAdapter {
 
         }
      //   TextView catName = (TextView) view.findViewById(R.id.categoryName);
-        TextView catUrl = (TextView) view.findViewById(R.id.category_url);
+       // TextView catUrl = (TextView) view.findViewById(R.id.category_url);
+       
         ImageView imgView = (ImageView) view.findViewById(R.id.category_image);
         String key = cKeys[position];
         Log.i("adapter cname",key);
@@ -77,10 +78,11 @@ public class CategoryAdapter extends BaseAdapter implements ListAdapter {
         }
        // catName.setText(key);
        // ArrayList<String> urlList=list.get(position).getUrlList();
-        catUrl.setText("");
+      /*  catUrl.setText("");
         for(String s: Value){
         	catUrl.append("url:\n" + s + "\n");
         }
+        catUrl.setVisibility(2);*/
 
         return view;
     }
