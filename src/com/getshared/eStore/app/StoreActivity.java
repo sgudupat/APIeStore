@@ -122,7 +122,7 @@ public class StoreActivity extends Activity implements Runnable {
 
 	public void run() {
 		int i =0;
-		
+		Log.i("product list size", ""+productList.size());
 		for (i = 0; i < productList.size(); i++) {
 			try {
 			String image = productList.get(i).getImage();
@@ -137,7 +137,7 @@ public class StoreActivity extends Activity implements Runnable {
 	 catch (IOException e) {
 		// If the image couldn't be downloaded, use the standard 'image not
 		// found' bitmap
-		Log.i("download error","error in downloading image");
+	//Log.i("download error","error in downloading image");
 		downloadedBitmap = BitmapFactory.decodeResource(getResources(),
 				R.drawable.ic_launcher);
 		productList.get(i).setTransformedImage(downloadedBitmap);
@@ -146,44 +146,20 @@ public class StoreActivity extends Activity implements Runnable {
 		}
 	}
 
-	/*public void ProductDetails(View view) {
-		String img = (String) view.getTag();
-		Log.i("onclick image name", img);
-		Log.i("size", "" + productList.size());
-		for (int i = 0; i < 1; i++) {
-			Log.i("Name", productList.get(i).getName());
-			Log.i("price", productList.get(i).getPrice());
-			Log.i("image", productList.get(i).getImage());
-			Log.i("productInfo", productList.get(i).getProductInfo());
-			Log.i("productLink", productList.get(i).getLink());
-			Intent intent = new Intent(this, ProductDetailActivity.class);
-			Bitmap img1 = scaleDownBitmap(productList.get(i).getTransformedImage(), 150, context);
-			intent.putExtra("bitmapImage", img1);
-			intent.putExtra("productInfo", productList.get(i).getProductInfo());
-			intent.putExtra("Link", productList.get(i).getLink());
-			intent.putExtra("code", productList.get(i).getCode());
-			intent.putExtra("price", productList.get(i).getPrice());
-			intent.putExtra("name", productList.get(i).getName());
-			startActivity(intent);
-		}
-	}
 
-	private Bitmap scaleDownBitmap(Bitmap photo, int newHeight, Context context) {
-		final float densityMultiplier = context.getResources().getDisplayMetrics().density;
-		int h = (int) (newHeight * densityMultiplier);
-		int w = (int) (h * photo.getWidth() / ((double) photo.getHeight()));
-		photo = Bitmap.createScaledBitmap(photo, w, h, true);
-		return photo;
-	}*/
 
 	private ArrayList<Product> generateData() throws JSONException {
 		try {
 			String result = new AsyncTaskParseJson().execute().get();
 			JSONObject json = new JSONObject(result);
 			JSONArray dataJsonArr = json.getJSONArray("products");
-
+			int counter=0;
 			// loop through all users
-			for (int i = 0; i < 5; i++) {
+			for (int i = 0; i < dataJsonArr.length(); i++) {
+				if(counter>5){
+					break;
+				}
+				counter++;
 
 				JSONObject c = dataJsonArr.getJSONObject(i);
 
@@ -220,8 +196,14 @@ public class StoreActivity extends Activity implements Runnable {
 		try {
 			String result = new flipkartTaskParseJson().execute().get();
 			JSONObject json = new JSONObject(result);
+			int counter=0;
 			JSONArray dataJsonArr = json.getJSONArray("productInfoList");
-			for (int i = 0; i < 5; i++) {
+			Log.i("json array length",""+dataJsonArr.length());
+			for (int i = 0; i < dataJsonArr.length(); i++) {
+				if(counter>5){
+					break;
+				}
+				counter++;
 				JSONObject jsonobject = dataJsonArr.getJSONObject(i);
 				JSONObject productIdentifier = jsonobject.getJSONObject("productBaseInfo");
 				JSONObject category = productIdentifier.getJSONObject("productAttributes");

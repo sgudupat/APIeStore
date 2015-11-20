@@ -51,7 +51,7 @@ public class ProductListAdapter extends BaseAdapter {
 
 
 		if (convertView == null) {
-			Log.i("adapter", "adapter");
+	
 			gridView = new View(context);
 
 			// get layout from mobile.xml

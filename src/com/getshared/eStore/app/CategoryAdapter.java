@@ -67,7 +67,6 @@ public class CategoryAdapter extends BaseAdapter implements ListAdapter {
        
         ImageView imgView = (ImageView) view.findViewById(R.id.category_image);
         String key = cKeys[position];
-        Log.i("adapter cname",key);
         ArrayList<String> Value = getItem(position);
        // Log.i("url value",Value);
         if(key.toLowerCase().contains("furniture")){
@@ -76,6 +75,17 @@ public class CategoryAdapter extends BaseAdapter implements ListAdapter {
         if(key.toLowerCase().contains("eyewear")){
         	imgView.setImageResource(R.drawable.offer2);
         }
+        if(key.toLowerCase().contains("apparels")){
+        	imgView.setImageResource(R.drawable.apparel);
+        }
+        if(key.toLowerCase().contains("electronics")){
+        	imgView.setImageResource(R.drawable.electronics);
+        }
+        if(key.toLowerCase().contains("jewellery")){
+        	imgView.setImageResource(R.drawable.jewellery);
+        }
+      
+       
        // catName.setText(key);
        // ArrayList<String> urlList=list.get(position).getUrlList();
       /*  catUrl.setText("");

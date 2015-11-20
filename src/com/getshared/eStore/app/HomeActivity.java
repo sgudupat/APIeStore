@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class HomeActivity extends Activity {
     final Context context = this;
     public static int count = 0;
-    int[] drawablearray = new int[]{R.drawable.bg, R.drawable.image6, R.drawable.image1, R.drawable.image2, R.drawable.image3, R.drawable.image4, R.drawable.image5, R.drawable.image16, R.drawable.image7, R.drawable.image8, R.drawable.image9, R.drawable.image10, R.drawable.image11, R.drawable.image12, R.drawable.image13, R.drawable.image14};
+    int[] drawablearray = new int[]{R.drawable.bg, R.drawable.image6, R.drawable.image1, R.drawable.image2, R.drawable.mencloth, R.drawable.image4, R.drawable.image5, R.drawable.image16, R.drawable.image7, R.drawable.image8, R.drawable.image9, R.drawable.image10, R.drawable.image11, R.drawable.image12, R.drawable.image13, R.drawable.image14};
 
     /**
      * Called when the activity is first created.
