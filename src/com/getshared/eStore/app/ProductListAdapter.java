@@ -1,13 +1,16 @@
 package com.getshared.eStore.app;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
@@ -18,95 +21,146 @@ import java.util.ArrayList;
 
 
 public class ProductListAdapter extends BaseAdapter {
-    private Context context;
-    ArrayList<Product> dataList;
-    ImageView view;
+	private Context context;
+	private Activity mActivity;
+	ArrayList<Product> dataList;
+	ImageView view;
+	ArrayList<Product> urllist = new ArrayList<Product>();
 
-    public ProductListAdapter(Context context, ArrayList<Product> oslist) {
-        this.context = context;
-        this.dataList = oslist;
-    }
+	public ProductListAdapter(Context context, ArrayList<Product> oslist) {
+		this.context = context;
+		this.dataList = oslist;
+	}
+	public ProductListAdapter(Activity activity, Context context, ArrayList<Product> dataList) {
 
-    public View getView(int position, View convertView, ViewGroup parent) {
+		this.mActivity = (Activity) activity;
+		this.context = context;
+		this.dataList = dataList;
 
-        LayoutInflater inflater = (LayoutInflater) context
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+	}
+	public void setObjects(ArrayList<Product> dataList) {
+		this.dataList = dataList;
+	}
+	public View getView(final int position, View convertView, ViewGroup parent) {
 
-        View gridView;
+		LayoutInflater inflater = (LayoutInflater) context
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-
-        if (convertView == null) {
-            Log.i("adapter", "adapter");
-            gridView = new View(context);
-
-            // get layout from mobile.xml
-            gridView = inflater.inflate(R.layout.adapter_second, null);
-
-
-        } else {
-            gridView = (View) convertView;
-        }
-        // set value into textview
-        TextView textPrice = (TextView) gridView.findViewById(R.id.company);
-        textPrice.setText(dataList.get(position).getPrice());
-        TextView textcompany = (TextView) gridView.findViewById(R.id.add);
-        textcompany.setText(dataList.get(position).getpCompany());
-        TextView textView = (TextView) gridView
-                .findViewById(R.id.decline);
-        TextView title = (TextView) gridView.findViewById(R.id.name);
-        title.setText(dataList.get(position).getName());
-        // textView.setText(dataList.get(position).getName());
-        // set image based on selected text
-        ImageView imageView = (ImageView) gridView
-                .findViewById(R.id.photo);
-
-        textView.setOnClickListener(new LinkProduct(
-                dataList.get(position).getLink()));
-        SpannableString content = new SpannableString(dataList.get(position).getLink());
-        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+		Product item = dataList.get(position);
+		View gridView;
 
 
-        {
-            imageView.setImageBitmap(dataList.get(position).getTransformedImage());
+		if (convertView == null) {
+			Log.i("adapter", "adapter");
+			gridView = new View(context);
 
-        }
-
-        return gridView;
-    }
-
-    @Override
-    public int getCount() {
-        return dataList.size();
-    }
-
-    @Override
-    public Product getItem(int position) {
-        return dataList.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return 0;
-    }
-
-    public class LinkProduct implements View.OnClickListener {
-        private String link;
+			// get layout from mobile.xml
+			gridView = inflater.inflate(R.layout.adapter_second, null);
 
 
-        public LinkProduct(String link) {
-            this.link = link;
-
-        }
-
+		} else {
+			gridView = (View) convertView;
+		}
+		// set value into textview
+		TextView textPrice = (TextView) gridView.findViewById(R.id.company);
+		textPrice.setText(dataList.get(position).getPrice());
+		TextView textcompany = (TextView) gridView.findViewById(R.id.add);
+		textcompany.setText(dataList.get(position).getpCompany());
+		TextView textView = (TextView) gridView
+				.findViewById(R.id.decline);
+		TextView title = (TextView) gridView.findViewById(R.id.name);
+		title.setText(dataList.get(position).getName());
+		// textView.setText(dataList.get(position).getName());
+		// set image based on selected text
+		ImageView imageView = (ImageView) gridView
+				.findViewById(R.id.photo);
+		/*imageView.setOnClickListener(new OnClickListener()  {
         @Override
         public void onClick(View v) {
-            Log.i("ProductLink", link);
-            Intent intent = new Intent();
-            intent.setAction(Intent.ACTION_VIEW);
-            intent.addCategory(Intent.CATEGORY_BROWSABLE);
-            intent.setData(Uri.parse(link));
-            context.startActivity(intent);
+
+                                                                    // action
+            Intent intent = new Intent(v.getContext(), ProductDetailActivity.class);
+            intent.putExtra("producturl", dataList.get(position).getLink());
+            Log.i("product urlll", ""+dataList.get(position).getLink());
+            v.getContext().startActivity(intent);
+
         }
-    }
+    });
+		 */
+		//imageView.setOnClickListener(new productDetail());
+
+		textView.setOnClickListener(new LinkProduct(
+				dataList.get(position).getLink()));
+		SpannableString content = new SpannableString(dataList.get(position).getLink());
+		content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+
+
+		{
+			imageView.setImageBitmap(dataList.get(position).getTransformedImage());
+			imageView.setOnClickListener(new View.OnClickListener() {
+				public void onClick(View v) {
+
+					Intent intent = new Intent(context,ProductDetailActivity.class);
+					Bitmap img1 = scaleDownBitmap(dataList.get(position).getTransformedImage(), 150, context);
+					intent.putExtra("bitmapImage", img1);
+					intent.putExtra("price", dataList.get(position).getPrice());
+					intent.putExtra("link", dataList.get(position).getLink());
+					intent.putExtra("productInfo", dataList.get(position).getProductInfo());
+					intent.putExtra("name", dataList.get(position).getName());
+					intent.putExtra("company", dataList.get(position).getpCompany());
+					intent.putExtra("category", dataList.get(position).getCategory());
+					context.startActivity(intent); }
+			});
+
+		}
+
+		return gridView;
+	}
+
+	@Override
+	public int getCount() {
+		return dataList.size();
+	}
+
+	@Override
+	public Product getItem(int position) {
+		return dataList.get(position);
+	}
+
+	@Override
+	public long getItemId(int position) {
+		return 0;
+	}
+	private Bitmap scaleDownBitmap(Bitmap photo, int newHeight, Context context) {
+		final float densityMultiplier = context.getResources().getDisplayMetrics().density;
+		int h = (int) (newHeight * densityMultiplier);
+		int w = (int) (h * photo.getWidth() / ((double) photo.getHeight()));
+		photo = Bitmap.createScaledBitmap(photo, w, h, true);
+		return photo;
+	}
+
+	public class LinkProduct implements View.OnClickListener {
+		private String link;
+
+
+		public LinkProduct(String link) {
+			this.link = link;
+
+		}
+
+		@Override
+		public void onClick(View v) {
+			Log.i("ProductLink", link);
+			Intent intent = new Intent();
+			intent.setAction(Intent.ACTION_VIEW);
+			intent.addCategory(Intent.CATEGORY_BROWSABLE);
+			intent.setData(Uri.parse(link));
+
+			context.startActivity(intent);
+		}
+	}
+
+
 
 }
+

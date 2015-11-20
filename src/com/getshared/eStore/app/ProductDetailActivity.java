@@ -18,7 +18,7 @@ public class ProductDetailActivity extends Activity {
         String name = intent.getStringExtra("name");
 
         String price = intent.getStringExtra("price");
-        final String Link = intent.getStringExtra("Link");
+        final String Link = intent.getStringExtra("link");
         String productInf = intent.getStringExtra("productInfo");
         TextView productName = (TextView) findViewById(R.id.product_name);
         TextView productPrice = (TextView) findViewById(R.id.product_price);
@@ -28,8 +28,9 @@ public class ProductDetailActivity extends Activity {
         productInfo.setText(productInf);
 
 
-        ImageView view = (ImageView) findViewById(R.id.product_image);
-        view.setImageBitmap(bitmap);
+        ImageView productView = (ImageView) findViewById(R.id.product_image);
+        productView.setImageBitmap(bitmap);
+       
         TextView newPage1 = (TextView) findViewById(R.id.buy_business);
         newPage1.setOnClickListener(new View.OnClickListener() {
 
