@@ -29,6 +29,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 
+import android.widget.TextView;
+
 import com.getshared.eStore.app.common.JsonParser;
 import com.getshared.eStore.domain.NavDrawerItem;
 
@@ -286,6 +288,10 @@ import com.getshared.eStore.domain.NavDrawerItem;
 						StoreActivity.class);
 				// Log.i("producturl", ""+adapter.getItem(position));
 				intent.putExtra("producturl", adapter.getItem(position));
+				 TextView textView = (TextView) view.findViewById(R.id.categoryName);
+		            String text = textView.getText().toString(); 
+                   Log.i("clicked category name",text);
+                   intent.putExtra("category", text);
 
 				startActivity(intent);
 			}

@@ -62,7 +62,7 @@ public class CategoryAdapter extends BaseAdapter implements ListAdapter {
             view = inflater.inflate(R.layout.category_item, null);
 
         }
-     //   TextView catName = (TextView) view.findViewById(R.id.categoryName);
+        TextView catName = (TextView) view.findViewById(R.id.categoryName);
        // TextView catUrl = (TextView) view.findViewById(R.id.category_url);
        
         ImageView imgView = (ImageView) view.findViewById(R.id.category_image);
@@ -70,18 +70,23 @@ public class CategoryAdapter extends BaseAdapter implements ListAdapter {
         ArrayList<String> Value = getItem(position);
        // Log.i("url value",Value);
         if(key.toLowerCase().contains("furniture")){
+        	catName.setText("Furniture");
         	imgView.setImageResource(R.drawable.furniture);
         }
         if(key.toLowerCase().contains("eyewear")){
+        	catName.setText("eyewear");
         	imgView.setImageResource(R.drawable.offer2);
         }
         if(key.toLowerCase().contains("apparels")){
+        	catName.setText("apparels");
         	imgView.setImageResource(R.drawable.apparel);
         }
         if(key.toLowerCase().contains("electronics")){
+        	catName.setText("electronics");
         	imgView.setImageResource(R.drawable.electronics);
         }
         if(key.toLowerCase().contains("jewellery")){
+        	catName.setText("jewellery");
         	imgView.setImageResource(R.drawable.jewellery);
         }
       
