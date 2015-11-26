@@ -1,5 +1,7 @@
 package com.getshared.eStore.app;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -10,14 +12,12 @@ import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.getshared.eStore.domain.Product;
 
-import java.util.ArrayList;
+import com.getshared.eStore.domain.Product;
 
 
 public class ProductListAdapter extends BaseAdapter {
@@ -25,7 +25,6 @@ public class ProductListAdapter extends BaseAdapter {
 	private Activity mActivity;
 	ArrayList<Product> dataList;
 	ImageView view;
-	ArrayList<Product> urllist = new ArrayList<Product>();
 
 	public ProductListAdapter(Context context, ArrayList<Product> oslist) {
 		this.context = context;
@@ -41,17 +40,14 @@ public class ProductListAdapter extends BaseAdapter {
 	public void setObjects(ArrayList<Product> dataList) {
 		this.dataList = dataList;
 	}
+
 	public View getView(final int position, View convertView, ViewGroup parent) {
 
 		LayoutInflater inflater = (LayoutInflater) context
-				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-		Product item = dataList.get(position);
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);	
 		View gridView;
-
-
 		if (convertView == null) {
-	
+			Log.i("adapter", "adapter");
 			gridView = new View(context);
 
 			// get layout from mobile.xml
@@ -69,26 +65,9 @@ public class ProductListAdapter extends BaseAdapter {
 		TextView textView = (TextView) gridView
 				.findViewById(R.id.decline);
 		TextView title = (TextView) gridView.findViewById(R.id.name);
-		title.setText(dataList.get(position).getName());
-		// textView.setText(dataList.get(position).getName());
-		// set image based on selected text
+		title.setText(dataList.get(position).getName());		
 		ImageView imageView = (ImageView) gridView
-				.findViewById(R.id.photo);
-		/*imageView.setOnClickListener(new OnClickListener()  {
-        @Override
-        public void onClick(View v) {
-
-                                                                    // action
-            Intent intent = new Intent(v.getContext(), ProductDetailActivity.class);
-            intent.putExtra("producturl", dataList.get(position).getLink());
-            Log.i("product urlll", ""+dataList.get(position).getLink());
-            v.getContext().startActivity(intent);
-
-        }
-    });
-		 */
-		//imageView.setOnClickListener(new productDetail());
-
+				.findViewById(R.id.photo);  
 		textView.setOnClickListener(new LinkProduct(
 				dataList.get(position).getLink()));
 		SpannableString content = new SpannableString(dataList.get(position).getLink());
@@ -149,8 +128,7 @@ public class ProductListAdapter extends BaseAdapter {
 		}
 
 		@Override
-		public void onClick(View v) {
-			Log.i("ProductLink", link);
+		public void onClick(View v) {			
 			Intent intent = new Intent();
 			intent.setAction(Intent.ACTION_VIEW);
 			intent.addCategory(Intent.CATEGORY_BROWSABLE);
