@@ -47,14 +47,17 @@ public class StoreActivity extends Activity implements Runnable {
 	String imageDetail;
 	String url = "";
 	String company="";
+	String cname="";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.store);
 
-		
+			
 		Intent intent = getIntent();
+		cname=intent.getStringExtra("category");
+		this.setTitle(cname);
 		urllist = intent.getStringArrayListExtra("producturl");
 		for(String s: urllist){
 			Log.i("productUrl of", s);
