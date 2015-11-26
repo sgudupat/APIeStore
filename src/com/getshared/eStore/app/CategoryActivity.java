@@ -19,19 +19,20 @@ import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v4.widget.DrawerLayout;
+
 
 import com.getshared.eStore.app.common.JsonParser;
 import com.getshared.eStore.domain.NavDrawerItem;
 
-@SuppressLint("DefaultLocale") public class CategoryActivity extends Activity implements Runnable {
+@SuppressLint({ "DefaultLocale", "NewApi" }) public class CategoryActivity extends Activity implements Runnable {
 	ArrayList<Category> items = new ArrayList<Category>();
 	ArrayList<Category> fitems = new ArrayList<Category>();
 	ArrayList<String> furls = new ArrayList<String>();
@@ -66,6 +67,7 @@ import com.getshared.eStore.domain.NavDrawerItem;
 	private ArrayList<NavDrawerItem> navDrawerItems;
 	private NavDrawerListAdapter adapter;
 
+	@SuppressLint("NewApi")
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
@@ -125,6 +127,7 @@ import com.getshared.eStore.domain.NavDrawerItem;
 				R.string.app_name // nav drawer close - description for
 									// accessibility
 		) {
+		
 			public void onDrawerClosed(View view) {
 				getActionBar().setTitle(mTitle);
 				// calling onPrepareOptionsMenu() to show action bar icons
@@ -201,7 +204,7 @@ import com.getshared.eStore.domain.NavDrawerItem;
 			fragment = new Page_first();
 			break;
 		case 1:
-			fragment = new Profile();
+			fragment = new Page_first();
 			break;
 		case 2:
 			fragment = new Page_first();
