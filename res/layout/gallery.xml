@@ -111,7 +111,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:adjustViewBounds="true"
-                android:background="@drawable/bg"
+                android:background="@drawable/bgs"
                 android:contentDescription="@string/app_name"
                 android:scaleType="centerCrop" />
             <ImageView
@@ -121,7 +121,7 @@
                android:adjustViewBounds="true"
                 android:layout_centerHorizontal="true"
                 android:contentDescription="@string/app_name"
-                android:background="@drawable/bg"
+                android:background="@drawable/bgs"
                android:scaleType="centerCrop" />
 
             <LinearLayout
