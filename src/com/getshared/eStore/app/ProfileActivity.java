@@ -67,9 +67,7 @@ public class ProfileActivity extends Activity {
             String response = SimpleHttpClient.executeHttpPost("/addAddress", postParameters);
             Log.i("Response:", response);
 
-            if (response.contains("success")) {
-               /* Intent intent = new Intent(this, StoreActivity.class);
-                startActivity(intent);*/
+            if (response.contains("success")) {               
             } else {
                 Toast.makeText(getApplicationContext(), "Update Failed, Please Retry !!!", Toast.LENGTH_LONG).show();
             }

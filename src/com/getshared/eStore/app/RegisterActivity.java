@@ -30,8 +30,7 @@ public class RegisterActivity extends Activity {
     }
 
     public void EstoreHomePage(View view) {
-        // Intent intent = new Intent(this,HomeActivity.class);
-        // startActivity(intent);
+      
         final EditText userName = (EditText) findViewById(R.id.register_name);
         final EditText email = (EditText) findViewById(R.id.register_email);
         final EditText password = (EditText) findViewById(R.id.register_password);
