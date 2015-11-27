@@ -59,8 +59,7 @@ public class StoreActivity extends Activity implements Runnable {
 		cname=intent.getStringExtra("category");
 		this.setTitle(cname);
 		urllist = intent.getStringArrayListExtra("producturl");
-		for(String s: urllist){
-			Log.i("productUrl of", s);
+		for(String s: urllist){			
 			url=s;
 			if (url.contains("flipkart")) {
 				  try {
@@ -73,9 +72,6 @@ public class StoreActivity extends Activity implements Runnable {
 			} else {
 				try {
 					productList = generateData();
-					//Log.i("productList",""+ productList);
-
-				
 					
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
@@ -97,7 +93,7 @@ public class StoreActivity extends Activity implements Runnable {
 
 
 
-		//Log.i("Imagelist size", "" + productList.size());
+		
 		Thread t = new Thread(this);
 		t.start();
 		try {
@@ -106,20 +102,13 @@ public class StoreActivity extends Activity implements Runnable {
 			e.printStackTrace();
 		}
 		GridView gridView = (GridView) findViewById(R.id.product_gridView1);
-		//Log.i("grid","grid");
+		
 		
 		ProductListAdapter imageGridAdapter = new  ProductListAdapter(this, productList);
-		//Log.i("STORAGE", "adapter");
+		
 		gridView.setAdapter(imageGridAdapter);
 		
-		/*for (int i = 0; i < productList.size(); i++) {			
-			int image = getResources().getIdentifier("photo_image" + i, "id", getPackageName());
-			Log.i("tag", ""+image);
-			view1 = (ImageView) findViewById(image);
-			view1.setImageBitmap(productList.get(i).getTransformedImage());
-			view1.setTag(productList.get(i).getImage());
-			view1.setVisibility(View.VISIBLE);
-		}*/
+		
 	}
 
 
@@ -135,12 +124,10 @@ public class StoreActivity extends Activity implements Runnable {
 			downloadedBitmap = BitmapFactory.decodeStream(input_s);
 			input_s.close();
 			productList.get(i).setTransformedImage(downloadedBitmap);
-			//Log.i("productList22", "" + productList);
+			
 		}
 	 catch (IOException e) {
-		// If the image couldn't be downloaded, use the standard 'image not
-		// found' bitmap
-	//Log.i("download error","error in downloading image");
+		
 		downloadedBitmap = BitmapFactory.decodeResource(getResources(),
 				R.drawable.ic_launcher);
 		productList.get(i).setTransformedImage(downloadedBitmap);
@@ -172,10 +159,7 @@ public class StoreActivity extends Activity implements Runnable {
 				String title = c.getString("title");
 				String description = c.getString("description");
 				String mrp = c.getString("mrp");
-				company="snapdeal";
-				/*Log.i("mrp", mrp);
-				Log.i("title", title);
-				Log.i("description", description);*/
+				company="snapdeal";				
 				product.add(new Product(imageLink, imagedetail, description, mrp, title,company));
 
 
@@ -210,7 +194,7 @@ public class StoreActivity extends Activity implements Runnable {
 				JSONObject jsonobject = dataJsonArr.getJSONObject(i);
 				JSONObject productIdentifier = jsonobject.getJSONObject("productBaseInfo");
 				JSONObject category = productIdentifier.getJSONObject("productAttributes");
-				//JSONObject productDescript= productIdentifier.getJSONObject("productDescription");
+				
 				JSONObject imageUrl = category.getJSONObject("imageUrls");
 				imageLink = imageUrl.getString("400x400");
 				image = category.getString("productUrl");
@@ -219,9 +203,7 @@ public class StoreActivity extends Activity implements Runnable {
 				amount = selling.getString("amount");
 				name = category.getString("title");
 				company="flipkart";
-				/*Log.i("name", name);
-				Log.i("product selling", amount);
-				Log.i("product Desc", productInfo);*/
+			
 				product.add(new Product(imageLink, image, productInfo, amount, name,company));
 
 			}

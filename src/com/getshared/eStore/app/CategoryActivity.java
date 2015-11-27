@@ -11,27 +11,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.content.res.TypedArray;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-
 import android.widget.TextView;
 
 import com.getshared.eStore.app.common.JsonParser;
-import com.getshared.eStore.domain.NavDrawerItem;
 
 @SuppressLint({ "DefaultLocale", "NewApi" })
 public class CategoryActivity extends MenuActivity implements Runnable {
@@ -56,7 +44,7 @@ public class CategoryActivity extends MenuActivity implements Runnable {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		buildListView();
-	
+
 	}
 
 
@@ -64,13 +52,7 @@ public class CategoryActivity extends MenuActivity implements Runnable {
 	private void buildListView() {
 
 		ListView listView = (ListView) findViewById(R.id.LinearLayout1);
-		finalList = generateData();
-		/*
-		 * for(Category s: finalList){
-		 * Log.i("list category name",s.categoryName);
-		 * Log.i("list category url",s.categoryUrl); }
-		 */
-
+		finalList = generateData();		
 		final CategoryAdapter adapter = new CategoryAdapter(
 				CategoryActivity.this, finalData());
 
@@ -80,13 +62,11 @@ public class CategoryActivity extends MenuActivity implements Runnable {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				Intent intent = new Intent(CategoryActivity.this,
-						StoreActivity.class);
-				// Log.i("producturl", ""+adapter.getItem(position));
+						StoreActivity.class);				
 				intent.putExtra("producturl", adapter.getItem(position));
 				TextView textView = (TextView) view
 						.findViewById(R.id.categoryName);
-				String text = textView.getText().toString();
-				//Log.i("clicked category name", text);
+				String text = textView.getText().toString();				
 				intent.putExtra("category", text);
 
 				startActivity(intent);
@@ -96,34 +76,27 @@ public class CategoryActivity extends MenuActivity implements Runnable {
 	}
 
 	@SuppressLint("DefaultLocale")
-	private HashMap<String, ArrayList<String>> finalData() {
-		// TODO Auto-generated method stub
-		for (int i = 0; i < finalList.size(); i++) {
-			// Log.i("inside for loop",""+items.size());
-			keyName = finalList.get(i).categoryName;
-			// Log.i("category name",keyName);
-			if (keyName.toLowerCase().contains("furniture")) {
-				// Log.i("category name",keyName);
-
+	private HashMap<String, ArrayList<String>> finalData() {		
+		for (int i = 0; i < finalList.size(); i++) {		
+			keyName = finalList.get(i).categoryName;			
+			if (keyName.toLowerCase().contains("furniture")) {				
 				cName = finalList.get(i).categoryName;
 				cName = cName.toLowerCase();
 				furls.add(finalList.get(i).categoryUrl);
 				categoryList.put(cName, furls);
-			
+
 
 			}
 
 			if (keyName.toLowerCase().contains("mens_clothing")
 					|| keyName.toLowerCase().contains("womens")
 					|| keyName.toLowerCase().contains("boys")) {
-				// Log.i("category name",keyName);
-
 				cName = finalList.get(i).categoryName;
 				cName = cName.toLowerCase();
 				cName = "Apparels";
 				eurls.add(finalList.get(i).categoryUrl);
 				categoryList.put(cName, eurls);
-			
+
 
 			}
 			if (keyName.toLowerCase().contains("tv_video_accessories")
@@ -131,9 +104,7 @@ public class CategoryActivity extends MenuActivity implements Runnable {
 					|| keyName.toLowerCase().contains("computers_peripherals ")
 					|| keyName.toLowerCase().contains("computer_peripherals")
 					|| keyName.toLowerCase().contains("camera_accessories")
-					|| keyName.toLowerCase().contains("cameras_accessories")) {
-				// Log.i("electronics category name",keyName);
-				// Log.i("electronics category urls",finalList.get(i).categoryUrl);
+					|| keyName.toLowerCase().contains("cameras_accessories")) {			
 
 				cName = finalList.get(i).categoryName;
 				cName = cName.toLowerCase();
@@ -142,9 +113,7 @@ public class CategoryActivity extends MenuActivity implements Runnable {
 				categoryList.put(cName, elurls);
 
 			}
-			if (keyName.toLowerCase().contains("jewellery")) {
-				// Log.i("category name",keyName);
-
+			if (keyName.toLowerCase().contains("jewellery")) {   
 				cName = finalList.get(i).categoryName;
 				cName = cName.toLowerCase();
 				cName = "jewellery";
@@ -152,9 +121,7 @@ public class CategoryActivity extends MenuActivity implements Runnable {
 				categoryList.put(cName, jurls);
 
 			}
-			if (keyName.toLowerCase().contains("jewellery")) {
-				// Log.i("category name",keyName);
-
+			if (keyName.toLowerCase().contains("jewellery")) {  
 				cName = finalList.get(i).categoryName;
 				cName = cName.toLowerCase();
 				cName = "jewellery";
@@ -163,8 +130,7 @@ public class CategoryActivity extends MenuActivity implements Runnable {
 
 			}
 
-		}
-		// cList.add(new Category(categoryList));
+		}		
 		return categoryList;
 	}
 
@@ -222,7 +188,7 @@ public class CategoryActivity extends MenuActivity implements Runnable {
 					JSONObject listing = jObj.getJSONObject("listingVersions");
 					JSONObject version = listing.getJSONObject("v1");
 					String get = version.getString("get");
-					
+
 					items.add(new Category(key, get));
 
 				}
@@ -245,7 +211,7 @@ public class CategoryActivity extends MenuActivity implements Runnable {
 	}
 
 	public class flipkartTaskParseJson extends
-			AsyncTask<String, String, String> {
+	AsyncTask<String, String, String> {
 
 		final String TAG = "AsyncTaskParseJson.java";
 
@@ -284,7 +250,7 @@ public class CategoryActivity extends MenuActivity implements Runnable {
 							.getJSONObject("availableVariants");
 					JSONObject version = listing.getJSONObject("v0.1.0");
 					String fGet = version.getString("get");
-					
+
 
 					items.add(new Category(key, fGet));
 

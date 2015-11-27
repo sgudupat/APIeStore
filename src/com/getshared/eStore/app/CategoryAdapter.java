@@ -1,7 +1,10 @@
 package com.getshared.eStore.app;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,10 +12,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 public class CategoryAdapter extends BaseAdapter implements ListAdapter {
 
@@ -41,15 +40,13 @@ public class CategoryAdapter extends BaseAdapter implements ListAdapter {
     }
 
     @Override
-    public ArrayList<String> getItem(int position) {
-        // TODO Auto-generated method stub
+    public ArrayList<String> getItem(int position) {       
         return cList.get(cKeys[position]);
         
     }
 
     @Override
-    public long getItemId(int position) {
-        // TODO Auto-generated method stub
+    public long getItemId(int position) {      
         return 0;
     }
 
@@ -62,13 +59,10 @@ public class CategoryAdapter extends BaseAdapter implements ListAdapter {
             view = inflater.inflate(R.layout.category_item, null);
 
         }
-        TextView catName = (TextView) view.findViewById(R.id.categoryName);
-       // TextView catUrl = (TextView) view.findViewById(R.id.category_url);
-       
+        TextView catName = (TextView) view.findViewById(R.id.categoryName);     
         ImageView imgView = (ImageView) view.findViewById(R.id.category_image);
         String key = cKeys[position];
-        ArrayList<String> Value = getItem(position);
-       // Log.i("url value",Value);
+        ArrayList<String> Value = getItem(position);    
         if(key.toLowerCase().contains("furniture")){
         	catName.setText("Furniture");
         	imgView.setImageResource(R.drawable.furniture);
@@ -90,14 +84,6 @@ public class CategoryAdapter extends BaseAdapter implements ListAdapter {
         	imgView.setImageResource(R.drawable.jewellery);
         }
       
-       
-       // catName.setText(key);
-       // ArrayList<String> urlList=list.get(position).getUrlList();
-      /*  catUrl.setText("");
-        for(String s: Value){
-        	catUrl.append("url:\n" + s + "\n");
-        }
-        catUrl.setVisibility(2);*/
 
         return view;
     }
