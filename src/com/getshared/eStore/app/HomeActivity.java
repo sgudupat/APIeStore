@@ -78,7 +78,7 @@ public class HomeActivity extends Activity {
             editor.putString("email", (String) jsonobject.get("email"));
             editor.putString("mobile", (String) jsonobject.get("mobile"));
             editor.commit();
-            Intent intent = new Intent(this, CategoryActivity.class);
+            Intent intent = new Intent(this, MenuActivity.class);
             startActivity(intent);
         } catch (Exception e) {
             Log.e("register", e.getMessage() + "");

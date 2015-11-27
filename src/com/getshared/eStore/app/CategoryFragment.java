@@ -10,38 +10,37 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.getshared.eStore.app.CategoryActivity.AsyncTaskParseJson;
+import com.getshared.eStore.app.CategoryActivity.flipkartTaskParseJson;
+import com.getshared.eStore.app.common.JsonParser;
+import com.getshared.eStore.domain.NavDrawerItem;
+
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.Fragment;
-import android.app.FragmentManager;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-
 import android.widget.TextView;
 
-import com.getshared.eStore.app.common.JsonParser;
-import com.getshared.eStore.domain.NavDrawerItem;
-
-@SuppressLint({ "DefaultLocale", "NewApi" })
-public class CategoryActivity extends MenuActivity implements Runnable {
+public class CategoryFragment  extends Fragment implements Runnable {
 	ArrayList<Category> items = new ArrayList<Category>();
-
+	ArrayList<Category> fitems = new ArrayList<Category>();
 	ArrayList<String> furls = new ArrayList<String>();
 	ArrayList<String> eurls = new ArrayList<String>();
 	ArrayList<String> elurls = new ArrayList<String>();
 	ArrayList<String> jurls = new ArrayList<String>();
 
+	ArrayList<Category> fList = new ArrayList<Category>();
+	ArrayList<Category> cList = new ArrayList<Category>();
 	ArrayList<Category> finalList = new ArrayList<Category>();
 	HashMap<String, ArrayList<String>> categoryList = new HashMap<String, ArrayList<String>>();
 	Category category = new Category();
@@ -50,20 +49,37 @@ public class CategoryActivity extends MenuActivity implements Runnable {
 	private static String url = "http://affiliate-feeds.snapdeal.com/feed/57185.json";
 	private static String url1 = "https://affiliate-api.flipkart.net/affiliate/api/getshared.json";
 
+	private DrawerLayout mDrawerLayout;
+	private ListView mDrawerList;
+	private ActionBarDrawerToggle mDrawerToggle;
 
-	@SuppressLint("NewApi")
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-		buildListView();
-	
-	}
+	// nav drawer title
+	private CharSequence mDrawerTitle;
 
+	// used to store app title
+	private CharSequence mTitle;
+	View rootView;
 
+	// slide menu items
+	private String[] navMenuTitles;
+	private TypedArray navMenuIcons;
+
+	private ArrayList<NavDrawerItem> navDrawerItems;
+	private NavDrawerListAdapter adapter;
+
+	@Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+            Bundle savedInstanceState) {
+ 
+       rootView = inflater.inflate(R.layout.activity_main, container, false);
+        buildListView();
+       
+        return rootView;
+    }
 
 	private void buildListView() {
 
-		ListView listView = (ListView) findViewById(R.id.LinearLayout1);
+		ListView listView = (ListView) rootView.findViewById(R.id.LinearLayout1);
 		finalList = generateData();
 		/*
 		 * for(Category s: finalList){
@@ -72,21 +88,21 @@ public class CategoryActivity extends MenuActivity implements Runnable {
 		 */
 
 		final CategoryAdapter adapter = new CategoryAdapter(
-				CategoryActivity.this, finalData());
+				getActivity().getBaseContext(), finalData());
 
 		listView.setAdapter(adapter);
 		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				Intent intent = new Intent(CategoryActivity.this,
+				Intent intent = new Intent(getActivity(),
 						StoreActivity.class);
 				// Log.i("producturl", ""+adapter.getItem(position));
 				intent.putExtra("producturl", adapter.getItem(position));
 				TextView textView = (TextView) view
 						.findViewById(R.id.categoryName);
 				String text = textView.getText().toString();
-				//Log.i("clicked category name", text);
+				Log.i("clicked category name", text);
 				intent.putExtra("category", text);
 
 				startActivity(intent);
@@ -109,7 +125,7 @@ public class CategoryActivity extends MenuActivity implements Runnable {
 				cName = cName.toLowerCase();
 				furls.add(finalList.get(i).categoryUrl);
 				categoryList.put(cName, furls);
-			
+				fList.add(new Category(cName, furls));
 
 			}
 
@@ -123,7 +139,8 @@ public class CategoryActivity extends MenuActivity implements Runnable {
 				cName = "Apparels";
 				eurls.add(finalList.get(i).categoryUrl);
 				categoryList.put(cName, eurls);
-			
+				fList.add(new Category(cName, eurls));
+				// cList.add(new Category(categoryList));
 
 			}
 			if (keyName.toLowerCase().contains("tv_video_accessories")
@@ -222,7 +239,8 @@ public class CategoryActivity extends MenuActivity implements Runnable {
 					JSONObject listing = jObj.getJSONObject("listingVersions");
 					JSONObject version = listing.getJSONObject("v1");
 					String get = version.getString("get");
-					
+					Log.i("snap deal list key", "" + key);
+					Log.i("snap deal list url", "" + url);
 					items.add(new Category(key, get));
 
 				}
@@ -284,7 +302,8 @@ public class CategoryActivity extends MenuActivity implements Runnable {
 							.getJSONObject("availableVariants");
 					JSONObject version = listing.getJSONObject("v0.1.0");
 					String fGet = version.getString("get");
-					
+					Log.i("flipkart list key", "" + key);
+					Log.i("flipkart list url", "" + fGet);
 
 					items.add(new Category(key, fGet));
 
@@ -325,7 +344,8 @@ public class CategoryActivity extends MenuActivity implements Runnable {
 	}
 
 	public void profileLoad(View view) {
-		Intent intent = new Intent(this, ProfileActivity.class);
+		Intent intent = new Intent();
 		startActivity(intent);
 	}
+
 }

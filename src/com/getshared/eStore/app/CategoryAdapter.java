@@ -32,7 +32,7 @@ public class CategoryAdapter extends BaseAdapter implements ListAdapter {
         this.context = context;
         cKeys = cList.keySet().toArray(new String[clist.size()]);
     }
-
+    
     @Override
     public int getCount() {
 
