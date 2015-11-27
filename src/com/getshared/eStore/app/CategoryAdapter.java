@@ -68,19 +68,19 @@ public class CategoryAdapter extends BaseAdapter implements ListAdapter {
         	imgView.setImageResource(R.drawable.furniture);
         }
         if(key.toLowerCase().contains("eyewear")){
-        	catName.setText("eyewear");
+        	catName.setText("Eyewear");
         	imgView.setImageResource(R.drawable.offer2);
         }
         if(key.toLowerCase().contains("apparels")){
-        	catName.setText("apparels");
+        	catName.setText("Apparels");
         	imgView.setImageResource(R.drawable.apparel);
         }
         if(key.toLowerCase().contains("electronics")){
-        	catName.setText("electronics");
+        	catName.setText("Electronics");
         	imgView.setImageResource(R.drawable.electronics);
         }
         if(key.toLowerCase().contains("jewellery")){
-        	catName.setText("jewellery");
+        	catName.setText("Jewellery");
         	imgView.setImageResource(R.drawable.jewellery);
         }
       
