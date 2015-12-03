@@ -78,22 +78,17 @@ public class CategoryFragment  extends Fragment implements Runnable {
 
 		ListView listView = (ListView) rootView.findViewById(R.id.LinearLayout1);
 		finalList = generateData();	
-		final CategoryAdapter adapter = new CategoryAdapter(
-				getActivity().getBaseContext(), finalData());
+		final CategoryAdapter adapter = new CategoryAdapter(getActivity().getBaseContext(), finalData());
 
 		listView.setAdapter(adapter);
 		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				Intent intent = new Intent(getActivity(),
-						StoreActivity.class);				
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				Intent intent = new Intent(getActivity(), StoreActivity.class);
 				intent.putExtra("producturl", adapter.getItem(position));
-				TextView textView = (TextView) view
-						.findViewById(R.id.categoryName);
+				TextView textView = (TextView) view.findViewById(R.id.categoryName);
 				String text = textView.getText().toString();				
 				intent.putExtra("category", text);
-
 				startActivity(intent);
 			}
 		});
@@ -272,8 +267,7 @@ public class CategoryFragment  extends Fragment implements Runnable {
 					String url = list.getString(key);
 
 					JSONObject jObj = new JSONObject(url);
-					JSONObject listing = jObj
-							.getJSONObject("availableVariants");
+					JSONObject listing = jObj.getJSONObject("availableVariants");
 					JSONObject version = listing.getJSONObject("v0.1.0");
 					String fGet = version.getString("get");
 					items.add(new Category(key, fGet));

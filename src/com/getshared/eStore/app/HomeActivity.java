@@ -1,43 +1,30 @@
 package com.getshared.eStore.app;
 
-import java.util.ArrayList;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONObject;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import com.getshared.eStore.app.common.SimpleHttpClient;
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONObject;
 
+import java.util.ArrayList;
 
 public class HomeActivity extends Activity {
     final Context context = this;
-    public static int count = 0;
- 
-    /**
-     * Called when the activity is first created.
-     */
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        
-      
-}
-
-
+    }
 
     public void signinEstore(View view) {
         final EditText userName = (EditText) findViewById(R.id.editText1);
@@ -61,8 +48,10 @@ public class HomeActivity extends Activity {
         } catch (Exception e) {
             Log.e("register", e.getMessage() + "");
             Toast.makeText(getApplicationContext(), "Login Failed, Please Retry !!!", Toast.LENGTH_LONG).show();
+            //This is temporary
+            Intent intent = new Intent(this, MenuActivity.class);
+            startActivity(intent);
         }
-
     }
 
     public void EstoreRegister(View view) {
@@ -74,6 +63,4 @@ public class HomeActivity extends Activity {
         Intent intent = new Intent(this, ForgotPasswordActivity.class);
         startActivity(intent);
     }
-
-
 }

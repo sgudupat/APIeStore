@@ -8,9 +8,9 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="0dp"
         android:background="@android:color/white"
-        android:scrollbars="none" >
+        android:scrollbars="none" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <RelativeLayout
             android:id="@+id/product_relative"
@@ -42,7 +42,6 @@
                     android:adjustViewBounds="true"
                     android:contentDescription="@string/app_name"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/image"
                     android:visibility="gone" />
 
                 <RelativeLayout
@@ -78,7 +77,6 @@
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:adjustViewBounds="true"
-                        android:background="@drawable/image16"
                         android:contentDescription="@string/app_name"
                         android:scaleType="centerCrop"
                         android:visibility="gone" />
@@ -98,7 +96,6 @@
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:adjustViewBounds="true"
-                        android:background="@drawable/image5"
                         android:contentDescription="@string/app_name"
                         android:scaleType="centerCrop"
                         android:visibility="gone" />
@@ -107,38 +104,27 @@
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/test_image1"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:adjustViewBounds="true"
-                android:background="@drawable/bgs"
-                android:contentDescription="@string/app_name"
-                android:scaleType="centerCrop" />
-            <ImageView
                 android:id="@+id/productdetail_image"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="250dp"
+                android:layout_height="300dp"
                android:adjustViewBounds="true"
                 android:layout_centerHorizontal="true"
                 android:contentDescription="@string/app_name"
-                android:background="@drawable/bgs"
-               android:scaleType="centerCrop" />
+                android:scaleType="centerCrop" android:layout_marginTop="10dp"/>
 
             <LinearLayout
                 android:id="@+id/informations_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/croll"
                 android:layout_marginTop="5dp"
-                android:layout_toRightOf="@+id/productdetail_image"
                 android:background="@android:color/white"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:padding="1dp" >
+                android:padding="1dp" android:layout_below="@+id/productdetail_image">
 
                 <TextView
                     android:id="@+id/_business"
-                    android:layout_width="0dp"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@android:color/white"
@@ -213,7 +199,7 @@
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:padding="2dp"
-                android:visibility="visible" >
+                android:visibility="visible" android:layout_marginTop="5dp">
 
                 <LinearLayout
                     android:layout_width="0dp"

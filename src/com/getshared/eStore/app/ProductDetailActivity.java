@@ -15,7 +15,8 @@ public class ProductDetailActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gallery);
         Intent intent = getIntent();
-        final Bitmap bitmap = (Bitmap) intent.getParcelableExtra("bitmapImage");
+        final Bitmap bitmap = (Bitmap) intent.getParcelableExtra("bitmapImage1");
+        final Bitmap bitmap2 = (Bitmap) intent.getParcelableExtra("bitmapImage2");
         String name = intent.getStringExtra("name");
         String price = intent.getStringExtra("price");
         final String Link = intent.getStringExtra("link");
@@ -26,52 +27,51 @@ public class ProductDetailActivity extends Activity {
         productName.setText(name);
         productPrice.setText(price);
         productInfo.setText(productInf);
-    
-     
-        final ImageView Demo_button = (ImageView)findViewById(R.id.productdetail_image);
-        Demo_button.setImageBitmap(bitmap);
-        final ImageView second_button = (ImageView)findViewById(R.id.test_image1);
-        second_button.setImageBitmap(bitmap);
-        final ImageView third_button = (ImageView)findViewById(R.id.test_photo2);
-        final ImageView four_button = (ImageView)findViewById(R.id.test_photo3);
-        final ImageView five_button = (ImageView)findViewById(R.id.test_photo1);
-        final ImageView six_button = (ImageView)findViewById(R.id.imageView1);
 
-    
+        final ImageView productDetailImageView = (ImageView) findViewById(R.id.productdetail_image);
+        productDetailImageView.setImageBitmap(bitmap);
+        final ImageView second_button = (ImageView) findViewById(R.id.test_photo2);
+        second_button.setImageBitmap(bitmap);
+        if (bitmap2 != null) {
+            final ImageView third_button = (ImageView) findViewById(R.id.test_photo3);
+            third_button.setImageBitmap(bitmap2);
+            third_button.setOnClickListener(new OnClickListener() {
+                public void onClick(View v) {
+                    productDetailImageView.setImageBitmap(bitmap2);
+                }
+            });
+        } else {
+            final ImageView third_button = (ImageView) findViewById(R.id.test_photo3);
+            third_button.setVisibility(View.INVISIBLE);
+        }
+        //final ImageView four_button = (ImageView)findViewById(R.id.test_photo3);
+        //final ImageView five_button = (ImageView)findViewById(R.id.test_photo1);
+        //final ImageView six_button = (ImageView)findViewById(R.id.imageView1);
 
         second_button.setOnClickListener(new OnClickListener() {
-           public void onClick(View v) {
-        	   
-        	   Demo_button.setImageBitmap(bitmap);
-              
-           }
+            public void onClick(View v) {
+                productDetailImageView.setImageBitmap(bitmap);
+            }
         });
 
-        third_button.setOnClickListener(new OnClickListener() {
+       /*five_button.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-         	   Demo_button.setImageResource(R.drawable.image16);
-         	 
-            }
-         });
-       five_button.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-         	   Demo_button.setImageResource(R.drawable.image4);
+                productDetailImageView.setImageBitmap(bitmap);
          	 
             }
          });
       four_button.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-         	   Demo_button.setImageResource(R.drawable.image5);
+                productDetailImageView.setImageBitmap(bitmap);
          	  
             }
          });
       six_button.setOnClickListener(new OnClickListener() {
           public void onClick(View v) {
-       	   Demo_button.setImageResource(R.drawable.image);
-       	  
+                productDetailImageView.setImageBitmap(bitmap);
           }
        });
-			
+			*/
         TextView newPage1 = (TextView) findViewById(R.id._business);
         newPage1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,11 +87,11 @@ public class ProductDetailActivity extends Activity {
     }
 
     private OnClickListener OnClickListener() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public void DestoreProfile(View view) {
+    public void DestoreProfile(View view) {
         Intent intent = new Intent(this, ProfileActivity.class);
         startActivity(intent);
     }
