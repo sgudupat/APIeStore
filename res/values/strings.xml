@@ -41,4 +41,30 @@
     
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
+
+    <string-array name="categories">
+        <item>Furniture</item>
+      
+        <item>Apparels</item>
+        <item>Electronics</item>
+        <item>Travel</item>
+        <item>Jewellery</item>
+    </string-array>
+
+    <string-array name="furniture_section">
+        <item>Furniture</item>
+         <item>furniture</item>
+        <item>Home_Improvement</item>
+        <item>Office_Equipment</item>
+    </string-array>
+    <string-array name="apparel_section">
+        <item>furniture</item>
+        <item>Home_Improvement</item>
+        <item>Office_Equipment</item>
+    </string-array>
+    <string-array name="electronics_section">
+        <item>urniture</item>
+        <item>Home_Improvement</item>
+        <item>Office_Equipment</item>
+    </string-array>
 </resources>

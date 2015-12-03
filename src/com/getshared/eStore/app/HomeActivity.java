@@ -59,8 +59,5 @@ public class HomeActivity extends Activity {
         startActivity(intent);
     }
 
-    public void EstoreForgotPassword(View view) {
-        Intent intent = new Intent(this, ForgotPasswordActivity.class);
-        startActivity(intent);
-    }
+ 
 }
