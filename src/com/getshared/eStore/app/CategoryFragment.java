@@ -13,7 +13,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.getshared.eStore.app.common.JsonParser;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -60,7 +59,6 @@ public class CategoryFragment extends Fragment implements Runnable {
                 startActivity(intent);
             }
         });
-
     }
 
     @SuppressLint("DefaultLocale")
@@ -102,14 +100,18 @@ public class CategoryFragment extends Fragment implements Runnable {
                 //Furniture Section
                 String[] furniture = getResources().getStringArray(R.array.furniture_section);
                 for (String f : furniture) {
-                    String url = list.getString(f);
-                    JSONObject jObj = new JSONObject(url);
-                    JSONObject listing = jObj.getJSONObject("listingVersions");
-                    JSONObject version = listing.getJSONObject("v1");
-                    String get = version.getString("get");
-                    Log.i("get::", get);
-                    //items.add(new Category(key, get));
-                    fURL.add(get);
+                    try {
+                        String url = list.getString(f);
+                        JSONObject jObj = new JSONObject(url);
+                        JSONObject listing = jObj.getJSONObject("listingVersions");
+                        JSONObject version = listing.getJSONObject("v1");
+                        String get = version.getString("get");
+                        Log.i("get::", get);
+                        //items.add(new Category(key, get));
+                        fURL.add(get);
+                    } catch (Exception e) {
+                        Log.i("Snap error:", e.getMessage());
+                    }
                 }
                 /* //Apparels Section
                 String[] apparels = getResources().getStringArray(R.array.apparel_section);
@@ -163,13 +165,17 @@ public class CategoryFragment extends Fragment implements Runnable {
                 JSONObject list = affiliate.getJSONObject("apiListings");
                 String[] furniture = getResources().getStringArray(R.array.furniture_section);
                 for (String f : furniture) {
-                    String url = list.getString(f);
-                    JSONObject jObj = new JSONObject(url);
-                    JSONObject listing = jObj.getJSONObject("availableVariants");
-                    JSONObject version = listing.getJSONObject("v0.1.0");
-                    String fGet = version.getString("get");
-                    Log.i("f get::", fGet);
-                    fURL.add(fGet);
+                    try {
+                        String url = list.getString(f);
+                        JSONObject jObj = new JSONObject(url);
+                        JSONObject listing = jObj.getJSONObject("availableVariants");
+                        JSONObject version = listing.getJSONObject("v0.1.0");
+                        String fGet = version.getString("get");
+                        Log.i("f get::", fGet);
+                        fURL.add(fGet);
+                    } catch (Exception e) {
+                        Log.i("Snap error:", e.getMessage());
+                    }
                 }
 
             } catch (URISyntaxException e) {
