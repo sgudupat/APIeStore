@@ -34,9 +34,7 @@ public class CategoryAdapter extends BaseAdapter implements ListAdapter {
     
     @Override
     public int getCount() {
-
         return cList.size();
-
     }
 
     @Override
@@ -57,8 +55,8 @@ public class CategoryAdapter extends BaseAdapter implements ListAdapter {
         if (view == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.category_item, null);
-
         }
+
         TextView catName = (TextView) view.findViewById(R.id.categoryName);     
         ImageView imgView = (ImageView) view.findViewById(R.id.category_image);
         String key = cKeys[position];
@@ -83,9 +81,6 @@ public class CategoryAdapter extends BaseAdapter implements ListAdapter {
         	catName.setText("Jewellery");
         	imgView.setImageResource(R.drawable.jewellery);
         }
-      
-
         return view;
     }
-
 }

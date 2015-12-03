@@ -110,10 +110,12 @@
                 android:id="@+id/productdetail_image"
                 android:layout_width="300dp"
                 android:layout_height="300dp"
-               android:adjustViewBounds="true"
+                android:layout_below="@+id/productName"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:adjustViewBounds="true"
                 android:contentDescription="@string/app_name"
-                android:scaleType="centerCrop" android:layout_marginTop="10dp" android:layout_marginLeft="10dp"
-                android:layout_below="@+id/productName"/>
+                android:scaleType="fitCenter" />
 
             <TextView
                     android:layout_width="fill_parent"

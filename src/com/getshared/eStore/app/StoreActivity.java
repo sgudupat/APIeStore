@@ -30,7 +30,7 @@ public class StoreActivity extends Activity implements Runnable {
     final Context context = this;
     ImageView view1;
     public Bitmap downloadedBitmap;
-    ArrayList<Product> productList;
+    ArrayList<Product> productList = new ArrayList<Product>();
 
     ArrayList<String> urllist = new ArrayList<String>();
     String name;
@@ -47,8 +47,6 @@ public class StoreActivity extends Activity implements Runnable {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.store);
-
-
         Intent intent = getIntent();
         cname = intent.getStringExtra("category");
         this.setTitle(cname);
