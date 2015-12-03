@@ -20,13 +20,35 @@ public class ProductDetailActivity extends Activity {
         String name = intent.getStringExtra("name");
         String price = intent.getStringExtra("price");
         final String Link = intent.getStringExtra("link");
-        String productInf = intent.getStringExtra("productInfo");
+       // String productInf = intent.getStringExtra("productInfo");
         TextView productName = (TextView) findViewById(R.id._pinfo);
         TextView productPrice = (TextView) findViewById(R.id._cinfo);
-        TextView productInfo = (TextView) findViewById(R.id.productdetail_info);
+   
         productName.setText(name);
         productPrice.setText(price);
-        productInfo.setText(productInf);
+       // productInfo.setText(productInf);
+        productName.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				Intent intent = getIntent();
+				  String name = intent.getStringExtra("name");
+				TextView productInfo = (TextView) findViewById(R.id.productdetail_info);				
+				productInfo.setText(name);
+			}
+        	
+        });
+        productPrice.setOnClickListener(new OnClickListener(){
+
+     			@Override
+     			public void onClick(View v) {
+     				Intent intent = getIntent();
+     				String price = intent.getStringExtra("price");
+     				TextView productInfo = (TextView) findViewById(R.id.productdetail_info);     				
+     				productInfo.setText(price);
+     			}
+             	
+             });
 
         final ImageView productDetailImageView = (ImageView) findViewById(R.id.productdetail_image);
         productDetailImageView.setImageBitmap(bitmap);
@@ -53,6 +75,7 @@ public class ProductDetailActivity extends Activity {
                 productDetailImageView.setImageBitmap(bitmap);
             }
         });
+        
 
        /*five_button.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
