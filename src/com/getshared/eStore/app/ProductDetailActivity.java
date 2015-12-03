@@ -20,35 +20,16 @@ public class ProductDetailActivity extends Activity {
         String name = intent.getStringExtra("name");
         String price = intent.getStringExtra("price");
         final String Link = intent.getStringExtra("link");
-       // String productInf = intent.getStringExtra("productInfo");
-        TextView productName = (TextView) findViewById(R.id._pinfo);
-        TextView productPrice = (TextView) findViewById(R.id._cinfo);
-   
-        productName.setText(name);
-        productPrice.setText(price);
-       // productInfo.setText(productInf);
-        productName.setOnClickListener(new OnClickListener(){
+        String productInf = intent.getStringExtra("productInfo");
 
-			@Override
-			public void onClick(View v) {
-				Intent intent = getIntent();
-				  String name = intent.getStringExtra("name");
-				TextView productInfo = (TextView) findViewById(R.id.productdetail_info);				
-				productInfo.setText(name);
-			}
-        	
-        });
-        productPrice.setOnClickListener(new OnClickListener(){
+        TextView productNameField = (TextView) findViewById(R.id.productName);
+        productNameField.setText(name);
 
-     			@Override
-     			public void onClick(View v) {
-     				Intent intent = getIntent();
-     				String price = intent.getStringExtra("price");
-     				TextView productInfo = (TextView) findViewById(R.id.productdetail_info);     				
-     				productInfo.setText(price);
-     			}
-             	
-             });
+        TextView productPriceField = (TextView) findViewById(R.id.productPrice);
+        productPriceField.setText(price);
+
+        TextView productInfo = (TextView) findViewById(R.id.productdetail_info);
+        productInfo.setText(productInf);
 
         final ImageView productDetailImageView = (ImageView) findViewById(R.id.productdetail_image);
         productDetailImageView.setImageBitmap(bitmap);
@@ -66,35 +47,12 @@ public class ProductDetailActivity extends Activity {
             final ImageView third_button = (ImageView) findViewById(R.id.test_photo3);
             third_button.setVisibility(View.INVISIBLE);
         }
-        //final ImageView four_button = (ImageView)findViewById(R.id.test_photo3);
-        //final ImageView five_button = (ImageView)findViewById(R.id.test_photo1);
-        //final ImageView six_button = (ImageView)findViewById(R.id.imageView1);
-
         second_button.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 productDetailImageView.setImageBitmap(bitmap);
             }
         });
-        
 
-       /*five_button.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-                productDetailImageView.setImageBitmap(bitmap);
-         	 
-            }
-         });
-      four_button.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-                productDetailImageView.setImageBitmap(bitmap);
-         	  
-            }
-         });
-      six_button.setOnClickListener(new OnClickListener() {
-          public void onClick(View v) {
-                productDetailImageView.setImageBitmap(bitmap);
-          }
-       });
-			*/
         TextView newPage1 = (TextView) findViewById(R.id._business);
         newPage1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,7 +68,6 @@ public class ProductDetailActivity extends Activity {
     }
 
     private OnClickListener OnClickListener() {
-        // TODO Auto-generated method stub
         return null;
     }
 

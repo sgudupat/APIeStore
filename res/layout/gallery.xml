@@ -17,7 +17,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical" >
-            
+
+            <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/productName" android:hint="Product name" android:layout_marginTop="20dp"
+                    android:gravity="center_horizontal"/>
             <LinearLayout
                 android:id="@+id/croll"
                 android:layout_width="wrap_content"
@@ -25,7 +31,8 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
                 android:orientation="vertical"
-                android:padding="10dp" >
+                android:padding="10dp"
+                    >
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
@@ -101,34 +108,35 @@
 
             <ImageView
                 android:id="@+id/productdetail_image"
-                android:layout_width="250dp"
+                android:layout_width="300dp"
                 android:layout_height="300dp"
                android:adjustViewBounds="true"
-                android:layout_centerHorizontal="true"
                 android:contentDescription="@string/app_name"
-                android:scaleType="centerCrop" android:layout_marginTop="10dp"/>
+                android:scaleType="centerCrop" android:layout_marginTop="10dp" android:layout_marginLeft="10dp"
+                android:layout_below="@+id/productName"/>
 
+            <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/productPrice" android:layout_below="@+id/productdetail_image"
+                    android:gravity="center_horizontal" android:hint="product price" android:textColor="@color/orange"
+                    android:textStyle="bold"/>
             <LinearLayout
                 android:id="@+id/informations_container"
-                android:layout_width="match_parent"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:background="@android:color/white"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:padding="1dp" android:layout_below="@+id/productdetail_image">
+                android:padding="1dp" android:layout_below="@+id/productPrice">
 
-                <TextView
-                    android:id="@+id/_business"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@android:color/white"
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:text="BUY NOW"
-                    android:textColor="@color/orange"
-                    android:textStyle="bold" />
+                <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Buy Now"
+                        android:id="@+id/_business" android:layout_weight="1" android:textStyle="bold"/>
             </LinearLayout>
 
             <LinearLayout
@@ -141,7 +149,7 @@
                 android:layout_marginTop="5dp"
                 android:background="@color/feed_bg"
                 android:gravity="center"
-                android:orientation="horizontal" >
+                android:orientation="horizontal" android:visibility="gone">
 
                 <TextView
                     android:id="@+id/_pinfo"
@@ -154,7 +162,7 @@
                     android:text="PRODUCT INFO"
                     android:textColor="@android:color/black"
                     android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold" android:visibility="gone"/>
 
                 <TextView
                     android:id="@+id/_cinfo"
@@ -167,7 +175,7 @@
                     android:text="REVIEW"
                     android:textColor="@android:color/black"
                     android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold" android:visibility="gone"/>
 
                 <TextView
                     android:id="@+id/_binfo"
@@ -180,7 +188,7 @@
                     android:text="SPECIFICATION"
                     android:textColor="@android:color/black"
                     android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold" android:visibility="gone"/>
             </LinearLayout>
 
             <!-- cheat code: negative margin -->
@@ -195,7 +203,7 @@
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:padding="2dp"
-                android:visibility="visible" android:layout_marginTop="5dp">
+                android:visibility="visible" android:layout_marginTop="10dp">
 
                 <LinearLayout
                     android:layout_width="0dp"

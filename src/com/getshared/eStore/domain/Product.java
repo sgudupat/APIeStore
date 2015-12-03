@@ -14,9 +14,8 @@ public class Product {
     private String productInfo;
     private String company;
 
-   
 
-	public Product(String category, String price, String name,
+    public Product(String category, String price, String name,
                    String specification, String image, String code, String productInfo) {
         super();
         this.category = category;
@@ -32,23 +31,22 @@ public class Product {
         this.link = link;
     }
 
-    public Product(String image, String link, String productInfo, String price, String name,String cname) {
-
+    public Product(String image, String link, String productInfo, String price, String name, String cname) {
         this.image = image;
         this.link = link;
         this.productInfo = productInfo;
         this.price = price;
         this.name = name;
-        this.company=cname;
+        this.company = cname;
     }
-    
-    public String getpCompany() {
-		return company;
-	}
 
-	public void setpCompany(String pCompany) {
-		this.company = pCompany;
-	}
+    public String getpCompany() {
+        return company;
+    }
+
+    public void setpCompany(String pCompany) {
+        this.company = pCompany;
+    }
 
     public String getLink() {
         return link;

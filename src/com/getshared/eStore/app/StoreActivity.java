@@ -119,7 +119,7 @@ public class StoreActivity extends Activity implements Runnable {
                 productList.get(i).setTransformedImage(downloadedBitmap);
 
             } catch (IOException e) {
-                downloadedBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.hs_bg);
+                downloadedBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.hs_bg2);
                 productList.get(i).setTransformedImage(downloadedBitmap);
                 continue;
             }
@@ -138,33 +138,23 @@ public class StoreActivity extends Activity implements Runnable {
                     break;
                 }
                 counter++;
-
                 JSONObject c = dataJsonArr.getJSONObject(i);
-
                 // Storing each json item in variable
                 String imageLink = c.getString("imageLink");
                 String imagedetail = c.getString("link");
                 String title = c.getString("title");
                 String description = c.getString("description");
                 String mrp = c.getString("mrp");
+                String offerPrice = c.getString("offerPrice");
                 company = "snapdeal";
-                product.add(new Product(imageLink, imagedetail, description, mrp, title, company));
-
-
+                product.add(new Product(imageLink, imagedetail, description, offerPrice, title, company));
             }
-
-
         } catch (InterruptedException e1) {
-            // TODO Auto-generated catch block
             e1.printStackTrace();
         } catch (ExecutionException e1) {
-            // TODO Auto-generated catch block
             e1.printStackTrace();
         }
-
-
         return product;
-
     }
 
     private ArrayList<Product> generateData1() throws JSONException {
@@ -191,55 +181,34 @@ public class StoreActivity extends Activity implements Runnable {
                 amount = selling.getString("amount");
                 name = category.getString("title");
                 company = "flipkart";
-
                 product.add(new Product(imageLink, image, productInfo, amount, name, company));
-
             }
 
         } catch (InterruptedException e1) {
-            // TODO Auto-generated catch block
             e1.printStackTrace();
         } catch (ExecutionException e1) {
-            // TODO Auto-generated catch block
             e1.printStackTrace();
         }
-
-
         return product;
-
     }
 
     public class flipkartTaskParseJson extends AsyncTask<String, String, String> {
-
-
         JSONArray dataJsonArr = null;
-
         @Override
         protected void onPreExecute() {
         }
 
         @Override
         protected String doInBackground(String... arg0) {
-
-
             JsonParserF jParser = new JsonParserF();
-
-
             JSONObject json = null;
             try {
                 json = jParser.getJSONFromUrl(url);
-
-
             } catch (URISyntaxException e) {
-
                 e.printStackTrace();
             }
-            //Log.i("FlipKart response", json.toString());
             return json.toString();
-
-
         }
-
 
         protected void onPostExecute(String strFromDoInBg) {
         }
