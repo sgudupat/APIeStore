@@ -81,6 +81,10 @@ public class CategoryAdapter extends BaseAdapter implements ListAdapter {
         	catName.setText("Jewellery");
         	imgView.setImageResource(R.drawable.jewellery);
         }
+        if(key.toLowerCase().contains("fragrances")){
+        	catName.setText("Fragrances");
+        	imgView.setImageResource(R.drawable.offer8);
+        }
         return view;
     }
 }

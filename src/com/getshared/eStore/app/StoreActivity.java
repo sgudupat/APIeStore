@@ -205,6 +205,7 @@ public class StoreActivity extends Activity implements Runnable {
             } catch (URISyntaxException e) {
                 e.printStackTrace();
             }
+            Log.i("FlipKart response", json.toString());
             return json.toString();
         }
 
@@ -239,7 +240,7 @@ public class StoreActivity extends Activity implements Runnable {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-
+            Log.i("snap response", json.toString());
             return json.toString();
 
 

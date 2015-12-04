@@ -27,8 +27,8 @@ public class CategoryFragment extends Fragment implements Runnable {
     ArrayList<String> eURL = new ArrayList<String>();
     ArrayList<String> aURL = new ArrayList<String>();
     ArrayList<String> jURL = new ArrayList<String>();
-    ArrayList<String> tURL = new ArrayList<String>();
-
+    ArrayList<String> yURL = new ArrayList<String>();
+    ArrayList<String> wURL = new ArrayList<String>();
     HashMap<String, ArrayList<String>> categoryList = new HashMap<String, ArrayList<String>>();
 
     private static String url = "http://affiliate-feeds.snapdeal.com/feed/57185.json";
@@ -53,6 +53,7 @@ public class CategoryFragment extends Fragment implements Runnable {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getActivity(), StoreActivity.class);
                 intent.putExtra("producturl", adapter.getItem(position));
+                Log.i("product urlll", ""+adapter.getItem(position));
                 TextView textView = (TextView) view.findViewById(R.id.categoryName);
                 String text = textView.getText().toString();
                 intent.putExtra("category", text);
@@ -64,12 +65,14 @@ public class CategoryFragment extends Fragment implements Runnable {
     @SuppressLint("DefaultLocale")
     private HashMap<String, ArrayList<String>> finalData() {
         Log.i("fURL::", fURL.toString());
-        categoryList.put("Furniture", fURL);
+        categoryList.put("Furniture", fURL);              
         categoryList.put("Apparels", aURL);
         categoryList.put("Jewellery", jURL);
-        categoryList.put("Eyewear", tURL);
+        categoryList.put("EyeWear", yURL);
+        categoryList.put("Fragrances", wURL);
         categoryList.put("Electronics", eURL);
         return categoryList;
+       
     }
 
     private void generateData() {
@@ -106,35 +109,96 @@ public class CategoryFragment extends Fragment implements Runnable {
                         JSONObject listing = jObj.getJSONObject("listingVersions");
                         JSONObject version = listing.getJSONObject("v1");
                         String get = version.getString("get");
-                        Log.i("get::", get);
+                        Log.i("furniture get::", get);
                         //items.add(new Category(key, get));
                         fURL.add(get);
                     } catch (Exception e) {
-                        Log.i("Snap error:", e.getMessage());
+                        Log.i("furniture error:", e.getMessage());
                     }
                 }
-                /* //Apparels Section
+                 //Apparels Section
                 String[] apparels = getResources().getStringArray(R.array.apparel_section);
                 for (String a : apparels) {
+                	 try {
                     String url = list.getString(a);
                     JSONObject jObj = new JSONObject(url);
                     JSONObject listing = jObj.getJSONObject("listingVersions");
                     JSONObject version = listing.getJSONObject("v1");
                     String get = version.getString("get");
+                    Log.i("apparels get", get);
                     //items.add(new Category(key, get));
                     aURL.add(get);
+                	 } catch (Exception e) {
+                         Log.i("apparels error:", e.getMessage());
+                     }
                 }
-                //Electronics Section
+              //Electronics Section
                 String[] electronics = getResources().getStringArray(R.array.electronics_section);
                 for (String e : electronics) {
+                	 try {
                     String url = list.getString(e);
                     JSONObject jObj = new JSONObject(url);
                     JSONObject listing = jObj.getJSONObject("listingVersions");
                     JSONObject version = listing.getJSONObject("v1");
                     String get = version.getString("get");
+                    Log.i("electronics get", get);
                     //items.add(new Category(key, get));
                     eURL.add(get);
-                }*/
+                	 } catch (Exception e3) {
+                         Log.i("electronics error:", e3.getMessage());
+                     }
+                }
+                //Jewellery Section
+                String[] jewellery = getResources().getStringArray(R.array.jewellery_section);
+                for (String e : jewellery) {
+                	try {
+                	Log.i("jewellery", e);
+                    String url = list.getString(e);
+                    JSONObject jObj = new JSONObject(url);
+                    JSONObject listing = jObj.getJSONObject("listingVersions");
+                    JSONObject version = listing.getJSONObject("v1");
+                    String get = version.getString("get");
+                    Log.i("get jewellery ::", get);
+                    //items.add(new Category(key, get));
+                    jURL.add(get);
+                	 } catch (Exception e2) {
+                         Log.i("jewellery error:", e2.getMessage());
+                     }
+                }
+              //eye wear Section
+                String[] eyewear = getResources().getStringArray(R.array.eyewear_section);
+                for (String f : eyewear) {
+                    try {
+                        String url = list.getString(f);
+                        JSONObject jObj = new JSONObject(url);
+                        JSONObject listing = jObj.getJSONObject("listingVersions");
+                        JSONObject version = listing.getJSONObject("v1");
+                        String get = version.getString("get");
+                        Log.i("get eyewear::", get);
+                        //items.add(new Category(key, get));
+                        yURL.add(get);
+                    } catch (Exception e) {
+                        Log.i("eyewear error:", e.getMessage());
+                    }
+                }
+              //fragrance_section 
+                String[] fragrances = getResources().getStringArray(R.array.fragrance_section);
+                for (String e : fragrances) {
+                	  try {
+                	Log.i("fragrances", e);
+                    String url = list.getString(e);
+                    JSONObject jObj = new JSONObject(url);
+                    JSONObject listing = jObj.getJSONObject("listingVersions");
+                    JSONObject version = listing.getJSONObject("v1");
+                    String get = version.getString("get");
+                    Log.i("fragrances get", get);
+                    //items.add(new Category(key, get));
+                    wURL.add(get);
+                	  } catch (Exception e1) {
+                          Log.i("fragrances error:", e1.getMessage());
+                      }
+                }
+
 
             } catch (URISyntaxException e) {
                 e.printStackTrace();
@@ -184,6 +248,7 @@ public class CategoryFragment extends Fragment implements Runnable {
                 e.printStackTrace();
             }
             return json.toString();
+           
         }
 
         protected void onPostExecute(String json) {
