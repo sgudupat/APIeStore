@@ -1,25 +1,26 @@
 package com.getshared.eStore.app;
 
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.concurrent.ExecutionException;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.getshared.eStore.app.common.JsonParser;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.concurrent.ExecutionException;
+import com.getshared.eStore.app.common.JsonParser;
 
 public class CategoryFragment extends Fragment implements Runnable {
 
@@ -52,8 +53,7 @@ public class CategoryFragment extends Fragment implements Runnable {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getActivity(), StoreActivity.class);
-                intent.putExtra("producturl", adapter.getItem(position));
-                Log.i("product urlll", ""+adapter.getItem(position));
+                intent.putExtra("producturl", adapter.getItem(position));               
                 TextView textView = (TextView) view.findViewById(R.id.name_producttext);
                 String text = textView.getText().toString();
                 intent.putExtra("category", text);
@@ -63,8 +63,7 @@ public class CategoryFragment extends Fragment implements Runnable {
     }
 
     @SuppressLint("DefaultLocale")
-    private HashMap<String, ArrayList<String>> finalData() {
-        Log.i("fURL::", fURL.toString());
+    private HashMap<String, ArrayList<String>> finalData() {      
         categoryList.put("Furniture", fURL);              
         categoryList.put("Apparels", aURL);
         categoryList.put("Jewellery", jURL);
@@ -108,12 +107,10 @@ public class CategoryFragment extends Fragment implements Runnable {
                         JSONObject jObj = new JSONObject(url);
                         JSONObject listing = jObj.getJSONObject("listingVersions");
                         JSONObject version = listing.getJSONObject("v1");
-                        String get = version.getString("get");
-                        Log.i("furniture get::", get);
-                        //items.add(new Category(key, get));
+                        String get = version.getString("get");                     
                         fURL.add(get);
                     } catch (Exception e) {
-                        Log.i("furniture error:", e.getMessage());
+                        
                     }
                 }
                  //Apparels Section
@@ -125,11 +122,9 @@ public class CategoryFragment extends Fragment implements Runnable {
                     JSONObject listing = jObj.getJSONObject("listingVersions");
                     JSONObject version = listing.getJSONObject("v1");
                     String get = version.getString("get");
-                    Log.i("apparels get", get);
-                    //items.add(new Category(key, get));
                     aURL.add(get);
                 	 } catch (Exception e) {
-                         Log.i("apparels error:", e.getMessage());
+                       
                      }
                 }
               //Electronics Section
@@ -141,28 +136,24 @@ public class CategoryFragment extends Fragment implements Runnable {
                     JSONObject listing = jObj.getJSONObject("listingVersions");
                     JSONObject version = listing.getJSONObject("v1");
                     String get = version.getString("get");
-                    Log.i("electronics get", get);
-                    //items.add(new Category(key, get));
                     eURL.add(get);
                 	 } catch (Exception e3) {
-                         Log.i("electronics error:", e3.getMessage());
+                        
                      }
                 }
                 //Jewellery Section
                 String[] jewellery = getResources().getStringArray(R.array.jewellery_section);
                 for (String e : jewellery) {
                 	try {
-                	Log.i("jewellery", e);
+                	
                     String url = list.getString(e);
                     JSONObject jObj = new JSONObject(url);
                     JSONObject listing = jObj.getJSONObject("listingVersions");
                     JSONObject version = listing.getJSONObject("v1");
-                    String get = version.getString("get");
-                    Log.i("get jewellery ::", get);
-                    //items.add(new Category(key, get));
+                    String get = version.getString("get");                 
                     jURL.add(get);
                 	 } catch (Exception e2) {
-                         Log.i("jewellery error:", e2.getMessage());
+                        
                      }
                 }
               //eye wear Section
@@ -173,29 +164,25 @@ public class CategoryFragment extends Fragment implements Runnable {
                         JSONObject jObj = new JSONObject(url);
                         JSONObject listing = jObj.getJSONObject("listingVersions");
                         JSONObject version = listing.getJSONObject("v1");
-                        String get = version.getString("get");
-                        Log.i("get eyewear::", get);
-                        //items.add(new Category(key, get));
-                        yURL.add(get);
+                        String get = version.getString("get");                       
+                        yURL.add(get);                        
                     } catch (Exception e) {
-                        Log.i("eyewear error:", e.getMessage());
+                       
                     }
                 }
               //fragrance_section 
                 String[] fragrances = getResources().getStringArray(R.array.fragrance_section);
                 for (String e : fragrances) {
                 	  try {
-                	Log.i("fragrances", e);
+                	
                     String url = list.getString(e);
                     JSONObject jObj = new JSONObject(url);
                     JSONObject listing = jObj.getJSONObject("listingVersions");
                     JSONObject version = listing.getJSONObject("v1");
                     String get = version.getString("get");
-                    Log.i("fragrances get", get);
-                    //items.add(new Category(key, get));
                     wURL.add(get);
                 	  } catch (Exception e1) {
-                          Log.i("fragrances error:", e1.getMessage());
+                         
                       }
                 }
 
@@ -234,11 +221,10 @@ public class CategoryFragment extends Fragment implements Runnable {
                         JSONObject jObj = new JSONObject(url);
                         JSONObject listing = jObj.getJSONObject("availableVariants");
                         JSONObject version = listing.getJSONObject("v0.1.0");
-                        String fGet = version.getString("get");
-                        Log.i("f get::", fGet);
+                        String fGet = version.getString("get");                       
                         fURL.add(fGet);
                     } catch (Exception e) {
-                        Log.i("Snap error:", e.getMessage());
+                      
                     }
                 }
 
@@ -259,8 +245,8 @@ public class CategoryFragment extends Fragment implements Runnable {
     public void run() {
 
         try {
-            String result = new AsyncTaskParseJson().execute().get();
-            String result1 = new flipkartTaskParseJson().execute().get();
+            new AsyncTaskParseJson().execute().get();
+           new flipkartTaskParseJson().execute().get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {

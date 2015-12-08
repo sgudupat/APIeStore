@@ -102,15 +102,6 @@
                 android:textSize="12sp" />
         </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/imageButton1"
-            android:layout_width="30dp"
-            android:layout_height="20dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignTop="@+id/company"
-            android:layout_marginLeft="75dp"
-            android:src="@drawable/dollerg" />
-
     </RelativeLayout>
 
 </RelativeLayout>

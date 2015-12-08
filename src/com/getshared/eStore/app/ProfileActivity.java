@@ -65,7 +65,7 @@ public class ProfileActivity extends Activity {
         final Context context = this;
         try {
             String response = SimpleHttpClient.executeHttpPost("/addAddress", postParameters);
-            Log.i("Response:", response);
+            
 
             if (response.contains("success")) {               
             } else {

@@ -238,15 +238,6 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <ImageButton
-                android:id="@+id/imageButton1"
-                android:layout_width="30dp"
-                android:layout_height="20dp"
-                android:layout_above="@+id/informations_container"
-                android:layout_alignLeft="@+id/productdetail_image"
-                android:layout_marginLeft="59dp"
-                android:src="@drawable/dollerg" />
-
         </RelativeLayout>
     </ScrollView>
 

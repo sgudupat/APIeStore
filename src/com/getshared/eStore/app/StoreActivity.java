@@ -1,5 +1,16 @@
 package com.getshared.eStore.app;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -7,22 +18,12 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.GridView;
 import android.widget.ImageView;
+
 import com.getshared.eStore.app.common.JsonParser;
 import com.getshared.eStore.domain.JsonParserF;
 import com.getshared.eStore.domain.Product;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
 
 public class StoreActivity extends Activity implements Runnable {
 
@@ -104,12 +105,10 @@ public class StoreActivity extends Activity implements Runnable {
 
 
     public void run() {
-        int i = 0;
-        Log.i("product list size", "" + productList.size());
+        int i = 0;       
         for (i = 0; i < productList.size(); i++) {
             try {
-                String image = productList.get(i).getImage();
-                Log.i("image name", image);
+                String image = productList.get(i).getImage();                
                 URL location = new URL(image);
                 InputStream input_s = location.openStream();
                 downloadedBitmap = BitmapFactory.decodeStream(input_s);
@@ -160,8 +159,7 @@ public class StoreActivity extends Activity implements Runnable {
             String result = new flipkartTaskParseJson().execute().get();
             JSONObject json = new JSONObject(result);
             int counter = 0;
-            JSONArray dataJsonArr = json.getJSONArray("productInfoList");
-            Log.i("json array length", "" + dataJsonArr.length());
+            JSONArray dataJsonArr = json.getJSONArray("productInfoList");          
             for (int i = 0; i < dataJsonArr.length(); i++) {
                 if (counter > 5) {
                     break;
@@ -204,8 +202,7 @@ public class StoreActivity extends Activity implements Runnable {
                 json = jParser.getJSONFromUrl(url);
             } catch (URISyntaxException e) {
                 e.printStackTrace();
-            }
-            Log.i("FlipKart response", json.toString());
+            }         
             return json.toString();
         }
 
@@ -239,8 +236,7 @@ public class StoreActivity extends Activity implements Runnable {
             } catch (URISyntaxException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
-            }
-            Log.i("snap response", json.toString());
+            }           
             return json.toString();
 
 

@@ -1,6 +1,12 @@
 package com.getshared.eStore.app.common;
 
-import android.util.Log;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -8,10 +14,6 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.*;
-import java.net.URI;
-import java.net.URISyntaxException;
 
 public class JsonParser {
 
@@ -38,8 +40,7 @@ public class JsonParser {
             httpGet.addHeader("Snapdeal-Token-Id", affiliateToken);
 
 
-            HttpResponse httpResponse = httpClient.execute(httpGet);
-            Log.i("server response", httpResponse.toString());
+            HttpResponse httpResponse = httpClient.execute(httpGet);           
             HttpEntity httpEntity = httpResponse.getEntity();
             is = httpEntity.getContent();
 
@@ -63,14 +64,14 @@ public class JsonParser {
             json = sb.toString();
 
         } catch (Exception e) {
-            Log.e(TAG, "Error converting result " + e.toString());
+          
         }
 
         // try parse the string to a JSON object
         try {
             jObj = new JSONObject(json);
         } catch (JSONException e) {
-            Log.e(TAG, "Error parsing data " + e.toString());
+           
         }
 
         // return JSON String

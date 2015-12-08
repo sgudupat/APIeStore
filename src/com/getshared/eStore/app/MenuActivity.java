@@ -2,8 +2,6 @@ package com.getshared.eStore.app;
 
 import java.util.ArrayList;
 
-import com.getshared.eStore.domain.NavDrawerItem;
-
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -13,12 +11,13 @@ import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
+import com.getshared.eStore.domain.NavDrawerItem;
 
 
 public class MenuActivity extends Activity{
@@ -39,7 +38,7 @@ public class MenuActivity extends Activity{
 	private ArrayList<NavDrawerItem> navDrawerItems;
 	private NavDrawerListAdapter adapter;
 
-	 @Override
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.slidemenu);
@@ -69,7 +68,7 @@ public class MenuActivity extends Activity{
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
 		// Page 6
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
-		
+
 
 		// Recycle the typed array
 		navMenuIcons.recycle();
@@ -89,7 +88,7 @@ public class MenuActivity extends Activity{
 				R.drawable.ic_drawer, //nav menu toggle icon
 				R.string.app_name, // nav drawer open - description for accessibility
 				R.string.app_name // nav drawer close - description for accessibility
-		) {
+				) {
 			public void onDrawerClosed(View view) {
 				getActionBar().setTitle(mTitle);
 				// calling onPrepareOptionsMenu() to show action bar icons
@@ -114,7 +113,7 @@ public class MenuActivity extends Activity{
 	 * Slide menu item click listener
 	 * */
 	private class SlideMenuClickListener implements
-			ListView.OnItemClickListener {
+	ListView.OnItemClickListener {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position,
 				long id) {
@@ -166,8 +165,8 @@ public class MenuActivity extends Activity{
 			fragment = new CategoryFragment();
 			break;
 		case 1:
-			 Intent intent = new Intent(this, ProfileActivity.class);
-		        startActivity(intent);
+			Intent intent = new Intent(this, ProfileActivity.class);
+			startActivity(intent);
 			break;
 		case 2:
 			fragment = new Page_first();
@@ -189,7 +188,7 @@ public class MenuActivity extends Activity{
 		if (fragment != null) {
 			FragmentManager fragmentManager = getFragmentManager();
 			fragmentManager.beginTransaction()
-					.replace(R.id.frame_container, fragment).commit();
+			.replace(R.id.frame_container, fragment).commit();
 
 			// update selected item and title, then close the drawer
 			mDrawerList.setItemChecked(position, true);
@@ -198,7 +197,7 @@ public class MenuActivity extends Activity{
 			mDrawerLayout.closeDrawer(mDrawerList);
 		} else {
 			// error in creating fragment
-			Log.e("MainActivity", "Error in creating fragment");
+
 		}
 	}
 
