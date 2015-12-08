@@ -17,6 +17,7 @@
     <string name="drawer_open">Slider Menu Opened</string>
     <string name="drawer_close">Slider Menu Closed</string>
     <string name="menu">Menu</string>
+	<string name="rs">\u20A8</string>
 
     <!-- Nav Drawer Menu Items
     <string-array name="nav_drawer_items">

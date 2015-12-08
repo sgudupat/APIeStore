@@ -68,7 +68,7 @@ public class CategoryActivity extends Activity implements Runnable {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(CategoryActivity.this, StoreActivity.class);
                 intent.putExtra("producturl", adapter.getItem(position));
-                TextView textView = (TextView) view.findViewById(R.id.categoryName);
+                TextView textView = (TextView) view.findViewById(R.id.name_producttext);
                 String text = textView.getText().toString();
                 intent.putExtra("category", text);
                 startActivity(intent);

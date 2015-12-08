@@ -19,6 +19,7 @@ public class ProductDetailActivity extends Activity {
         final Bitmap bitmap2 = (Bitmap) intent.getParcelableExtra("bitmapImage2");
         String name = intent.getStringExtra("name");
         String price = intent.getStringExtra("price");
+		String rupeeSymbol = getResources().getString(R.string.rs);
         final String Link = intent.getStringExtra("link");
         String productInf = intent.getStringExtra("productInfo");
 
@@ -26,7 +27,7 @@ public class ProductDetailActivity extends Activity {
         productNameField.setText(name);
 
         TextView productPriceField = (TextView) findViewById(R.id.productPrice);
-        productPriceField.setText(price);
+        productPriceField.setText(rupeeSymbol + " " + price);
 
         TextView productInfo = (TextView) findViewById(R.id.productdetail_info);
         productInfo.setText(productInf);

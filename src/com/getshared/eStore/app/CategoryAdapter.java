@@ -54,36 +54,44 @@ public class CategoryAdapter extends BaseAdapter implements ListAdapter {
         View view = convertView;
         if (view == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.category_item, null);
+            view = inflater.inflate(R.layout.test, null);
         }
 
-        TextView catName = (TextView) view.findViewById(R.id.categoryName);     
-        ImageView imgView = (ImageView) view.findViewById(R.id.category_image);
+        TextView catName = (TextView) view.findViewById(R.id.name_producttext); 
+        TextView catDescription = (TextView) view.findViewById(R.id.textView2);
+        ImageView imgView = (ImageView) view.findViewById(R.id.imageView1);
         String key = cKeys[position];
         ArrayList<String> Value = getItem(position);    
         if(key.toLowerCase().contains("furniture")){
         	catName.setText("Furniture");
-        	imgView.setImageResource(R.drawable.furniture);
+        	catDescription.setText("Tables,Chairs,Beds,Desks, Dressers,or Cupboards");
+        	imgView.setImageResource(R.drawable.furnituresample);
         }
         if(key.toLowerCase().contains("eyewear")){
         	catName.setText("Eyewear");
-        	imgView.setImageResource(R.drawable.offer2);
+        	
+        	catDescription.setText("SunGlasses,EyeClasses");
+        	imgView.setImageResource(R.drawable.sunglasses1);
         }
         if(key.toLowerCase().contains("apparels")){
         	catName.setText("Apparels");
-        	imgView.setImageResource(R.drawable.apparel);
+        	catDescription.setText("Formal,Casual");
+        	imgView.setImageResource(R.drawable.menshirt);
         }
         if(key.toLowerCase().contains("electronics")){
         	catName.setText("Electronics");
-        	imgView.setImageResource(R.drawable.electronics);
+        	catDescription.setText("Laptop,Mobile");
+        	imgView.setImageResource(R.drawable.electonics1);
         }
         if(key.toLowerCase().contains("jewellery")){
         	catName.setText("Jewellery");
-        	imgView.setImageResource(R.drawable.jewellery);
+        	catDescription.setText("Neck,Arms,Body,Hands");
+        	imgView.setImageResource(R.drawable.jewellery1);
         }
         if(key.toLowerCase().contains("fragrances")){
         	catName.setText("Fragrances");
-        	imgView.setImageResource(R.drawable.offer8);
+        	catDescription.setText("Men, Women");
+        	imgView.setImageResource(R.drawable.fragrances1);
         }
         return view;
     }

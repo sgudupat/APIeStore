@@ -54,7 +54,7 @@ public class CategoryFragment extends Fragment implements Runnable {
                 Intent intent = new Intent(getActivity(), StoreActivity.class);
                 intent.putExtra("producturl", adapter.getItem(position));
                 Log.i("product urlll", ""+adapter.getItem(position));
-                TextView textView = (TextView) view.findViewById(R.id.categoryName);
+                TextView textView = (TextView) view.findViewById(R.id.name_producttext);
                 String text = textView.getText().toString();
                 intent.putExtra("category", text);
                 startActivity(intent);
