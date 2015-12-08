@@ -18,7 +18,7 @@
     <string name="drawer_close">Slider Menu Closed</string>
     <string name="menu">Menu</string>
 
-    <!-- Nav Drawer Menu Items -->
+    <!-- Nav Drawer Menu Items
     <string-array name="nav_drawer_items">
         <item>Categories</item>
         <item>profile</item>
@@ -27,9 +27,10 @@
         <item>page 5</item>
         <item>page 6</item>
     </string-array>
+     -->
 
     <!-- Nav Drawer List Item Icons -->
-    <!-- Keep them in order as the titles are in -->
+    <!-- Keep them in order as the titles are in 
     <array name="nav_drawer_icons">
         <item>@drawable/ic_launcher</item>
         <item>@drawable/ic_launcher</item>
@@ -38,9 +39,10 @@
         <item>@drawable/ic_launcher</item>
         <item>@drawable/ic_launcher</item>
     </array>
-
-    <!-- Content Description -->
+-->
+    <!-- Content Description 
     <string name="desc_list_item_icon">Item Icon</string>
+    -->
 
     <string-array name="categories">
         <item>Furniture</item>

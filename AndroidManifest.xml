@@ -10,7 +10,7 @@
     <application android:label="@string/app_name" android:icon="@drawable/hs" android:theme="@style/AppTheme" >
         <meta-data android:name="com.google.android.gms.version" android:value="7895000"/>
 
-        <activity android:name="com.getshared.eStore.app.MenuActivity" android:label="@string/app_name">
+        <activity android:name=".CategoryActivity" android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -22,6 +22,6 @@
         <activity android:name="com.getshared.eStore.app.ForgotPasswordActivity" android:label="@string/forgot"></activity>
         <activity android:name="com.getshared.eStore.app.ProfileActivity" android:label="@string/profile"></activity>
         <activity android:name="com.getshared.eStore.app.ProductDetailActivity" android:label="@string/product"></activity>
-        <activity android:name="com.getshared.eStore.app.CategoryActivity"></activity>
+   
     </application>
 </manifest>
