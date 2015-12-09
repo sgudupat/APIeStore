@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="300dp"
+            android:id="@+id/logo" android:background="@drawable/handshake_logo" android:layout_marginTop="120dp"/>
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Get  Shared"
+            android:id="@+id/title" android:layout_gravity="bottom"
+            android:gravity="center_horizontal" android:textColor="#ffff8e4d" android:textStyle="bold|italic"
+            android:textSize="60dp"
+            android:fontFamily="cursive"
+            android:focusable="false" android:enabled="false" android:focusableInTouchMode="false"
+            android:elegantTextHeight="false" android:elevation="@dimen/screen_display_size"/>
+</LinearLayout>
