@@ -4,6 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+    
+
     <ImageView
         android:id="@+id/logo"
         android:layout_width="fill_parent"
@@ -27,6 +29,6 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#ffff8e4d"
         android:textSize="60dp"
-        android:textStyle="bold|italic" />
+        />
 
 </LinearLayout>

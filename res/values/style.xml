@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-     <!-- Application theme. -->
-     <style name="AppTheme" parent="android:Theme.DeviceDefault.Light">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
-    </style>
+    <style name="AppBaseTheme" parent="android:Theme.DeviceDefault.Light"></style>
+
+<!-- <style name="AppTheme" parent="AppBaseTheme">   
+  <item name="android:fontFamily">sans-serif-light</item>
+<item name="android:textStyle">normal</item>
+</style> -->
+<style name="AppTheme" parent="AppBaseTheme">
+    <item name="android:textViewStyle">@style/RobotoTextViewStyle</item>
+    
+</style>
+
+<style name="RobotoTextViewStyle" parent="android:Widget.TextView">
+    <item name="android:fontFamily">sans-serif-light</item>
+</style>
 </resources>
