@@ -105,7 +105,7 @@ public class StoreActivity extends Activity implements Runnable {
 
 
     public void run() {
-        int i = 0;       
+     /*   int i = 0;       
         for (i = 0; i < productList.size(); i++) {
             try {
                 String image = productList.get(i).getImage();                
@@ -120,7 +120,7 @@ public class StoreActivity extends Activity implements Runnable {
                 productList.get(i).setTransformedImage(downloadedBitmap);
                 continue;
             }
-        }
+        }*/
     }
 
     private ArrayList<Product> generateData() throws JSONException {
@@ -131,10 +131,10 @@ public class StoreActivity extends Activity implements Runnable {
             int counter = 0;
             // loop through all users
             for (int i = 0; i < dataJsonArr.length(); i++) {
-                if (counter > 5) {
+               /* if (counter > 5) {
                     break;
                 }
-                counter++;
+                counter++;*/
                 JSONObject c = dataJsonArr.getJSONObject(i);
                 // Storing each json item in variable
                 String imageLink = c.getString("imageLink");
@@ -161,11 +161,11 @@ public class StoreActivity extends Activity implements Runnable {
             int counter = 0;
             JSONArray dataJsonArr = json.getJSONArray("productInfoList");          
             for (int i = 0; i < dataJsonArr.length(); i++) {
-                if (counter > 5) {
+              /*  if (counter > 5) {
                     break;
                 }
                 counter++;
-                JSONObject jsonobject = dataJsonArr.getJSONObject(i);
+*/                JSONObject jsonobject = dataJsonArr.getJSONObject(i);
                 JSONObject productIdentifier = jsonobject.getJSONObject("productBaseInfo");
                 JSONObject category = productIdentifier.getJSONObject("productAttributes");
 

@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.getshared.eStore.domain.Product;
+import com.squareup.picasso.Picasso;
 
 
 public class ProductListAdapter extends BaseAdapter {
@@ -70,7 +71,8 @@ public class ProductListAdapter extends BaseAdapter {
 
 
 		{
-			imageView.setImageBitmap(dataList.get(position).getTransformedImage());
+			 Picasso.with(context).load(dataList.get(position).getImage()).into(imageView);
+			//imageView.setImageBitmap(dataList.get(position).getTransformedImage());
 			imageView.setOnClickListener(new View.OnClickListener() {
 				public void onClick(View v) {
 
