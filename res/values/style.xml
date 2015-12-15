@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppBaseTheme" parent="android:Theme.DeviceDefault.Light"></style>
+    <style name="AppBaseTheme" parent="android:Theme.Light"></style>
 
 <!-- <style name="AppTheme" parent="AppBaseTheme">   
   <item name="android:fontFamily">sans-serif-light</item>
@@ -8,7 +8,7 @@
 </style> -->
 <style name="AppTheme" parent="AppBaseTheme">
     <item name="android:textViewStyle">@style/RobotoTextViewStyle</item>
-    
+
 </style>
 
 <style name="RobotoTextViewStyle" parent="android:Widget.TextView">

@@ -13,55 +13,53 @@ import android.util.Log;
 import android.widget.Toast;
 
 public class HomeScreenActivity extends Activity {
-	final Context context= this;
-	//private Context context;
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.home_screen);
-		isNetworkAvailable(context);
-		int delay = 3000; // delay for 1 sec. 		
-		Timer timer = new Timer(); 
+    final Context context = this;
 
-		timer.schedule(new TimerTask() 
-		{ 
-			public void run() 
-			{ 
+    //private Context context;
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.home_screen);
+        isNetworkAvailable(context);
+        int delay = 3000; // delay for 1 sec.
+        Timer timer = new Timer();
 
-				
-				goToNext();  // display the data
-			} 
-		}, delay); 
+        timer.schedule(new TimerTask() {
+            public void run() {
+                goToNext();  // display the data
+            }
+        }, delay);
+    }
 
-	}
+    private void goToNext() {
+        // TODO Auto-generated method stub
 
-	private void goToNext() {
-		// TODO Auto-generated method stub
+        Intent intent = new Intent(this, CategoryActivity.class);
+        startActivity(intent);
+        finish();
 
-		Intent intent = new Intent(this, CategoryActivity.class);
-		startActivity(intent);   
-		finish();
+    }
 
-	}
-	private boolean isNetworkAvailable(Context context) {
-		Log.i("network connection", "network connectivity");
-		ConnectivityManager connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-		try{
-		if (connectivity != null) {
-			NetworkInfo[] info = connectivity.getAllNetworkInfo();
-			if (info != null) {
-				for (int i = 0; i < info.length; i++) {
-					Log.w("INTERNET:",String.valueOf(i));
-					if (info[i].getState() == NetworkInfo.State.CONNECTED) {
-						Log.w("INTERNET:", "connected!");    
-						Toast.makeText(getApplicationContext(), "NETWORK  CONNECTED !!!", Toast.LENGTH_LONG).show();
-						return true;
-					}}
-				}
-			}
-		}catch (Exception e) {
-			Log.e("register", e.getMessage() + "");
-			Toast.makeText(getApplicationContext(), "No Network Connectivity, Please check again!!!", Toast.LENGTH_LONG).show();
-	}
-		return false;
-}}
+    private boolean isNetworkAvailable(Context context) {
+        Log.i("network connection", "network connectivity");
+        ConnectivityManager connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        try {
+            if (connectivity != null) {
+                NetworkInfo[] info = connectivity.getAllNetworkInfo();
+                if (info != null) {
+                    for (int i = 0; i < info.length; i++) {
+                        Log.w("INTERNET:", String.valueOf(i));
+                        if (info[i].getState() == NetworkInfo.State.CONNECTED) {
+                            Log.w("INTERNET:", "connected!");
+                            return true;
+                        }
+                    }
+                }
+            }
+        } catch (Exception e) {
+            Log.e("register", e.getMessage() + "");
+            Toast.makeText(getApplicationContext(), "No Network Connectivity, Please check again!!!", Toast.LENGTH_LONG).show();
+        }
+        return false;
+    }
+}

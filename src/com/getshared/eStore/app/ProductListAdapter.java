@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,14 +66,16 @@ public class ProductListAdapter extends BaseAdapter {
 		TextView title = (TextView) gridView.findViewById(R.id.name);
 		title.setText(dataList.get(position).getName());
 		ImageView imageView = (ImageView) gridView.findViewById(R.id.photo);
+		imageView.setImageResource(R.drawable.cartdefault);
 		textView.setOnClickListener(new LinkProduct(dataList.get(position).getLink()));
 		SpannableString content = new SpannableString(dataList.get(position).getLink());
 		content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
 
 
 		{
-			 Picasso.with(context).load(dataList.get(position).getImage()).into(imageView);
-			//imageView.setImageBitmap(dataList.get(position).getTransformedImage());
+
+
+			Picasso.with(context).load(dataList.get(position).getImage()).placeholder(R.drawable.cartdefault).error(R.drawable.cartdefault).into(imageView);
 			imageView.setOnClickListener(new View.OnClickListener() {
 				public void onClick(View v) {
 
@@ -80,8 +83,11 @@ public class ProductListAdapter extends BaseAdapter {
 					Bitmap img1 = scaleDownBitmap(dataList.get(position).getTransformedImage(), 150, context);
 					Bitmap img2 = scaleDownBitmap(null, 150, context);
 
+					Log.i("img", ""+img1);
 					intent.putExtra("bitmapImage1", img1);
 					intent.putExtra("bitmapImage2", img2);
+					intent.putExtra("bitmapImage3", dataList.get(position).getImage());
+					Log.i("bitmapImage3", ""+dataList.get(position).getTransformedImage());
 					intent.putExtra("price", dataList.get(position).getPrice());
 					intent.putExtra("link", dataList.get(position).getLink());
 					intent.putExtra("productInfo", dataList.get(position).getProductInfo());
@@ -93,6 +99,7 @@ public class ProductListAdapter extends BaseAdapter {
 			});
 
 		}
+
 
 		return gridView;
 	}
