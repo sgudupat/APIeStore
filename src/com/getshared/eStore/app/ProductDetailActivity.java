@@ -67,7 +67,6 @@ public class ProductDetailActivity extends Activity {
 		newPage1.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-
 				Intent intent = new Intent();
 				intent.setAction(Intent.ACTION_VIEW);
 				intent.addCategory(Intent.CATEGORY_BROWSABLE);

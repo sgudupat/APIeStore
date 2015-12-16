@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">Get Shared</string>
     <string name="sign_in">Sign In</string>
     <string name="store">Store</string>
@@ -11,16 +12,18 @@
     <string name="order">Order Summary</string>
     <string name="btn_logout_from_google">Logout from Google</string>
     <string name="btn_revoke_access">Revoke Access</string>
+
     <integer name="google_play_services_version">1</integer>
+
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="drawer_open">Slider Menu Opened</string>
     <string name="drawer_close">Slider Menu Closed</string>
     <string name="menu">Menu</string>
-	
-	<string name="rs">\u20B9</string>
+    <string name="rs">\u20B9</string>
 
-    <!-- Nav Drawer Menu Items
+    <!--
+    Nav Drawer Menu Items
     <string-array name="nav_drawer_items">
         <item>Categories</item>
         <item>profile</item>
@@ -28,11 +31,13 @@
         <item>test 2</item>
         <item>page 5</item>
         <item>page 6</item>
-    </string-array>
-     -->
+    </string-array>
+    -->
+
 
     <!-- Nav Drawer List Item Icons -->
-    <!-- Keep them in order as the titles are in 
+    <!--
+    Keep them in order as the titles are in 
     <array name="nav_drawer_icons">
         <item>@drawable/ic_launcher</item>
         <item>@drawable/ic_launcher</item>
@@ -40,10 +45,11 @@
         <item>@drawable/ic_launcher</item>
         <item>@drawable/ic_launcher</item>
         <item>@drawable/ic_launcher</item>
-    </array>
--->
-    <!-- Content Description 
-    <string name="desc_list_item_icon">Item Icon</string>
+    </array>
+    -->
+    <!--
+    Content Description 
+    <string name="desc_list_item_icon">Item Icon</string>
     -->
 
     <string-array name="categories">
@@ -54,24 +60,26 @@
         <item>Fragrances</item>
         <item>Jewellery</item>
     </string-array>
-
     <string-array name="furniture_section">
         <item>Furniture</item>
         <item>furniture</item>
-        
     </string-array>
     <string-array name="apparel_section">
         <item>Mens_Clothing</item>
         <item>mens_clothing</item>
         <item>womens_clothing</item>
-     
     </string-array>
-     <string-array name="fragrance_section">
-       <item>Fragrances</item>
-       <item>fragrances</item>
-     
+    <string-array name="fragrance_section">
+        <item>Fragrances</item>
+        <item>fragrances</item>
     </string-array>
     <string-array name="electronics_section">
+         <item>TVs_Audio_Video</item>
+        <item>Home_Improvement</item>
+        <item>Mobiles_Tablets</item>
+        <item>Cameras_Accessories</item>
+        <item>microwave_ovens</item>
+        <item>Home_Improvement</item>
         <item>Mobiles_Tablets</item>
         <item>Cameras_Accessories</item>
        
@@ -79,12 +87,10 @@
     <string-array name="jewellery_section">
         <item>Jewellery</item>
         <item>jewellery</item>
-        
     </string-array>
-    <string-array name="eyewear_section">           
-        <item>Eyewear</item>        
-         <item>eyewear</item>
-         
+    <string-array name="eyewear_section">
+        <item>Eyewear</item>
+        <item>eyewear</item>
     </string-array>
-  
+
 </resources>
