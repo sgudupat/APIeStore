@@ -256,8 +256,9 @@ public class CategoryActivity extends Activity implements Runnable {
 	public void run() {
 
 		try {
-			String result = new AsyncTaskParseJson().execute().get();
 			String result1 = new flipkartTaskParseJson().execute().get();
+			String result = new AsyncTaskParseJson().execute().get();
+	
 
 		} catch (InterruptedException e) {
 
