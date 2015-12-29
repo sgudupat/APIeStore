@@ -17,8 +17,6 @@ public class ProductDetailActivity extends Activity {
 		setContentView(R.layout.gallery);
 		
 		Intent intent = getIntent();
-		/*final Bitmap bitmap = (Bitmap) intent.getParcelableExtra("bitmapImage1");
-		final Bitmap bitmap2 = (Bitmap) intent.getParcelableExtra("bitmapImage2");*/
 		String name = intent.getStringExtra("name");
 		String image = intent.getStringExtra("bitmapImage3");
 		String price = intent.getStringExtra("price");

@@ -4,83 +4,79 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Category {
-	String categoryName;
-	String categoryUrl;
-	String CategoryDescription;
-	ArrayList<String> urlList;
-	HashMap<String,ArrayList<String>> categoryList;
 
-	public HashMap<String, ArrayList<String>> getCategoryList() {
-		return categoryList;
-	}
+    String categoryName;
+    String categoryUrl;
+    String CategoryDescription;
+    ArrayList<String> urlList;
+    HashMap<String, ArrayList<String>> categoryList;
 
-	public void setCategoryList(HashMap<String, ArrayList<String>> categoryList) {
-		this.categoryList = categoryList;
-	}
+    public HashMap<String, ArrayList<String>> getCategoryList() {
+        return categoryList;
+    }
 
-	public ArrayList<String> getUrlList() {
-		return urlList;
-	}
+    public void setCategoryList(HashMap<String, ArrayList<String>> categoryList) {
+        this.categoryList = categoryList;
+    }
 
-	public void setUrlList(ArrayList<String> urlList) {
-		this.urlList = urlList;
-	}
+    public ArrayList<String> getUrlList() {
+        return urlList;
+    }
 
-	Category(String categoryName, String categoryUrl) {
-		this.categoryName = categoryName;
-		this.categoryUrl = categoryUrl;
+    public void setUrlList(ArrayList<String> urlList) {
+        this.urlList = urlList;
+    }
 
-	}
-	Category(String categoryName,  ArrayList<String> urlList) {
-		this.categoryName = categoryName;
-		this.urlList = urlList;
+    Category(String categoryName, String categoryUrl) {
+        this.categoryName = categoryName;
+        this.categoryUrl = categoryUrl;
+    }
 
-	}
-	Category(String categoryName,  HashMap<String,ArrayList<String>> categoryList) {
-		this.categoryName = categoryName;
-		this.categoryList = categoryList;
+    Category(String categoryName, ArrayList<String> urlList) {
+        this.categoryName = categoryName;
+        this.urlList = urlList;
+    }
 
-	}
-	Category(HashMap<String,ArrayList<String>> categoryList) {
+    Category(String categoryName, HashMap<String, ArrayList<String>> categoryList) {
+        this.categoryName = categoryName;
+        this.categoryList = categoryList;
+    }
 
-		this.categoryList = categoryList;
+    Category(HashMap<String, ArrayList<String>> categoryList) {
+        this.categoryList = categoryList;
+    }
 
-	}
+    public Category() {
+    }
 
-	public Category() {
-		// TODO Auto-generated constructor stubfdaf
-	}
+    public String getCategoryName() {
+        return categoryName;
+    }
 
-	public String getCategoryName() {
-		return categoryName;
-	}
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
 
-	public void setCategoryName(String categoryName) {
-		this.categoryName = categoryName;
-	}
+    public String getCategoryUrl() {
+        return categoryUrl;
+    }
 
-	public String getCategoryUrl() {
-		return categoryUrl;
-	}
+    public void setCategoryUrl(String categoryUrl) {
+        this.categoryUrl = categoryUrl;
+    }
 
-	public void setCategoryUrl(String categoryUrl) {
-		this.categoryUrl = categoryUrl;
-	}
+    public String getCategoryDescription() {
+        return CategoryDescription;
+    }
 
-	public String getCategoryDescription() {
-		return CategoryDescription;
-	}
+    public void setCategoryDescription(String categoryDescription) {
+        CategoryDescription = categoryDescription;
+    }
 
-	public void setCategoryDescription(String categoryDescription) {
-		CategoryDescription = categoryDescription;
-	}
-
-	@Override
-	public String toString() {
-		return "Category [categoryName=" + categoryName + ", categoryUrl="
-				+ categoryUrl + ", CategoryDescription=" + CategoryDescription
-				+ "]";
-	}
-
-
+    @Override
+    public String toString() {
+        return "Category [categoryName=" + categoryName + ", categoryUrl="
+                + categoryUrl + ", CategoryDescription=" + CategoryDescription
+                + "]";
+    }
 }

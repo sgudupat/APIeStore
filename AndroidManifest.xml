@@ -2,27 +2,25 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.getshared.eStore.app" android:versionCode="1" android:versionName="1.0">
 
-    <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="22" />
-    <uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.SEND_SMS"/>      
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
-    <application android:label="@string/app_name" android:icon="@drawable/hs" android:theme="@style/AppTheme" >
+    <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="22"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
+    <application android:label="@string/app_name" android:icon="@drawable/hs" android:theme="@style/AppTheme">
         <meta-data android:name="com.google.android.gms.version" android:value="7895000"/>
-
-        <activity android:name=".HomeScreenActivity" android:label="">
+        <activity android:name=".HomeScreenActivity" android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity android:name=".CategoryActivity" android:label="@string/app_name"></activity>
-        <activity android:name="com.getshared.eStore.app.HomeActivity" ></activity>
-        <activity android:name="com.getshared.eStore.app.StoreActivity" android:label="@string/store"></activity>
-        <activity android:name="com.getshared.eStore.app.RegisterActivity" android:label="@string/register"></activity>
-        <activity android:name="com.getshared.eStore.app.ProfileActivity" android:label="@string/profile"></activity>
-        <activity android:name="com.getshared.eStore.app.ProductDetailActivity" android:label="@string/product"></activity>
-   
+        <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".StoreActivity" android:label="@string/store"></activity>
+        <activity android:name=".RegisterActivity" android:label="@string/register"></activity>
+        <activity android:name=".ProfileActivity" android:label="@string/profile"></activity>
+        <activity android:name=".ProductDetailActivity" android:label="@string/product"></activity>
     </application>
 </manifest>

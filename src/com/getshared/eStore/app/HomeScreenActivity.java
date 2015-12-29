@@ -13,9 +13,9 @@ import android.util.Log;
 import android.widget.Toast;
 
 public class HomeScreenActivity extends Activity {
+
     final Context context = this;
 
-    //private Context context;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +23,6 @@ public class HomeScreenActivity extends Activity {
         isNetworkAvailable(context);
         int delay = 3000; // delay for 1 sec.
         Timer timer = new Timer();
-
         timer.schedule(new TimerTask() {
             public void run() {
                 goToNext();  // display the data
@@ -32,12 +31,9 @@ public class HomeScreenActivity extends Activity {
     }
 
     private void goToNext() {
-        // TODO Auto-generated method stub
-
         Intent intent = new Intent(this, CategoryActivity.class);
         startActivity(intent);
         finish();
-
     }
 
     private boolean isNetworkAvailable(Context context) {
