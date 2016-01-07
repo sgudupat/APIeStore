@@ -16,8 +16,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 
@@ -43,6 +47,8 @@ public class StoreActivity extends Activity implements Runnable {
     String url = "";
     String company = "";
     String cname = "";
+    String productName;
+    String productUrl;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,11 +58,15 @@ public class StoreActivity extends Activity implements Runnable {
         cname = intent.getStringExtra("category");
         this.setTitle(cname);
         urllist = intent.getStringArrayListExtra("producturl");
+       
         for (String s : urllist) {
             url = s;
             if (url.contains("flipkart")) {
                 try {
                     productList = generateData1();
+                    Log.i("productList", ""+productList);
+                   
+                        
                 } catch (JSONException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -81,6 +91,57 @@ public class StoreActivity extends Activity implements Runnable {
             e.printStackTrace();
         }
 
+    }
+    public class flipkartTaskParseJson2 extends AsyncTask<String, String, String> {
+
+        @Override
+        protected void onPreExecute() {
+        }
+
+        @Override
+        protected String doInBackground(String... arg0) {
+            JsonParserF jParser = new JsonParserF();
+            JSONObject json = null;
+            try {
+                json = jParser.getJSONFromUrl(url);
+              //   Log.i("response",json.toString()); 
+                JSONArray  dataJsonArr = json.getJSONArray("productInfoList");
+                Log.i("array length ",""+dataJsonArr.length());
+                for (int i = 0; i < dataJsonArr.length(); i++) {
+                    
+                	  JSONObject jsonobject = dataJsonArr.getJSONObject(i);
+                      JSONObject productIdentifier = jsonobject.getJSONObject("productBaseInfo");
+                      JSONObject category = productIdentifier.getJSONObject("productAttributes");
+
+                      JSONObject imageUrl = category.getJSONObject("imageUrls");
+                      imageLink = imageUrl.getString("400x400");
+                      image = category.getString("productUrl");
+                      productInfo = category.getString("productDescription");
+                      JSONObject selling = category.getJSONObject("sellingPrice");
+                      amount = selling.getString("amount");
+                      name = category.getString("title");
+                      company = "flipkart";
+                      Log.i("imageLink", imageLink );
+                      Log.i("image", image );
+                      Log.i("productInfo", productInfo );
+                      Log.i("amount", amount );
+                      Log.i("name", name );
+                    productList.add(new Product(imageLink, image, productInfo, amount, name, company));
+                    
+                }
+                
+                
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+    // TODO Auto-generated catch block
+    e.printStackTrace();
+   }
+            return json.toString();
+        }
+
+        protected void onPostExecute(String json) {
+        }
     }
 
     private void buildImageView(String url) throws JSONException {
@@ -245,6 +306,39 @@ public class StoreActivity extends Activity implements Runnable {
 
         protected void onPostExecute(String strFromDoInBg) {
         }
+    }
+    public void search(View view){
+    	EditText searchValue=(EditText)findViewById(R.id.inputSearch);
+    	String searchValueString=searchValue.getText().toString();
+    	Log.i("searchValueString", searchValueString);
+    	productList.clear();
+    	 Uri.Builder builder = new Uri.Builder();
+         builder.scheme("https")
+             .authority("affiliate-api.flipkart.net")
+             .appendPath("affiliate")
+             .appendPath("search")
+              .appendPath("json")
+             .appendQueryParameter("query", searchValueString)
+             .appendQueryParameter("resultCount", "10");
+         url = builder.build().toString();
+         String result="";
+         GridView gridView = (GridView) findViewById(R.id.product_gridView1);
+
+
+         ProductListAdapter imageGridAdapter = new ProductListAdapter(this, productList);
+
+         gridView.setAdapter(imageGridAdapter);
+         Log.i("Result Search", result);
+         try {
+          result= new flipkartTaskParseJson2().execute().get();
+          Log.i("result :",result);
+         } catch (InterruptedException e) {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
+         } catch (ExecutionException e) {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
+         }
     }
 
 
