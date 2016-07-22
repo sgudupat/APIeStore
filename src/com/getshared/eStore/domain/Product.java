@@ -30,6 +30,7 @@ public class Product {
 		this.image = image;
 		this.link = link;
 	}
+	
 
 	public Product(String image, String link, String productInfo, String price, String name, String cname) {
 		this.image = image;
